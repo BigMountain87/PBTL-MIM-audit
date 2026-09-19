@@ -1,0 +1,753 @@
+{
+ "eps": 0.05,
+ "runs": {
+  "A": {
+   "seed": 42,
+   "n": 20,
+   "n_valid": 20,
+   "t2_total": 14,
+   "n_pretender": 1,
+   "n_confirmed": 19,
+   "per_param": {
+    "P": {
+     "pretender": 0,
+     "confirmed": 4,
+     "all": 4,
+     "at_lo": 3,
+     "at_hi": 1
+    },
+    "Wx": {
+     "pretender": 0,
+     "confirmed": 2,
+     "all": 2,
+     "at_lo": 1,
+     "at_hi": 1
+    },
+    "Wy": {
+     "pretender": 0,
+     "confirmed": 1,
+     "all": 1,
+     "at_lo": 1,
+     "at_hi": 0
+    },
+    "W2": {
+     "pretender": 0,
+     "confirmed": 4,
+     "all": 4,
+     "at_lo": 1,
+     "at_hi": 3
+    },
+    "t1": {
+     "pretender": 0,
+     "confirmed": 2,
+     "all": 2,
+     "at_lo": 0,
+     "at_hi": 2
+    },
+    "t2": {
+     "pretender": 0,
+     "confirmed": 9,
+     "all": 9,
+     "at_lo": 2,
+     "at_hi": 7
+    },
+    "t_mid": {
+     "pretender": 0,
+     "confirmed": 3,
+     "all": 3,
+     "at_lo": 2,
+     "at_hi": 1
+    },
+    "d1": {
+     "pretender": 0,
+     "confirmed": 0,
+     "all": 0,
+     "at_lo": 0,
+     "at_hi": 0
+    },
+    "d2": {
+     "pretender": 1,
+     "confirmed": 0,
+     "all": 1,
+     "at_lo": 1,
+     "at_hi": 0
+    },
+    "theta": {
+     "pretender": 0,
+     "confirmed": 4,
+     "all": 4,
+     "at_lo": 4,
+     "at_hi": 0
+    }
+   }
+  },
+  "A_s123": {
+   "seed": 123,
+   "n": 20,
+   "n_valid": 20,
+   "t2_total": 18,
+   "n_pretender": 0,
+   "n_confirmed": 20,
+   "per_param": {
+    "P": {
+     "pretender": 0,
+     "confirmed": 7,
+     "all": 7,
+     "at_lo": 4,
+     "at_hi": 3
+    },
+    "Wx": {
+     "pretender": 0,
+     "confirmed": 2,
+     "all": 2,
+     "at_lo": 1,
+     "at_hi": 1
+    },
+    "Wy": {
+     "pretender": 0,
+     "confirmed": 0,
+     "all": 0,
+     "at_lo": 0,
+     "at_hi": 0
+    },
+    "W2": {
+     "pretender": 0,
+     "confirmed": 5,
+     "all": 5,
+     "at_lo": 4,
+     "at_hi": 1
+    },
+    "t1": {
+     "pretender": 0,
+     "confirmed": 2,
+     "all": 2,
+     "at_lo": 1,
+     "at_hi": 1
+    },
+    "t2": {
+     "pretender": 0,
+     "confirmed": 8,
+     "all": 8,
+     "at_lo": 3,
+     "at_hi": 5
+    },
+    "t_mid": {
+     "pretender": 0,
+     "confirmed": 3,
+     "all": 3,
+     "at_lo": 2,
+     "at_hi": 1
+    },
+    "d1": {
+     "pretender": 0,
+     "confirmed": 1,
+     "all": 1,
+     "at_lo": 0,
+     "at_hi": 1
+    },
+    "d2": {
+     "pretender": 0,
+     "confirmed": 2,
+     "all": 2,
+     "at_lo": 2,
+     "at_hi": 0
+    },
+    "theta": {
+     "pretender": 0,
+     "confirmed": 5,
+     "all": 5,
+     "at_lo": 4,
+     "at_hi": 1
+    }
+   }
+  },
+  "A_s777": {
+   "seed": 777,
+   "n": 20,
+   "n_valid": 19,
+   "t2_total": 14,
+   "n_pretender": 1,
+   "n_confirmed": 18,
+   "per_param": {
+    "P": {
+     "pretender": 0,
+     "confirmed": 2,
+     "all": 2,
+     "at_lo": 1,
+     "at_hi": 1
+    },
+    "Wx": {
+     "pretender": 0,
+     "confirmed": 2,
+     "all": 2,
+     "at_lo": 1,
+     "at_hi": 1
+    },
+    "Wy": {
+     "pretender": 0,
+     "confirmed": 1,
+     "all": 1,
+     "at_lo": 1,
+     "at_hi": 0
+    },
+    "W2": {
+     "pretender": 0,
+     "confirmed": 2,
+     "all": 2,
+     "at_lo": 0,
+     "at_hi": 2
+    },
+    "t1": {
+     "pretender": 0,
+     "confirmed": 2,
+     "all": 2,
+     "at_lo": 1,
+     "at_hi": 1
+    },
+    "t2": {
+     "pretender": 1,
+     "confirmed": 7,
+     "all": 8,
+     "at_lo": 2,
+     "at_hi": 6
+    },
+    "t_mid": {
+     "pretender": 1,
+     "confirmed": 4,
+     "all": 6,
+     "at_lo": 4,
+     "at_hi": 2
+    },
+    "d1": {
+     "pretender": 1,
+     "confirmed": 0,
+     "all": 1,
+     "at_lo": 1,
+     "at_hi": 0
+    },
+    "d2": {
+     "pretender": 0,
+     "confirmed": 1,
+     "all": 1,
+     "at_lo": 1,
+     "at_hi": 0
+    },
+    "theta": {
+     "pretender": 0,
+     "confirmed": 4,
+     "all": 5,
+     "at_lo": 4,
+     "at_hi": 1
+    }
+   }
+  },
+  "B": {
+   "seed": 42,
+   "n": 20,
+   "n_valid": 20,
+   "t2_total": 15,
+   "n_pretender": 3,
+   "n_confirmed": 17,
+   "per_param": {
+    "P": {
+     "pretender": 0,
+     "confirmed": 1,
+     "all": 1,
+     "at_lo": 0,
+     "at_hi": 1
+    },
+    "R_out": {
+     "pretender": 0,
+     "confirmed": 0,
+     "all": 0,
+     "at_lo": 0,
+     "at_hi": 0
+    },
+    "R_in": {
+     "pretender": 1,
+     "confirmed": 0,
+     "all": 1,
+     "at_lo": 0,
+     "at_hi": 1
+    },
+    "R_disk": {
+     "pretender": 2,
+     "confirmed": 6,
+     "all": 8,
+     "at_lo": 6,
+     "at_hi": 2
+    },
+    "t_Cr": {
+     "pretender": 0,
+     "confirmed": 2,
+     "all": 2,
+     "at_lo": 1,
+     "at_hi": 1
+    },
+    "d_SiO2": {
+     "pretender": 0,
+     "confirmed": 0,
+     "all": 0,
+     "at_lo": 0,
+     "at_hi": 0
+    },
+    "theta": {
+     "pretender": 0,
+     "confirmed": 3,
+     "all": 3,
+     "at_lo": 1,
+     "at_hi": 2
+    },
+    "phi": {
+     "pretender": 2,
+     "confirmed": 7,
+     "all": 9,
+     "at_lo": 6,
+     "at_hi": 3
+    }
+   }
+  },
+  "B_s123": {
+   "seed": 123,
+   "n": 20,
+   "n_valid": 20,
+   "t2_total": 14,
+   "n_pretender": 3,
+   "n_confirmed": 17,
+   "per_param": {
+    "P": {
+     "pretender": 1,
+     "confirmed": 1,
+     "all": 2,
+     "at_lo": 1,
+     "at_hi": 1
+    },
+    "R_out": {
+     "pretender": 1,
+     "confirmed": 0,
+     "all": 1,
+     "at_lo": 1,
+     "at_hi": 0
+    },
+    "R_in": {
+     "pretender": 0,
+     "confirmed": 0,
+     "all": 0,
+     "at_lo": 0,
+     "at_hi": 0
+    },
+    "R_disk": {
+     "pretender": 1,
+     "confirmed": 4,
+     "all": 5,
+     "at_lo": 3,
+     "at_hi": 2
+    },
+    "t_Cr": {
+     "pretender": 1,
+     "confirmed": 5,
+     "all": 6,
+     "at_lo": 3,
+     "at_hi": 3
+    },
+    "d_SiO2": {
+     "pretender": 0,
+     "confirmed": 0,
+     "all": 0,
+     "at_lo": 0,
+     "at_hi": 0
+    },
+    "theta": {
+     "pretender": 0,
+     "confirmed": 2,
+     "all": 2,
+     "at_lo": 1,
+     "at_hi": 1
+    },
+    "phi": {
+     "pretender": 2,
+     "confirmed": 6,
+     "all": 8,
+     "at_lo": 5,
+     "at_hi": 3
+    }
+   }
+  },
+  "B_s777": {
+   "seed": 777,
+   "n": 20,
+   "n_valid": 20,
+   "t2_total": 12,
+   "n_pretender": 3,
+   "n_confirmed": 17,
+   "per_param": {
+    "P": {
+     "pretender": 1,
+     "confirmed": 1,
+     "all": 2,
+     "at_lo": 1,
+     "at_hi": 1
+    },
+    "R_out": {
+     "pretender": 0,
+     "confirmed": 0,
+     "all": 0,
+     "at_lo": 0,
+     "at_hi": 0
+    },
+    "R_in": {
+     "pretender": 1,
+     "confirmed": 0,
+     "all": 1,
+     "at_lo": 1,
+     "at_hi": 0
+    },
+    "R_disk": {
+     "pretender": 1,
+     "confirmed": 3,
+     "all": 4,
+     "at_lo": 2,
+     "at_hi": 2
+    },
+    "t_Cr": {
+     "pretender": 0,
+     "confirmed": 2,
+     "all": 2,
+     "at_lo": 0,
+     "at_hi": 2
+    },
+    "d_SiO2": {
+     "pretender": 0,
+     "confirmed": 0,
+     "all": 0,
+     "at_lo": 0,
+     "at_hi": 0
+    },
+    "theta": {
+     "pretender": 1,
+     "confirmed": 3,
+     "all": 4,
+     "at_lo": 1,
+     "at_hi": 3
+    },
+    "phi": {
+     "pretender": 0,
+     "confirmed": 2,
+     "all": 2,
+     "at_lo": 2,
+     "at_hi": 0
+    }
+   }
+  },
+  "C": {
+   "seed": 42,
+   "n": 20,
+   "n_valid": 20,
+   "t2_total": 9,
+   "n_pretender": 2,
+   "n_confirmed": 18,
+   "per_param": {
+    "P": {
+     "pretender": 0,
+     "confirmed": 4,
+     "all": 4,
+     "at_lo": 2,
+     "at_hi": 2
+    },
+    "Wx": {
+     "pretender": 0,
+     "confirmed": 0,
+     "all": 0,
+     "at_lo": 0,
+     "at_hi": 0
+    },
+    "Wy": {
+     "pretender": 0,
+     "confirmed": 1,
+     "all": 1,
+     "at_lo": 1,
+     "at_hi": 0
+    },
+    "t_Cr": {
+     "pretender": 0,
+     "confirmed": 1,
+     "all": 1,
+     "at_lo": 0,
+     "at_hi": 1
+    },
+    "d_SiO2": {
+     "pretender": 0,
+     "confirmed": 0,
+     "all": 0,
+     "at_lo": 0,
+     "at_hi": 0
+    },
+    "theta": {
+     "pretender": 0,
+     "confirmed": 3,
+     "all": 3,
+     "at_lo": 3,
+     "at_hi": 0
+    },
+    "phi": {
+     "pretender": 1,
+     "confirmed": 3,
+     "all": 4,
+     "at_lo": 1,
+     "at_hi": 3
+    }
+   }
+  },
+  "C_s123": {
+   "seed": 123,
+   "n": 20,
+   "n_valid": 20,
+   "t2_total": 11,
+   "n_pretender": 1,
+   "n_confirmed": 19,
+   "per_param": {
+    "P": {
+     "pretender": 0,
+     "confirmed": 3,
+     "all": 3,
+     "at_lo": 2,
+     "at_hi": 1
+    },
+    "Wx": {
+     "pretender": 0,
+     "confirmed": 0,
+     "all": 0,
+     "at_lo": 0,
+     "at_hi": 0
+    },
+    "Wy": {
+     "pretender": 0,
+     "confirmed": 1,
+     "all": 1,
+     "at_lo": 1,
+     "at_hi": 0
+    },
+    "t_Cr": {
+     "pretender": 0,
+     "confirmed": 0,
+     "all": 0,
+     "at_lo": 0,
+     "at_hi": 0
+    },
+    "d_SiO2": {
+     "pretender": 0,
+     "confirmed": 2,
+     "all": 2,
+     "at_lo": 1,
+     "at_hi": 1
+    },
+    "theta": {
+     "pretender": 0,
+     "confirmed": 3,
+     "all": 3,
+     "at_lo": 2,
+     "at_hi": 1
+    },
+    "phi": {
+     "pretender": 1,
+     "confirmed": 5,
+     "all": 6,
+     "at_lo": 3,
+     "at_hi": 3
+    }
+   }
+  },
+  "C_s777": {
+   "seed": 777,
+   "n": 20,
+   "n_valid": 20,
+   "t2_total": 9,
+   "n_pretender": 2,
+   "n_confirmed": 18,
+   "per_param": {
+    "P": {
+     "pretender": 0,
+     "confirmed": 4,
+     "all": 4,
+     "at_lo": 2,
+     "at_hi": 2
+    },
+    "Wx": {
+     "pretender": 0,
+     "confirmed": 0,
+     "all": 0,
+     "at_lo": 0,
+     "at_hi": 0
+    },
+    "Wy": {
+     "pretender": 0,
+     "confirmed": 1,
+     "all": 1,
+     "at_lo": 1,
+     "at_hi": 0
+    },
+    "t_Cr": {
+     "pretender": 0,
+     "confirmed": 1,
+     "all": 1,
+     "at_lo": 1,
+     "at_hi": 0
+    },
+    "d_SiO2": {
+     "pretender": 0,
+     "confirmed": 0,
+     "all": 0,
+     "at_lo": 0,
+     "at_hi": 0
+    },
+    "theta": {
+     "pretender": 0,
+     "confirmed": 4,
+     "all": 4,
+     "at_lo": 4,
+     "at_hi": 0
+    },
+    "phi": {
+     "pretender": 0,
+     "confirmed": 3,
+     "all": 3,
+     "at_lo": 2,
+     "at_hi": 1
+    }
+   }
+  }
+ },
+ "pooled": {
+  "A": {
+   "P": {
+    "pretender": 0,
+    "confirmed": 13,
+    "all": 13
+   },
+   "Wx": {
+    "pretender": 0,
+    "confirmed": 6,
+    "all": 6
+   },
+   "Wy": {
+    "pretender": 0,
+    "confirmed": 2,
+    "all": 2
+   },
+   "W2": {
+    "pretender": 0,
+    "confirmed": 11,
+    "all": 11
+   },
+   "t1": {
+    "pretender": 0,
+    "confirmed": 6,
+    "all": 6
+   },
+   "t2": {
+    "pretender": 1,
+    "confirmed": 24,
+    "all": 25
+   },
+   "t_mid": {
+    "pretender": 1,
+    "confirmed": 10,
+    "all": 12
+   },
+   "d1": {
+    "pretender": 1,
+    "confirmed": 1,
+    "all": 2
+   },
+   "d2": {
+    "pretender": 1,
+    "confirmed": 3,
+    "all": 4
+   },
+   "theta": {
+    "pretender": 0,
+    "confirmed": 13,
+    "all": 14
+   }
+  },
+  "B": {
+   "P": {
+    "pretender": 2,
+    "confirmed": 3,
+    "all": 5
+   },
+   "R_out": {
+    "pretender": 1,
+    "confirmed": 0,
+    "all": 1
+   },
+   "R_in": {
+    "pretender": 2,
+    "confirmed": 0,
+    "all": 2
+   },
+   "R_disk": {
+    "pretender": 4,
+    "confirmed": 13,
+    "all": 17
+   },
+   "t_Cr": {
+    "pretender": 1,
+    "confirmed": 9,
+    "all": 10
+   },
+   "d_SiO2": {
+    "pretender": 0,
+    "confirmed": 0,
+    "all": 0
+   },
+   "theta": {
+    "pretender": 1,
+    "confirmed": 8,
+    "all": 9
+   },
+   "phi": {
+    "pretender": 4,
+    "confirmed": 15,
+    "all": 19
+   }
+  },
+  "C": {
+   "P": {
+    "pretender": 0,
+    "confirmed": 11,
+    "all": 11
+   },
+   "Wx": {
+    "pretender": 0,
+    "confirmed": 0,
+    "all": 0
+   },
+   "Wy": {
+    "pretender": 0,
+    "confirmed": 3,
+    "all": 3
+   },
+   "t_Cr": {
+    "pretender": 0,
+    "confirmed": 2,
+    "all": 2
+   },
+   "d_SiO2": {
+    "pretender": 0,
+    "confirmed": 2,
+    "all": 2
+   },
+   "theta": {
+    "pretender": 0,
+    "confirmed": 10,
+    "all": 10
+   },
+   "phi": {
+    "pretender": 2,
+    "confirmed": 11,
+    "all": 13
+   }
+  }
+ }
+}

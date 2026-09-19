@@ -1,0 +1,83 @@
+[2026-09-17 22:21:49] queue start; waiting for grid_delta_A.py to exit
+[2026-09-17 22:29:49] A job done, starting queue
+[2026-09-17 22:29:50] start B s42 i16
+  [oracle] NOTE: real-space grid (64, 64) < 4*N_max+2 = 70 for N_max = 17: couplings at |m-n| > 31 alias (pinned data-generating setting, reported not changed)
+[B s42 i16] P=698.0, R_out=193.8, R_in=185.8, R_disk=10.0, t_Cr=50.8, d_SiO2=128.3, theta=60.0, phi=16.6
+  archived: surrogate MAE 0.78 %, RCWA MAE 4.48 % (N 9-17); 20/100 wavelengths
+  grid   64:   817.4 s | MAE vs target  4.37 % | vs archived GPU(64): mean  0.00 pp, max  0.01 pp
+  grid  256:  1064.4 s | MAE vs target  4.85 % | vs archived GPU(64): mean  0.68 pp, max  1.09 pp
+  grid 64 -> 256: mean |dA|  0.68 pp, max  1.08 pp | MAE 4.37 -> 4.85 % | verdict pass -> pass
+[2026-09-17 23:01:14] done  B s42 i16 (exit 0)
+[2026-09-17 23:01:14] start B s123 i17
+  [oracle] NOTE: real-space grid (64, 64) < 4*N_max+2 = 70 for N_max = 17: couplings at |m-n| > 31 alias (pinned data-generating setting, reported not changed)
+[B s123 i17] P=463.7, R_out=93.4, R_in=59.0, R_disk=64.4, t_Cr=35.0, d_SiO2=87.8, theta=11.5, phi=45.0
+  archived: surrogate MAE 0.33 %, RCWA MAE 5.22 % (N 9-13); 20/100 wavelengths
+  grid   64:   436.8 s | MAE vs target  5.20 % | vs archived GPU(64): mean  0.00 pp, max  0.01 pp
+  grid  256:   323.8 s | MAE vs target  5.24 % | vs archived GPU(64): mean  0.08 pp, max  0.13 pp
+  grid 64 -> 256: mean |dA|  0.08 pp, max  0.13 pp | MAE 5.20 -> 5.24 % | verdict PRETENDER -> PRETENDER
+[2026-09-17 23:13:58] done  B s123 i17 (exit 0)
+[2026-09-17 23:13:58] start B s42 i0
+  [oracle] NOTE: real-space grid (64, 64) < 4*N_max+2 = 70 for N_max = 17: couplings at |m-n| > 31 alias (pinned data-generating setting, reported not changed)
+[B s42 i0] P=614.9, R_out=208.7, R_in=214.0, R_disk=50.8, t_Cr=31.5, d_SiO2=159.9, theta=48.0, phi=0.0
+  archived: surrogate MAE 0.29 %, RCWA MAE 4.79 % (N 9-17); 20/100 wavelengths
+  grid   64:  1046.9 s | MAE vs target  4.71 % | vs archived GPU(64): mean  0.00 pp, max  0.00 pp
+  grid  256:  1036.8 s | MAE vs target  4.67 % | vs archived GPU(64): mean  0.04 pp, max  0.10 pp
+  grid 64 -> 256: mean |dA|  0.04 pp, max  0.10 pp | MAE 4.71 -> 4.67 % | verdict pass -> pass
+[2026-09-17 23:48:45] done  B s42 i0 (exit 0)
+[2026-09-17 23:48:45] start B s42 i6
+  [oracle] NOTE: real-space grid (64, 64) < 4*N_max+2 = 70 for N_max = 17: couplings at |m-n| > 31 alias (pinned data-generating setting, reported not changed)
+[B s42 i6] P=383.1, R_out=187.3, R_in=153.1, R_disk=15.1, t_Cr=62.8, d_SiO2=120.3, theta=25.8, phi=33.5
+  archived: surrogate MAE 0.12 %, RCWA MAE 4.15 % (N 9-13); 20/100 wavelengths
+  grid   64:   330.5 s | MAE vs target  4.13 % | vs archived GPU(64): mean  0.00 pp, max  0.02 pp
+  grid  256:   340.6 s | MAE vs target  4.17 % | vs archived GPU(64): mean  0.07 pp, max  0.15 pp
+  grid 64 -> 256: mean |dA|  0.07 pp, max  0.15 pp | MAE 4.13 -> 4.17 % | verdict pass -> pass
+[2026-09-17 23:59:59] done  B s42 i6 (exit 0)
+[2026-09-17 23:59:59] start B s123 i6
+  [oracle] NOTE: real-space grid (64, 64) < 4*N_max+2 = 70 for N_max = 17: couplings at |m-n| > 31 alias (pinned data-generating setting, reported not changed)
+[B s123 i6] P=397.9, R_out=191.9, R_in=156.7, R_disk=22.0, t_Cr=64.5, d_SiO2=116.7, theta=20.1, phi=7.6
+  archived: surrogate MAE 0.22 %, RCWA MAE 4.17 % (N 9-13); 20/100 wavelengths
+  grid   64:   334.0 s | MAE vs target  4.12 % | vs archived GPU(64): mean  0.00 pp, max  0.02 pp
+  grid  256:   309.5 s | MAE vs target  3.93 % | vs archived GPU(64): mean  0.21 pp, max  0.53 pp
+  grid 64 -> 256: mean |dA|  0.21 pp, max  0.52 pp | MAE 4.12 -> 3.93 % | verdict pass -> pass
+[2026-09-18 00:10:46] done  B s123 i6 (exit 0)
+[2026-09-18 00:10:46] start B s777 i6
+  [oracle] NOTE: real-space grid (64, 64) < 4*N_max+2 = 70 for N_max = 17: couplings at |m-n| > 31 alias (pinned data-generating setting, reported not changed)
+[B s777 i6] P=382.7, R_out=186.8, R_in=149.5, R_disk=19.2, t_Cr=58.3, d_SiO2=118.3, theta=18.0, phi=14.8
+  archived: surrogate MAE 0.13 %, RCWA MAE 4.00 % (N 9-13); 20/100 wavelengths
+  grid   64:   332.1 s | MAE vs target  4.06 % | vs archived GPU(64): mean  0.00 pp, max  0.01 pp
+  grid  256:   259.1 s | MAE vs target  4.09 % | vs archived GPU(64): mean  0.07 pp, max  0.13 pp
+  grid 64 -> 256: mean |dA|  0.07 pp, max  0.14 pp | MAE 4.06 -> 4.09 % | verdict pass -> pass
+[2026-09-18 00:20:41] done  B s777 i6 (exit 0)
+[2026-09-18 00:20:41] start B s777 i4
+  [oracle] NOTE: real-space grid (64, 64) < 4*N_max+2 = 70 for N_max = 17: couplings at |m-n| > 31 alias (pinned data-generating setting, reported not changed)
+[B s777 i4] P=388.5, R_out=189.4, R_in=115.0, R_disk=22.9, t_Cr=65.9, d_SiO2=154.8, theta=16.9, phi=2.6
+  archived: surrogate MAE 1.01 %, RCWA MAE 4.71 % (N 9-13); 20/100 wavelengths
+  grid   64:   403.9 s | MAE vs target  5.27 % | vs archived GPU(64): mean  0.00 pp, max  0.01 pp
+  grid  256:   329.9 s | MAE vs target  5.24 % | vs archived GPU(64): mean  0.12 pp, max  0.18 pp
+  grid 64 -> 256: mean |dA|  0.12 pp, max  0.17 pp | MAE 5.27 -> 5.24 % | verdict PRETENDER -> PRETENDER
+[2026-09-18 00:32:58] done  B s777 i4 (exit 0)
+[2026-09-18 00:32:58] start B s42 i4
+  [oracle] NOTE: real-space grid (64, 64) < 4*N_max+2 = 70 for N_max = 17: couplings at |m-n| > 31 alias (pinned data-generating setting, reported not changed)
+[B s42 i4] P=375.8, R_out=194.5, R_in=117.8, R_disk=10.0, t_Cr=53.5, d_SiO2=170.7, theta=29.0, phi=36.3
+  archived: surrogate MAE 1.05 %, RCWA MAE 4.82 % (N 9-13); 20/100 wavelengths
+  grid   64:   304.4 s | MAE vs target  5.08 % | vs archived GPU(64): mean  0.00 pp, max  0.00 pp
+  grid  256:   305.8 s | MAE vs target  5.04 % | vs archived GPU(64): mean  0.17 pp, max  0.43 pp
+  grid 64 -> 256: mean |dA|  0.17 pp, max  0.43 pp | MAE 5.08 -> 5.04 % | verdict PRETENDER -> PRETENDER
+[2026-09-18 00:43:13] done  B s42 i4 (exit 0)
+[2026-09-18 00:43:13] start C s42 i17
+  [oracle] NOTE: real-space grid (64, 64) < 4*N_max+2 = 70 for N_max = 17: couplings at |m-n| > 31 alias (pinned data-generating setting, reported not changed)
+[C s42 i17] P=730.4, Wx=165.9, Wy=213.3, t_Cr=70.3, d_SiO2=160.4, theta=42.2, phi=37.3
+  archived: surrogate MAE 3.85 %, RCWA MAE 5.93 % (N 9-13); 20/100 wavelengths
+  grid   64:   502.9 s | MAE vs target  6.80 % | vs archived GPU(64): mean  0.00 pp, max  0.02 pp
+  grid  256:   630.5 s | MAE vs target  6.77 % | vs archived GPU(64): mean  0.82 pp, max  2.13 pp
+  grid 64 -> 256: mean |dA|  0.82 pp, max  2.12 pp | MAE 6.80 -> 6.77 % | verdict PRETENDER -> PRETENDER
+[2026-09-18 01:02:11] done  C s42 i17 (exit 0)
+[2026-09-18 01:02:11] start C s123 i19
+  [oracle] NOTE: real-space grid (64, 64) < 4*N_max+2 = 70 for N_max = 17: couplings at |m-n| > 31 alias (pinned data-generating setting, reported not changed)
+[C s123 i19] P=535.8, Wx=283.1, Wy=153.6, t_Cr=63.0, d_SiO2=52.4, theta=57.1, phi=38.9
+  archived: surrogate MAE 1.99 %, RCWA MAE 4.55 % (N 9-13); 20/100 wavelengths
+  grid   64:   621.7 s | MAE vs target  4.09 % | vs archived GPU(64): mean  0.00 pp, max  0.01 pp
+  grid  256:   492.5 s | MAE vs target  4.26 % | vs archived GPU(64): mean  0.30 pp, max  0.82 pp
+  grid 64 -> 256: mean |dA|  0.30 pp, max  0.82 pp | MAE 4.09 -> 4.26 % | verdict pass -> pass
+[2026-09-18 01:20:49] done  C s123 i19 (exit 0)
+[2026-09-18 01:20:49] queue finished

@@ -1,0 +1,314 @@
+{
+  "tau_pct": 5.0,
+  "definition": "pretender = surrogate MAE <= tau AND reference-solver MAE > tau",
+  "arms": {
+    "legacy": "as-submitted release: fixed Fourier order 5, complex128, 2026-03 checkpoints and data pools",
+    "pub": "printed pipeline: per-wavelength adaptive order 9/13/17, complex64, Johnson-Christy, redesign pools"
+  },
+  "runs_compared": [
+    "A_123",
+    "A_42",
+    "A_777",
+    "B_123",
+    "B_42",
+    "B_777",
+    "C_123",
+    "C_42",
+    "C_777"
+  ],
+  "caveat": "the two arms differ in checkpoints, data pools and solver settings at once; this contrast is release-vs-printed-pipeline, not an ablation of any one factor. Targets differ between arms, so the runs are independent samples, not paired.",
+  "per_run": {
+    "B_42": {
+      "legacy": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 11,
+        "pretender": 9,
+        "median_delta_pp": 3.190606510990148,
+        "max_delta_pp": 31.032758128334418,
+        "mean_surr_mae_pct": 0.7445053547620774,
+        "mean_rcwa_mae_pct": 6.648029582714531,
+        "forward_test_mae_pct": 3.1855685424804685
+      },
+      "pub": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 17,
+        "pretender": 3,
+        "median_delta_pp": 2.34398132979004,
+        "max_delta_pp": 12.109157739912916,
+        "mean_surr_mae_pct": 0.4972803682088852,
+        "mean_rcwa_mae_pct": 3.73609419518134,
+        "forward_test_mae_pct": 1.7221231079101562
+      }
+    },
+    "B_123": {
+      "legacy": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 9,
+        "pretender": 11,
+        "median_delta_pp": 4.244291886462051,
+        "max_delta_pp": 26.61878038392614,
+        "mean_surr_mae_pct": 0.7314079493284226,
+        "mean_rcwa_mae_pct": 8.696113357213848,
+        "forward_test_mae_pct": 3.2612683105468747
+      },
+      "pub": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 17,
+        "pretender": 3,
+        "median_delta_pp": 1.2289791806833819,
+        "max_delta_pp": 15.674538086896064,
+        "mean_surr_mae_pct": 0.5642930060625077,
+        "mean_rcwa_mae_pct": 3.0508349012737654,
+        "forward_test_mae_pct": 1.575774841308594
+      }
+    },
+    "B_777": {
+      "legacy": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 10,
+        "pretender": 10,
+        "median_delta_pp": 4.602242774604962,
+        "max_delta_pp": 33.074415178045236,
+        "mean_surr_mae_pct": 0.7803126350045204,
+        "mean_rcwa_mae_pct": 8.025523070659396,
+        "forward_test_mae_pct": 3.2801467895507814
+      },
+      "pub": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 17,
+        "pretender": 3,
+        "median_delta_pp": 1.543553722100114,
+        "max_delta_pp": 7.633631184886327,
+        "mean_surr_mae_pct": 0.5385978698730469,
+        "mean_rcwa_mae_pct": 2.9027043646172386,
+        "forward_test_mae_pct": 1.679987335205078
+      }
+    },
+    "A_42": {
+      "legacy": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 11,
+        "pretender": 9,
+        "median_delta_pp": 3.952166109489086,
+        "max_delta_pp": 7.384860179715565,
+        "mean_surr_mae_pct": 0.5580045253038406,
+        "mean_rcwa_mae_pct": 4.845804199502477,
+        "forward_test_mae_pct": 4.843076782226563
+      },
+      "pub": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 19,
+        "pretender": 1,
+        "median_delta_pp": 1.4466991906005546,
+        "max_delta_pp": 9.900670364227317,
+        "mean_surr_mae_pct": 0.4598659068346024,
+        "mean_rcwa_mae_pct": 2.568802925203475,
+        "forward_test_mae_pct": 1.7574021911621094
+      }
+    },
+    "A_123": {
+      "legacy": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 11,
+        "pretender": 9,
+        "median_delta_pp": 4.191753691753877,
+        "max_delta_pp": 10.015706671608744,
+        "mean_surr_mae_pct": 0.6074418500065804,
+        "mean_rcwa_mae_pct": 5.742915021349306,
+        "forward_test_mae_pct": 4.838159790039062
+      },
+      "pub": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 20,
+        "pretender": 0,
+        "median_delta_pp": 1.5076226101580232,
+        "max_delta_pp": 4.108525940890331,
+        "mean_surr_mae_pct": 0.4844518542289734,
+        "mean_rcwa_mae_pct": 2.3363595533042547,
+        "forward_test_mae_pct": 1.775818176269531
+      }
+    },
+    "A_777": {
+      "legacy": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 11,
+        "pretender": 9,
+        "median_delta_pp": 4.242320502737186,
+        "max_delta_pp": 10.524825593681364,
+        "mean_surr_mae_pct": 0.4728522658348083,
+        "mean_rcwa_mae_pct": 5.276445875658242,
+        "forward_test_mae_pct": 4.728663330078125
+      },
+      "pub": {
+        "n_valid": 19,
+        "claimed": 19,
+        "confirmed": 18,
+        "pretender": 1,
+        "median_delta_pp": 1.1778601694065927,
+        "max_delta_pp": 5.104598262403897,
+        "mean_surr_mae_pct": 0.48479604407360677,
+        "mean_rcwa_mae_pct": 2.2227280726183727,
+        "forward_test_mae_pct": 1.6749252319335939
+      }
+    },
+    "C_42": {
+      "legacy": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 7,
+        "pretender": 13,
+        "median_delta_pp": 4.019127905228016,
+        "max_delta_pp": 13.672406514094511,
+        "mean_surr_mae_pct": 1.9240985810756683,
+        "mean_rcwa_mae_pct": 6.8492934996478025,
+        "forward_test_mae_pct": 3.8641107177734377
+      },
+      "pub": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 18,
+        "pretender": 2,
+        "median_delta_pp": 0.2135931618179825,
+        "max_delta_pp": 4.660704915509997,
+        "mean_surr_mae_pct": 1.3134347043931485,
+        "mean_rcwa_mae_pct": 1.8475034291788064,
+        "forward_test_mae_pct": 2.1071063232421876
+      }
+    },
+    "C_123": {
+      "legacy": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 8,
+        "pretender": 12,
+        "median_delta_pp": 4.321369615036662,
+        "max_delta_pp": 10.2556265793794,
+        "mean_surr_mae_pct": 2.0464585542678835,
+        "mean_rcwa_mae_pct": 6.173872439102056,
+        "forward_test_mae_pct": 3.828592529296875
+      },
+      "pub": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 19,
+        "pretender": 1,
+        "median_delta_pp": 0.4626285375870792,
+        "max_delta_pp": 3.113802716263308,
+        "mean_surr_mae_pct": 1.2657237716019154,
+        "mean_rcwa_mae_pct": 1.941323568463713,
+        "forward_test_mae_pct": 2.1034027099609376
+      }
+    },
+    "C_777": {
+      "legacy": {
+        "n_valid": 19,
+        "claimed": 19,
+        "confirmed": 6,
+        "pretender": 13,
+        "median_delta_pp": 3.320168971536104,
+        "max_delta_pp": 9.463019930456145,
+        "mean_surr_mae_pct": 1.974140025283161,
+        "mean_rcwa_mae_pct": 5.877055219784817,
+        "forward_test_mae_pct": 4.001171875
+      },
+      "pub": {
+        "n_valid": 20,
+        "claimed": 20,
+        "confirmed": 18,
+        "pretender": 2,
+        "median_delta_pp": 0.2871224779994464,
+        "max_delta_pp": 2.411881636184262,
+        "mean_surr_mae_pct": 1.2677511043846608,
+        "mean_rcwa_mae_pct": 1.7641319266868436,
+        "forward_test_mae_pct": 2.0382707214355467
+      }
+    }
+  },
+  "pooled": {
+    "legacy": {
+      "claimed": 179,
+      "pretender": 95,
+      "confirmed": 84,
+      "n_valid": 179,
+      "pretender_rate_pct": 53.072625698324025,
+      "pretender_ci95": [
+        45.773972088888634,
+        60.24216428270297
+      ],
+      "ci_note": "nominal Wilson: the three seeds share one target set per structure"
+    },
+    "pub": {
+      "claimed": 179,
+      "pretender": 16,
+      "confirmed": 163,
+      "n_valid": 179,
+      "pretender_rate_pct": 8.938547486033519,
+      "pretender_ci95": [
+        5.576821955377322,
+        14.025719260626039
+      ],
+      "ci_note": "nominal Wilson: the three seeds share one target set per structure"
+    }
+  },
+  "per_structure_fisher_note": "nominal: seeds within an arm share targets, so the per-structure counts are correlated replicates rather than independent designs",
+  "pooled_difference_pp": {
+    "estimate": 44.134078212290504,
+    "newcombe_ci95": [
+      35.23746867973626,
+      52.052631240234696
+    ],
+    "fisher_p": 2.270746182303629e-20,
+    "cluster_bootstrap_ci95": [
+      33.01978584729981,
+      54.78348799040495
+    ],
+    "cluster_bootstrap_note": "4000-draw percentile bootstrap resampling targets within each arm x structure, a target's three seeds together (seed 20260912)",
+    "note": "nominal: the shared targets within a run are not accounted for here; the design effect of section 3.4 applies to the pooled counts."
+  },
+  "per_structure": {
+    "B": {
+      "legacy": {
+        "pretender": 30,
+        "claimed": 60
+      },
+      "pub": {
+        "pretender": 9,
+        "claimed": 60
+      },
+      "fisher_p": 7.374861178667102e-05
+    },
+    "A": {
+      "legacy": {
+        "pretender": 27,
+        "claimed": 60
+      },
+      "pub": {
+        "pretender": 2,
+        "claimed": 59
+      },
+      "fisher_p": 5.793641690569396e-08
+    },
+    "C": {
+      "legacy": {
+        "pretender": 38,
+        "claimed": 59
+      },
+      "pub": {
+        "pretender": 5,
+        "claimed": 60
+      },
+      "fisher_p": 6.851652574752495e-11
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "description": "Seed-42 commitment-rule comparison. Gradient best-of-8 = reliability_*_v8 (committed = lowest-final-surrogate-loss restart). Random search = random_baseline_*_v8 (budget-matched). Single-start = restart0_*_v8 (mid-box init, no restarts). Pretender := Surr MAE<=tau AND RCWA MAE>tau.",
+  "tau_pct": 5.0,
+  "per_structure": {},
+  "status": "not computed: random_baseline/restart0 artifacts absent in this results dir (extension view)",
+  "mechanism_by_tau": {}
+}

@@ -1,0 +1,119 @@
+{
+ "A": {
+  "table_infeasible_feasible_x_pretender_not": [
+   [
+    8,
+    5
+   ],
+   [
+    1,
+    6
+   ]
+  ],
+  "fisher_p": 0.07027863777089782
+ },
+ "A_s123": {
+  "table_infeasible_feasible_x_pretender_not": [
+   [
+    4,
+    8
+   ],
+   [
+    5,
+    3
+   ]
+  ],
+  "fisher_p": 0.3618480590616814
+ },
+ "A_s777": {
+  "table_infeasible_feasible_x_pretender_not": [
+   [
+    2,
+    5
+   ],
+   [
+    7,
+    6
+   ]
+  ],
+  "fisher_p": 0.37422600619195046
+ },
+ "B": {
+  "table_infeasible_feasible_x_pretender_not": [
+   [
+    7,
+    4
+   ],
+   [
+    2,
+    7
+   ]
+  ],
+  "fisher_p": 0.09228387711359848
+ },
+ "B_s123": {
+  "table_infeasible_feasible_x_pretender_not": [
+   [
+    10,
+    4
+   ],
+   [
+    1,
+    5
+   ]
+  ],
+  "fisher_p": 0.0498452012383901
+ },
+ "B_s777": {
+  "table_infeasible_feasible_x_pretender_not": [
+   [
+    8,
+    3
+   ],
+   [
+    2,
+    7
+   ]
+  ],
+  "fisher_p": 0.06977851869492735
+ },
+ "C": {
+  "table_infeasible_feasible_x_pretender_not": [
+   [
+    9,
+    2
+   ],
+   [
+    4,
+    5
+   ]
+  ],
+  "fisher_p": 0.1596749226006192
+ },
+ "C_s123": {
+  "table_infeasible_feasible_x_pretender_not": [
+   [
+    7,
+    4
+   ],
+   [
+    5,
+    4
+   ]
+  ],
+  "fisher_p": 1.0
+ },
+ "C_s777": {
+  "table_infeasible_feasible_x_pretender_not": [
+   [
+    8,
+    4
+   ],
+   [
+    5,
+    2
+   ]
+  ],
+  "fisher_p": 1.0
+ }
+}

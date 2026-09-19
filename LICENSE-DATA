@@ -1,0 +1,13 @@
+Data, checkpoints, results and figures in this repository are licensed under the
+Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+Copyright (c) 2026 Sang-Bae Choi, Je-Min Choi, Joonhyub Kim, Chang-Mo Kang
+
+You are free to share and adapt the material for any purpose, even commercially, provided you
+give appropriate credit, provide a link to the license, and indicate if changes were made.
+Full text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Scope: results_pub/, results_v8/, figures*/, archived_inputs/ and the datasets and checkpoints
+listed in results_pub/INPUTS_MANIFEST.txt and results_v8/INPUTS_MANIFEST.txt. The raw datasets
+of the companion paper (github.com/BigMountain87/PBTL-MIM) keep that repository's licence.
+Code (src_v8/, scripts/) is under the MIT License in LICENSE.

@@ -1,0 +1,52 @@
+{
+  "structure": "B",
+  "profile": "pub",
+  "upstream_code": "/home/bigmountain87/InverseTL/src_v8/upstream_cb486b5",
+  "upstream_commit": "cb486b5",
+  "recipe": "pbtl_{A,B}_redesign.py / pbtl_C_v2_redesign.py Step 1-2",
+  "n_tmm": 5000,
+  "epochs": 500,
+  "lr": 0.001,
+  "batch": 2048,
+  "weight_decay": 0.0001,
+  "seed": 42,
+  "phys_dim": 13,
+  "train_lo": [
+    300.0,
+    80.0,
+    30.0,
+    10.0,
+    20.0,
+    50.0,
+    0.0,
+    0.0
+  ],
+  "train_hi": [
+    800.0,
+    350.0,
+    300.0,
+    100.0,
+    80.0,
+    200.0,
+    60.0,
+    45.0
+  ],
+  "grid": [
+    400.0,
+    1800.0,
+    100
+  ],
+  "best_val_l1_pct": 0.2485843560695648,
+  "val_hist_pct": [
+    0.3042265088558197,
+    0.27239347076416015,
+    0.27308546781539916,
+    0.25007934165000917,
+    0.2485843560695648
+  ],
+  "ckpt": "/home/bigmountain87/InverseTL/archived_inputs/pub/pretrained_mphys_tmm_B_pub.pt",
+  "ckpt_sha256": "892aabda0d382ad036300a08fec50e05db3bd73af734f9e750a870c2378d5f2c",
+  "torch": "2.5.1+cu121",
+  "gpu": "NVIDIA GeForce RTX 4070 Ti SUPER",
+  "elapsed_s": 423.1
+}

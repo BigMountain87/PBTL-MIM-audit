@@ -1,0 +1,273 @@
+{
+  "description": "Seed-42 commitment-rule comparison. Gradient best-of-8 = reliability_*_v8 (committed = lowest-final-surrogate-loss restart). Random search = random_baseline_*_v8 (budget-matched). Single-start = restart0_*_v8 (mid-box init, no restarts). Pretender := Surr MAE<=tau AND RCWA MAE>tau.",
+  "tau_pct": 5.0,
+  "per_structure": {
+    "A": {
+      "n": 20,
+      "gradient_best_of_8": {
+        "pretender": 9,
+        "oracle_pass": 11,
+        "surrogate_pass": 20,
+        "mean_oracle_mae_pct": 4.8458,
+        "pretender_rate_given_claimed": 0.45,
+        "wilson95_given_claimed": [
+          0.2582,
+          0.6579
+        ],
+        "wilson95_of_n": [
+          0.2582,
+          0.6579
+        ]
+      },
+      "random_search": {
+        "pretender": 10,
+        "oracle_pass": 9,
+        "surrogate_pass": 19,
+        "mean_oracle_mae_pct": 5.4504,
+        "budget": 6400,
+        "pretender_rate_given_claimed": 0.5263,
+        "wilson95_given_claimed": [
+          0.3171,
+          0.7267
+        ],
+        "wilson95_of_n": [
+          0.2993,
+          0.7007
+        ]
+      },
+      "single_start": {
+        "pretender": 8,
+        "oracle_pass": 12,
+        "surrogate_pass": 20,
+        "mean_oracle_mae_pct": 5.4932,
+        "pretender_rate_given_claimed": 0.4,
+        "wilson95_given_claimed": [
+          0.2188,
+          0.6134
+        ],
+        "wilson95_of_n": [
+          0.2188,
+          0.6134
+        ]
+      },
+      "fisher_p_random_vs_best8": 1.0,
+      "fisher_p_single_vs_best8": 1.0,
+      "fisher_p_random_vs_best8_conditional": 0.7524,
+      "fisher_p_single_vs_best8_conditional": 1.0
+    },
+    "B": {
+      "n": 20,
+      "gradient_best_of_8": {
+        "pretender": 9,
+        "oracle_pass": 11,
+        "surrogate_pass": 20,
+        "mean_oracle_mae_pct": 6.648,
+        "pretender_rate_given_claimed": 0.45,
+        "wilson95_given_claimed": [
+          0.2582,
+          0.6579
+        ],
+        "wilson95_of_n": [
+          0.2582,
+          0.6579
+        ]
+      },
+      "random_search": {
+        "pretender": 14,
+        "oracle_pass": 5,
+        "surrogate_pass": 19,
+        "mean_oracle_mae_pct": 10.791,
+        "budget": 6400,
+        "pretender_rate_given_claimed": 0.7368,
+        "wilson95_given_claimed": [
+          0.5121,
+          0.8819
+        ],
+        "wilson95_of_n": [
+          0.481,
+          0.8545
+        ]
+      },
+      "single_start": {
+        "pretender": 9,
+        "oracle_pass": 11,
+        "surrogate_pass": 20,
+        "mean_oracle_mae_pct": 5.9641,
+        "pretender_rate_given_claimed": 0.45,
+        "wilson95_given_claimed": [
+          0.2582,
+          0.6579
+        ],
+        "wilson95_of_n": [
+          0.2582,
+          0.6579
+        ]
+      },
+      "fisher_p_random_vs_best8": 0.2003,
+      "fisher_p_single_vs_best8": 1.0,
+      "fisher_p_random_vs_best8_conditional": 0.1053,
+      "fisher_p_single_vs_best8_conditional": 1.0
+    },
+    "C": {
+      "n": 20,
+      "gradient_best_of_8": {
+        "pretender": 13,
+        "oracle_pass": 7,
+        "surrogate_pass": 20,
+        "mean_oracle_mae_pct": 6.8493,
+        "pretender_rate_given_claimed": 0.65,
+        "wilson95_given_claimed": [
+          0.4329,
+          0.8188
+        ],
+        "wilson95_of_n": [
+          0.4329,
+          0.8188
+        ]
+      },
+      "random_search": {
+        "pretender": 16,
+        "oracle_pass": 0,
+        "surrogate_pass": 16,
+        "mean_oracle_mae_pct": 9.1706,
+        "budget": 6400,
+        "pretender_rate_given_claimed": 1.0,
+        "wilson95_given_claimed": [
+          0.8064,
+          1.0
+        ],
+        "wilson95_of_n": [
+          0.584,
+          0.9193
+        ]
+      },
+      "single_start": {
+        "pretender": 9,
+        "oracle_pass": 8,
+        "surrogate_pass": 17,
+        "mean_oracle_mae_pct": 7.179,
+        "pretender_rate_given_claimed": 0.5294,
+        "wilson95_given_claimed": [
+          0.3096,
+          0.7383
+        ],
+        "wilson95_of_n": [
+          0.2582,
+          0.6579
+        ]
+      },
+      "fisher_p_random_vs_best8": 0.4801,
+      "fisher_p_single_vs_best8": 0.3406,
+      "fisher_p_random_vs_best8_conditional": 0.0107,
+      "fisher_p_single_vs_best8_conditional": 0.5164
+    }
+  },
+  "mechanism_by_tau": {
+    "7.5": {
+      "A": {
+        "best8": {
+          "claimed": 20,
+          "pretender": 1,
+          "valid": 20
+        },
+        "random": {
+          "claimed": 20,
+          "pretender": 4,
+          "valid": 20
+        },
+        "single": {
+          "claimed": 20,
+          "pretender": 4,
+          "valid": 20
+        }
+      },
+      "B": {
+        "best8": {
+          "claimed": 20,
+          "pretender": 6,
+          "valid": 20
+        },
+        "random": {
+          "claimed": 20,
+          "pretender": 10,
+          "valid": 20
+        },
+        "single": {
+          "claimed": 20,
+          "pretender": 5,
+          "valid": 20
+        }
+      },
+      "C": {
+        "best8": {
+          "claimed": 20,
+          "pretender": 7,
+          "valid": 20
+        },
+        "random": {
+          "claimed": 20,
+          "pretender": 13,
+          "valid": 20
+        },
+        "single": {
+          "claimed": 20,
+          "pretender": 10,
+          "valid": 20
+        }
+      }
+    },
+    "10.0": {
+      "A": {
+        "best8": {
+          "claimed": 20,
+          "pretender": 0,
+          "valid": 20
+        },
+        "random": {
+          "claimed": 20,
+          "pretender": 1,
+          "valid": 20
+        },
+        "single": {
+          "claimed": 20,
+          "pretender": 2,
+          "valid": 20
+        }
+      },
+      "B": {
+        "best8": {
+          "claimed": 20,
+          "pretender": 4,
+          "valid": 20
+        },
+        "random": {
+          "claimed": 20,
+          "pretender": 7,
+          "valid": 20
+        },
+        "single": {
+          "claimed": 20,
+          "pretender": 3,
+          "valid": 20
+        }
+      },
+      "C": {
+        "best8": {
+          "claimed": 20,
+          "pretender": 4,
+          "valid": 20
+        },
+        "random": {
+          "claimed": 20,
+          "pretender": 6,
+          "valid": 20
+        },
+        "single": {
+          "claimed": 20,
+          "pretender": 4,
+          "valid": 20
+        }
+      }
+    }
+  }
+}

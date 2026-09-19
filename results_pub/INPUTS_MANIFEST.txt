@@ -1,0 +1,13 @@
+# pub-arm audited inputs (sha256  bytes  path), generated 2026-09-12 09:38:59 KST
+9dea0fa6d8a85a237cd216f978fd43071bcbeb6af4fa7e31851b3c314c521577      734651  upstream_inputs_pub/data/raw/struct_A_500_redesign.npz
+a75c4de52129fd80e1a96070b50b54119973d60ed824e4360d881e76afba015d     1286476  upstream_inputs_pub/data/raw/struct_B_500_redesign.npz
+57bb2b991c941129fe52a62860fbf2aa4d655023d8e6595546ca9e63967a78ab     2533446  upstream_inputs_pub/data/raw/struct_C_500_redesign.npz
+beb3c1079e6a237e59790f26dd1e83f578b849552b9fb2e05ec74bbc52d534f3     1277868  upstream_inputs_pub/data/raw/struct_D_500_redesign.npz
+66aa7db1ed2485b554c4deb6d6e14ffaac4b7e94ef8edefc4a9a4329043f6fa8     2297410  archived_inputs/pub/pretrained_mphys_tmm_A_pub.pt
+892aabda0d382ad036300a08fec50e05db3bd73af734f9e750a870c2378d5f2c     2291266  archived_inputs/pub/pretrained_mphys_tmm_B_pub.pt
+84fe0a594acd3b93dc7efa9a4857e2116b1bf653d09601c0f3c99ad1e4b340a1     2428930  archived_inputs/pub/pretrained_mphys_tmm_C_pub.pt
+4ab5babf136affaeda90f5401781ef6cc14270cb32e734e78178093ddec997b7     2286765  archived_inputs/pub/pretrained_mphys_tmm_D_pub.pt
+f4af56b4eb8a0cdd37def7e9250344c46da48740ea15c7b00051cf8b5d92d2b7     2275369  archived_inputs/pub/pretrained_m0_tmm_D_pub.pt
+47947b3fb7f700390e1b12c76e0d3bd603f66f14eeca43b7d04333255301a111        1099  archived_inputs/pub/pretrain_A_pub.json
+5a4e42f48b4fc107c9e5ca928cf552d9e0cb022f87b118892e689f2a002f3a31        1056  archived_inputs/pub/pretrain_B_pub.json
+6fa69dbf621ed52a374419feeddb793b775479f0450a3a704bd06e149ac51432        1033  archived_inputs/pub/pretrain_C_pub.json

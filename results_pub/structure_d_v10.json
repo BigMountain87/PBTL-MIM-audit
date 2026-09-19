@@ -1,0 +1,173 @@
+{
+  "tau_pct": 5.0,
+  "diagnostic": {
+    "B": {
+      "r": 0.962,
+      "mae": 8.93
+    },
+    "D": {
+      "r": 0.905,
+      "mae": 10.51
+    },
+    "A": {
+      "r": 0.83,
+      "mae": 7.94
+    },
+    "C": {
+      "r": 0.647,
+      "mae": 16.94
+    }
+  },
+  "prediction": {
+    "band_pct": [
+      5.0,
+      15.0
+    ],
+    "secondary_union_band_pct": [
+      3.4,
+      15.0
+    ],
+    "falsified_below_pct": 3.4,
+    "falsified_above_pct": 15.0,
+    "source": "docs/structure_D_prespecification.md (2026-09-10), clarification of 2026-09-12 08:55 (42/50 oracle results existed, not inspected)"
+  },
+  "per_structure_pooled_3seed": {
+    "B": {
+      "n_valid": 60,
+      "claimed": 60,
+      "pretender": 9,
+      "confirmed": 51,
+      "seeds": [
+        "",
+        "_s123",
+        "_s777"
+      ],
+      "rate_pct": 15.0,
+      "ci95": [
+        8.097349242295689,
+        26.114825891159615
+      ],
+      "median_delta_pp": 1.8002011165044678,
+      "max_delta_pp": 15.674538086896064
+    },
+    "A": {
+      "n_valid": 59,
+      "claimed": 59,
+      "pretender": 2,
+      "confirmed": 57,
+      "seeds": [
+        "",
+        "_s123",
+        "_s777"
+      ],
+      "rate_pct": 3.389830508474576,
+      "ci95": [
+        0.9345713033501513,
+        11.543786981607585
+      ],
+      "median_delta_pp": 1.4698519283260791,
+      "max_delta_pp": 9.900670364227317
+    },
+    "C": {
+      "n_valid": 60,
+      "claimed": 60,
+      "pretender": 5,
+      "confirmed": 55,
+      "seeds": [
+        "",
+        "_s123",
+        "_s777"
+      ],
+      "rate_pct": 8.333333333333334,
+      "ci95": [
+        3.611992405048589,
+        18.06916846811248
+      ],
+      "median_delta_pp": 0.3000313109077978,
+      "max_delta_pp": 4.660704915509997
+    }
+  },
+  "structure_D": {
+    "n_valid": 50,
+    "claimed": 50,
+    "pretender": 4,
+    "confirmed": 46,
+    "seeds": [
+      ""
+    ],
+    "rate_pct": 8.0,
+    "ci95": [
+      3.1549003255790686,
+      18.838502545063704
+    ],
+    "median_delta_pp": 0.5862451537759625,
+    "max_delta_pp": 14.56998782420851
+  },
+  "feasibility_D": {
+    "rule": "L <= 0.9 P and w <= L",
+    "n_infeasible": 20,
+    "n_valid": 50,
+    "table_infeasible_feasible_x_pretender_not": [
+      [
+        4,
+        16
+      ],
+      [
+        0,
+        30
+      ]
+    ],
+    "pretenders_infeasible": 4,
+    "pretenders_feasible": 0,
+    "fisher_p": 0.021037776812852804,
+    "note": "post hoc, single seed, 50 distinct targets"
+  },
+  "prediction_outcome": {
+    "rate_pct": 8.0,
+    "inside_band": true,
+    "inside_secondary_union_band": true,
+    "falsifying": false,
+    "claimed_all": true
+  },
+  "orderings": {
+    "printed_r": {
+      "sequence": [
+        "B",
+        "D",
+        "A",
+        "C"
+      ],
+      "rates_pct": [
+        15.0,
+        8.0,
+        3.4,
+        8.3
+      ],
+      "monotone_worse_as_score_degrades": false,
+      "trend": {
+        "z": 0.9946338500521102,
+        "p": 0.31991437789476684
+      }
+    },
+    "operating_band_mae": {
+      "sequence": [
+        "A",
+        "B",
+        "D",
+        "C"
+      ],
+      "rates_pct": [
+        3.4,
+        15.0,
+        8.0,
+        8.3
+      ],
+      "monotone_worse_as_score_degrades": false,
+      "trend": {
+        "z": 0.040398880319288163,
+        "p": 0.9677751228978582
+      }
+    }
+  },
+  "ci_note": "A/B/C: nominal Wilson over three seeds that share targets; D: single seed, 50 distinct targets, no repeated-target dependence; four-point trend tests nominal"
+}

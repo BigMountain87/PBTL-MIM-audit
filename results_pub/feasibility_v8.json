@@ -1,0 +1,595 @@
+{
+ "results_dir": "results_pub",
+ "profile": "pub",
+ "tau_pct": 5.0,
+ "eps": 0.05,
+ "constraints": {
+  "A": "Wx,Wy,W2 <= 0.9P",
+  "B": "R_out <= 0.45P, R_in <= R_out-10, R_disk <= R_in-10",
+  "C": "Wx,Wy <= 0.9P"
+ },
+ "dataset_check": {
+  "A_pub": {
+   "file": "struct_A_500_redesign.npz",
+   "n": 500,
+   "violations": 0
+  },
+  "B_pub": {
+   "file": "struct_B_500_redesign.npz",
+   "n": 500,
+   "violations": 0
+  },
+  "C_pub": {
+   "file": "struct_C_500_redesign.npz",
+   "n": 500,
+   "violations": 0
+  }
+ },
+ "runs": {
+  "A": {
+   "seed": 42,
+   "n_valid": 20,
+   "n_pretender": 1,
+   "n_confirmed": 19,
+   "n_feasible": 8,
+   "n_infeasible": 12,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     1,
+     11
+    ],
+    [
+     0,
+     8
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": null,
+    "p": 1.0
+   },
+   "pretender_rate_feasible_only": 0.0,
+   "pretender_rate_infeasible_only": 0.08333333333333333,
+   "violations_all": {
+    "Wx>0.9P": 5,
+    "Wy>0.9P": 2,
+    "W2>0.9P": 6,
+    "wrap_any_W>P": 9
+   },
+   "violations_pretenders": {
+    "Wx>0.9P": 1,
+    "Wy>0.9P": 0,
+    "W2>0.9P": 0,
+    "wrap_any_W>P": 1
+   },
+   "violations_confirmed": {
+    "Wx>0.9P": 4,
+    "Wy>0.9P": 2,
+    "W2>0.9P": 6,
+    "wrap_any_W>P": 8
+   }
+  },
+  "A_s123": {
+   "seed": 123,
+   "n_valid": 20,
+   "n_pretender": 0,
+   "n_confirmed": 20,
+   "n_feasible": 8,
+   "n_infeasible": 12,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     0,
+     12
+    ],
+    [
+     0,
+     8
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": null,
+    "p": 1.0
+   },
+   "pretender_rate_feasible_only": 0.0,
+   "pretender_rate_infeasible_only": 0.0,
+   "violations_all": {
+    "Wx>0.9P": 7,
+    "Wy>0.9P": 3,
+    "W2>0.9P": 5,
+    "wrap_any_W>P": 7
+   },
+   "violations_pretenders": {
+    "Wx>0.9P": 0,
+    "Wy>0.9P": 0,
+    "W2>0.9P": 0,
+    "wrap_any_W>P": 0
+   },
+   "violations_confirmed": {
+    "Wx>0.9P": 7,
+    "Wy>0.9P": 3,
+    "W2>0.9P": 5,
+    "wrap_any_W>P": 7
+   }
+  },
+  "A_s777": {
+   "seed": 777,
+   "n_valid": 19,
+   "n_pretender": 1,
+   "n_confirmed": 18,
+   "n_feasible": 10,
+   "n_infeasible": 9,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     1,
+     8
+    ],
+    [
+     0,
+     10
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": null,
+    "p": 0.4736842105263158
+   },
+   "pretender_rate_feasible_only": 0.0,
+   "pretender_rate_infeasible_only": 0.1111111111111111,
+   "violations_all": {
+    "Wx>0.9P": 3,
+    "Wy>0.9P": 4,
+    "W2>0.9P": 4,
+    "wrap_any_W>P": 5
+   },
+   "violations_pretenders": {
+    "Wx>0.9P": 1,
+    "Wy>0.9P": 0,
+    "W2>0.9P": 0,
+    "wrap_any_W>P": 1
+   },
+   "violations_confirmed": {
+    "Wx>0.9P": 2,
+    "Wy>0.9P": 4,
+    "W2>0.9P": 4,
+    "wrap_any_W>P": 4
+   }
+  },
+  "B": {
+   "seed": 42,
+   "n_valid": 20,
+   "n_pretender": 3,
+   "n_confirmed": 17,
+   "n_feasible": 7,
+   "n_infeasible": 13,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     3,
+     10
+    ],
+    [
+     0,
+     7
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": null,
+    "p": 0.5210526315789472
+   },
+   "pretender_rate_feasible_only": 0.0,
+   "pretender_rate_infeasible_only": 0.23076923076923078,
+   "violations_all": {
+    "R_out>0.45P": 8,
+    "R_in>R_out-10": 7,
+    "R_disk>R_in-10": 1,
+    "wrap_R_in>R_out": 2,
+    "wrap_2R_out>P": 3
+   },
+   "violations_pretenders": {
+    "R_out>0.45P": 2,
+    "R_in>R_out-10": 2,
+    "R_disk>R_in-10": 0,
+    "wrap_R_in>R_out": 1,
+    "wrap_2R_out>P": 2
+   },
+   "violations_confirmed": {
+    "R_out>0.45P": 6,
+    "R_in>R_out-10": 5,
+    "R_disk>R_in-10": 1,
+    "wrap_R_in>R_out": 1,
+    "wrap_2R_out>P": 1
+   }
+  },
+  "B_s123": {
+   "seed": 123,
+   "n_valid": 20,
+   "n_pretender": 3,
+   "n_confirmed": 17,
+   "n_feasible": 11,
+   "n_infeasible": 9,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     3,
+     6
+    ],
+    [
+     0,
+     11
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": null,
+    "p": 0.0736842105263158
+   },
+   "pretender_rate_feasible_only": 0.0,
+   "pretender_rate_infeasible_only": 0.3333333333333333,
+   "violations_all": {
+    "R_out>0.45P": 4,
+    "R_in>R_out-10": 4,
+    "R_disk>R_in-10": 1,
+    "wrap_R_in>R_out": 2,
+    "wrap_2R_out>P": 1
+   },
+   "violations_pretenders": {
+    "R_out>0.45P": 1,
+    "R_in>R_out-10": 1,
+    "R_disk>R_in-10": 1,
+    "wrap_R_in>R_out": 1,
+    "wrap_2R_out>P": 1
+   },
+   "violations_confirmed": {
+    "R_out>0.45P": 3,
+    "R_in>R_out-10": 3,
+    "R_disk>R_in-10": 0,
+    "wrap_R_in>R_out": 1,
+    "wrap_2R_out>P": 0
+   }
+  },
+  "B_s777": {
+   "seed": 777,
+   "n_valid": 20,
+   "n_pretender": 3,
+   "n_confirmed": 17,
+   "n_feasible": 9,
+   "n_infeasible": 11,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     3,
+     8
+    ],
+    [
+     0,
+     9
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": null,
+    "p": 0.21842105263157896
+   },
+   "pretender_rate_feasible_only": 0.0,
+   "pretender_rate_infeasible_only": 0.2727272727272727,
+   "violations_all": {
+    "R_out>0.45P": 4,
+    "R_in>R_out-10": 7,
+    "R_disk>R_in-10": 2,
+    "wrap_R_in>R_out": 2,
+    "wrap_2R_out>P": 1
+   },
+   "violations_pretenders": {
+    "R_out>0.45P": 0,
+    "R_in>R_out-10": 2,
+    "R_disk>R_in-10": 1,
+    "wrap_R_in>R_out": 1,
+    "wrap_2R_out>P": 0
+   },
+   "violations_confirmed": {
+    "R_out>0.45P": 4,
+    "R_in>R_out-10": 5,
+    "R_disk>R_in-10": 1,
+    "wrap_R_in>R_out": 1,
+    "wrap_2R_out>P": 1
+   }
+  },
+  "C": {
+   "seed": 42,
+   "n_valid": 20,
+   "n_pretender": 2,
+   "n_confirmed": 18,
+   "n_feasible": 16,
+   "n_infeasible": 4,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     0,
+     4
+    ],
+    [
+     2,
+     14
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 0.0,
+    "p": 1.0
+   },
+   "pretender_rate_feasible_only": 0.125,
+   "pretender_rate_infeasible_only": 0.0,
+   "violations_all": {
+    "Wx>0.9P": 2,
+    "Wy>0.9P": 2,
+    "wrap_any_W>P": 0
+   },
+   "violations_pretenders": {
+    "Wx>0.9P": 0,
+    "Wy>0.9P": 0,
+    "wrap_any_W>P": 0
+   },
+   "violations_confirmed": {
+    "Wx>0.9P": 2,
+    "Wy>0.9P": 2,
+    "wrap_any_W>P": 0
+   },
+   "W_gt_400": {
+    "pretender": [
+     0,
+     2
+    ],
+    "confirmed": [
+     8,
+     18
+    ]
+   }
+  },
+  "C_s123": {
+   "seed": 123,
+   "n_valid": 20,
+   "n_pretender": 1,
+   "n_confirmed": 19,
+   "n_feasible": 17,
+   "n_infeasible": 3,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     16
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 0.0,
+    "p": 1.0
+   },
+   "pretender_rate_feasible_only": 0.058823529411764705,
+   "pretender_rate_infeasible_only": 0.0,
+   "violations_all": {
+    "Wx>0.9P": 1,
+    "Wy>0.9P": 3,
+    "wrap_any_W>P": 0
+   },
+   "violations_pretenders": {
+    "Wx>0.9P": 0,
+    "Wy>0.9P": 0,
+    "wrap_any_W>P": 0
+   },
+   "violations_confirmed": {
+    "Wx>0.9P": 1,
+    "Wy>0.9P": 3,
+    "wrap_any_W>P": 0
+   },
+   "W_gt_400": {
+    "pretender": [
+     0,
+     1
+    ],
+    "confirmed": [
+     9,
+     19
+    ]
+   }
+  },
+  "C_s777": {
+   "seed": 777,
+   "n_valid": 20,
+   "n_pretender": 2,
+   "n_confirmed": 18,
+   "n_feasible": 14,
+   "n_infeasible": 6,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     0,
+     6
+    ],
+    [
+     2,
+     12
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 0.0,
+    "p": 1.0
+   },
+   "pretender_rate_feasible_only": 0.14285714285714285,
+   "pretender_rate_infeasible_only": 0.0,
+   "violations_all": {
+    "Wx>0.9P": 4,
+    "Wy>0.9P": 4,
+    "wrap_any_W>P": 0
+   },
+   "violations_pretenders": {
+    "Wx>0.9P": 0,
+    "Wy>0.9P": 0,
+    "wrap_any_W>P": 0
+   },
+   "violations_confirmed": {
+    "Wx>0.9P": 4,
+    "Wy>0.9P": 4,
+    "wrap_any_W>P": 0
+   },
+   "W_gt_400": {
+    "pretender": [
+     0,
+     2
+    ],
+    "confirmed": [
+     8,
+     18
+    ]
+   }
+  }
+ },
+ "pooled": {
+  "A": {
+   "table": [
+    [
+     2,
+     31
+    ],
+    [
+     0,
+     26
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": null,
+    "p": 0.49853886616014026
+   },
+   "cmh_run_stratified": {
+    "z": 1.3242443839434614,
+    "p": 0.1854218947059596,
+    "mh_odds_ratio": null,
+    "n_strata": 3
+   },
+   "test_note": "nominal: the three runs pooled here share one target set, and stratifying the CMH test by run does not remove the dependence between strata; a design's feasibility is a property of the committed geometry, which differs by seed, so the dependence is partial but not zero",
+   "n_pretender": 2,
+   "n_valid": 59,
+   "n_infeasible": 33,
+   "infeasible_fraction": 0.559322033898305,
+   "pretender_rate_feasible_only": 0.0,
+   "pretender_rate_infeasible_only": 0.06060606060606061
+  },
+  "B": {
+   "table": [
+    [
+     9,
+     24
+    ],
+    [
+     0,
+     27
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": null,
+    "p": 0.002925895122221597
+   },
+   "cmh_run_stratified": {
+    "z": 2.9082237040787637,
+    "p": 0.0036348821692561827,
+    "mh_odds_ratio": null,
+    "n_strata": 3
+   },
+   "test_note": "nominal: the three runs pooled here share one target set, and stratifying the CMH test by run does not remove the dependence between strata; a design's feasibility is a property of the committed geometry, which differs by seed, so the dependence is partial but not zero",
+   "n_pretender": 9,
+   "n_valid": 60,
+   "n_infeasible": 33,
+   "infeasible_fraction": 0.55,
+   "pretender_rate_feasible_only": 0.0,
+   "pretender_rate_infeasible_only": 0.2727272727272727
+  },
+  "C": {
+   "table": [
+    [
+     0,
+     13
+    ],
+    [
+     5,
+     42
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 0.0,
+    "p": 0.5754389993100812
+   },
+   "cmh_run_stratified": {
+    "z": -1.2633910321476736,
+    "p": 0.206448685408829,
+    "mh_odds_ratio": 0.0,
+    "n_strata": 3
+   },
+   "test_note": "nominal: the three runs pooled here share one target set, and stratifying the CMH test by run does not remove the dependence between strata; a design's feasibility is a property of the committed geometry, which differs by seed, so the dependence is partial but not zero",
+   "n_pretender": 5,
+   "n_valid": 60,
+   "n_infeasible": 13,
+   "infeasible_fraction": 0.21666666666666667,
+   "pretender_rate_feasible_only": 0.10638297872340426,
+   "pretender_rate_infeasible_only": 0.0
+  }
+ },
+ "random_baseline": {
+  "A": {
+   "n_valid": 20,
+   "n_feasible": 5,
+   "n_pretender": 4,
+   "n_pretender_feasible": 0,
+   "violations": {
+    "Wx>0.9P": 9,
+    "Wy>0.9P": 4,
+    "W2>0.9P": 8,
+    "wrap_any_W>P": 12
+   }
+  },
+  "B": {
+   "n_valid": 20,
+   "n_feasible": 6,
+   "n_pretender": 6,
+   "n_pretender_feasible": 0,
+   "violations": {
+    "R_out>0.45P": 9,
+    "R_in>R_out-10": 6,
+    "R_disk>R_in-10": 1,
+    "wrap_R_in>R_out": 5,
+    "wrap_2R_out>P": 5
+   }
+  },
+  "C": {
+   "n_valid": 20,
+   "n_feasible": 17,
+   "n_pretender": 1,
+   "n_pretender_feasible": 1,
+   "violations": {
+    "Wx>0.9P": 3,
+    "Wy>0.9P": 1,
+    "wrap_any_W>P": 0
+   }
+  }
+ },
+ "monte_carlo": {
+  "A": {
+   "draws": 200000,
+   "p_infeasible": 0.564085
+  },
+  "B": {
+   "draws": 200000,
+   "p_infeasible": 0.76889
+  },
+  "C": {
+   "draws": 200000,
+   "p_infeasible": 0.52083
+  }
+ },
+ "c_w_gt_400": {
+  "table_pretender_confirmed_x_flag_not": [
+   [
+    0,
+    5
+   ],
+   [
+    25,
+    30
+   ]
+  ],
+  "fisher": {
+   "odds_ratio": 0.0,
+   "p": 0.06916802526479848
+  }
+ }
+}

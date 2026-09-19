@@ -1,0 +1,169 @@
+{
+  "convention": {
+    "tag": "intermediate",
+    "label": "intermediate R1 revision a02aa8f (2026-06-19), superseded before publication",
+    "r": {
+      "A": 0.72,
+      "B": 0.64,
+      "C": 0.44
+    },
+    "order": [
+      "A",
+      "B",
+      "C"
+    ],
+    "hypotheses": {
+      "H1a": "oracle-success rate is non-increasing as r falls (A >= B >= C)",
+      "H1b": "Delta-flag rate is non-decreasing as r falls (A <= B <= C)",
+      "H1c": "rho(RCWA MAE, Surr MAE) is non-increasing as r falls (A >= B >= C)",
+      "pooled_order": "structures ranked by intermediate R1 revision a02aa8f (2026-06-19), superseded before publication: A (+0.72) > B (+0.64) > C (+0.44)"
+    }
+  },
+  "per_structure": {
+    "A": {
+      "r_convention": 0.72,
+      "n_train": 350,
+      "forward_test_mae": 4.843076782226563,
+      "n_valid": 20,
+      "oracle_success": 11,
+      "surrogate_pass": 20,
+      "pretender": 9,
+      "flagged": 0,
+      "flag_thr": 9.686153564453125,
+      "max_delta": 7.384860179715565,
+      "max_amp": 54.69658743167459,
+      "t1": 19,
+      "t2": 15,
+      "t3": 0,
+      "t4": 0,
+      "t2_null": 0.6513215599,
+      "t3_null": 0.08860000000000001,
+      "modes": 20,
+      "rho_rcwa_surr": 0.18496240601503755,
+      "rho_p": 0.4349861436228526,
+      "rho_ci": [
+        -0.28425244400813693,
+        0.5826955680079485
+      ],
+      "rho_delta_rcwa": 0.9624060150375938,
+      "rho_delta_surr": -0.024060150375939848,
+      "endpoint_spread": 1.977750539779663
+    },
+    "B": {
+      "r_convention": 0.64,
+      "n_train": 350,
+      "forward_test_mae": 3.1855685424804685,
+      "n_valid": 20,
+      "oracle_success": 11,
+      "surrogate_pass": 20,
+      "pretender": 9,
+      "flagged": 6,
+      "flag_thr": 6.371137084960937,
+      "max_delta": 31.032758128334418,
+      "max_amp": 51.72972344561643,
+      "t1": 16,
+      "t2": 14,
+      "t3": 5,
+      "t4": 0,
+      "t2_null": 0.5695327899999999,
+      "t3_null": 0.1912,
+      "modes": 17,
+      "rho_rcwa_surr": -0.03308270676691729,
+      "rho_p": 0.889875964885619,
+      "rho_ci": [
+        -0.4688495034257479,
+        0.41563603382931386
+      ],
+      "rho_delta_rcwa": 0.9789473684210527,
+      "rho_delta_surr": -0.16992481203007515,
+      "endpoint_spread": 1.6395267248153687
+    },
+    "C": {
+      "r_convention": 0.44,
+      "n_train": 300,
+      "forward_test_mae": 3.8641107177734377,
+      "n_valid": 20,
+      "oracle_success": 7,
+      "surrogate_pass": 20,
+      "pretender": 13,
+      "flagged": 3,
+      "flag_thr": 7.7282214355468755,
+      "max_delta": 13.672406514094511,
+      "max_amp": 27.448481136131402,
+      "t1": 11,
+      "t2": 11,
+      "t3": 7,
+      "t4": 0,
+      "t2_null": 0.5217030999999999,
+      "t3_null": 0.2671,
+      "modes": 15,
+      "rho_rcwa_surr": -0.03609022556390977,
+      "rho_p": 0.8799311955207728,
+      "rho_ci": [
+        -0.4712146314483808,
+        0.4131624758873257
+      ],
+      "rho_delta_rcwa": 0.882706766917293,
+      "rho_delta_surr": -0.35187969924812035,
+      "endpoint_spread": 1.6201660633087158
+    }
+  },
+  "fisher_exact_p": {
+    "oracle_success": {
+      "A_vs_B": 1.0,
+      "B_vs_C": 0.34064371475988253,
+      "A_vs_C": 0.34064371475988253
+    },
+    "flagged": {
+      "A_vs_B": 0.0201960201960202,
+      "B_vs_C": 0.45057645057645057,
+      "A_vs_C": 0.2307692307692308
+    },
+    "pretender": {
+      "A_vs_B": 1.0,
+      "B_vs_C": 0.3406437147598824,
+      "A_vs_C": 0.3406437147598824
+    }
+  },
+  "hypotheses": {
+    "H1a_oracle_success_nonincreasing": {
+      "order": [
+        "A",
+        "B",
+        "C"
+      ],
+      "values": [
+        11,
+        11,
+        7
+      ],
+      "monotone": true
+    },
+    "H1b_flag_rate_nondecreasing": {
+      "order": [
+        "A",
+        "B",
+        "C"
+      ],
+      "values": [
+        0,
+        6,
+        3
+      ],
+      "monotone": false
+    },
+    "H1c_rho_rcwa_surr_nonincreasing": {
+      "order": [
+        "A",
+        "B",
+        "C"
+      ],
+      "values": [
+        0.18496240601503755,
+        -0.03308270676691729,
+        -0.03609022556390977
+      ],
+      "monotone": true
+    }
+  }
+}

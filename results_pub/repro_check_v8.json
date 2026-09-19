@@ -1,0 +1,111 @@
+{
+ "results_dir": "results_pub",
+ "tag": "reprocheck",
+ "n_designs": 12,
+ "max_abs_d_mae_pp": 0.0,
+ "tolerance_pp": 0.05,
+ "host": "ubuntu-server",
+ "rcwa_settings": "{'grid': (64, 64), 'order': [5, 5], 'dtype': torch.complex64, 'adaptive_order': True}",
+ "sim_dtype": "torch.complex64",
+ "torcwa_version": "0.1.4.2",
+ "upstream_commit": "cb486b5",
+ "designs": [
+  {
+   "structure": "A",
+   "design_index": 0,
+   "mae_archived_pct": 3.199976,
+   "mae_new_pct": 3.199976,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "A",
+   "design_index": 1,
+   "mae_archived_pct": 4.382921,
+   "mae_new_pct": 4.382921,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "A",
+   "design_index": 2,
+   "mae_archived_pct": 3.234707,
+   "mae_new_pct": 3.234707,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "A",
+   "design_index": 6,
+   "mae_archived_pct": 1.389824,
+   "mae_new_pct": 1.389824,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "B",
+   "design_index": 0,
+   "mae_archived_pct": 4.787515,
+   "mae_new_pct": 4.787515,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "B",
+   "design_index": 1,
+   "mae_archived_pct": 2.3846,
+   "mae_new_pct": 2.3846,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "B",
+   "design_index": 2,
+   "mae_archived_pct": 2.766473,
+   "mae_new_pct": 2.766473,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "B",
+   "design_index": 6,
+   "mae_archived_pct": 4.152741,
+   "mae_new_pct": 4.152741,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "C",
+   "design_index": 0,
+   "mae_archived_pct": 1.516713,
+   "mae_new_pct": 1.516713,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "C",
+   "design_index": 1,
+   "mae_archived_pct": 2.268435,
+   "mae_new_pct": 2.268435,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "C",
+   "design_index": 2,
+   "mae_archived_pct": 1.512206,
+   "mae_new_pct": 1.512206,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "C",
+   "design_index": 6,
+   "mae_archived_pct": 3.85565,
+   "mae_new_pct": 3.85565,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  }
+ ],
+ "pass": true
+}

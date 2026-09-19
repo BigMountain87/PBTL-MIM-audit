@@ -1,0 +1,158 @@
+{
+  "description": "Order-7 FULL revalidation of every seed-42 committed geometry. This is a POST-PROTOCOL expansion: the frozen protocol pre-specified only a 3-highest-Delta order-7 spot check. Order-5 counts are the data-generating fidelity from reliability_*_v8 (seed 42). MAEs are in percent.",
+  "tau_pct": 5.0,
+  "fourier_order": 7,
+  "scope": "seed 42 committed geometries only",
+  "per_structure": {
+    "A": {
+      "n_valid": 20,
+      "order5": {
+        "oracle_pass": 11,
+        "pretender": 9
+      },
+      "order7": {
+        "surrogate_pass": 20,
+        "oracle_pass": 10,
+        "pretender": 10,
+        "max_rcwa_mae_pct": 8.3078
+      },
+      "transition_pretender_o5_to_o7": [
+        9,
+        10
+      ],
+      "transition_oracle_pass_o5_to_o7": [
+        11,
+        10
+      ],
+      "conv7_spot_check": {
+        "indices": [
+          4,
+          5,
+          15
+        ],
+        "mae_order7_pct": [
+          7.58,
+          7.0022,
+          6.2368
+        ],
+        "mae_order5_pct": [
+          7.5594,
+          7.4184,
+          6.7295
+        ],
+        "matches_o7full": true
+      },
+      "flips": {
+        "pass_to_fail": 1,
+        "fail_to_pass": 0,
+        "total": 1
+      },
+      "shift_pp": {
+        "max": 1.3773,
+        "median": 0.4544,
+        "argmax_index": 0
+      },
+      "wilcoxon_paired_p": 0.0897
+    },
+    "B": {
+      "n_valid": 20,
+      "order5": {
+        "oracle_pass": 11,
+        "pretender": 9
+      },
+      "order7": {
+        "surrogate_pass": 20,
+        "oracle_pass": 11,
+        "pretender": 9,
+        "max_rcwa_mae_pct": 26.104
+      },
+      "transition_pretender_o5_to_o7": [
+        9,
+        9
+      ],
+      "transition_oracle_pass_o5_to_o7": [
+        11,
+        11
+      ],
+      "conv7_spot_check": {
+        "indices": [
+          6,
+          17,
+          19
+        ],
+        "mae_order7_pct": [
+          26.104,
+          9.3016,
+          14.9614
+        ],
+        "mae_order5_pct": [
+          31.6445,
+          13.3973,
+          13.6782
+        ],
+        "matches_o7full": true
+      },
+      "flips": {
+        "pass_to_fail": 3,
+        "fail_to_pass": 3,
+        "total": 6
+      },
+      "shift_pp": {
+        "max": 5.5405,
+        "median": 1.6945,
+        "argmax_index": 6
+      },
+      "wilcoxon_paired_p": 0.6742
+    },
+    "C": {
+      "n_valid": 20,
+      "order5": {
+        "oracle_pass": 7,
+        "pretender": 13
+      },
+      "order7": {
+        "surrogate_pass": 20,
+        "oracle_pass": 4,
+        "pretender": 16,
+        "max_rcwa_mae_pct": 17.6725
+      },
+      "transition_pretender_o5_to_o7": [
+        13,
+        16
+      ],
+      "transition_oracle_pass_o5_to_o7": [
+        7,
+        4
+      ],
+      "conv7_spot_check": {
+        "indices": [
+          12,
+          14,
+          19
+        ],
+        "mae_order7_pct": [
+          10.0516,
+          9.7566,
+          6.5091
+        ],
+        "mae_order5_pct": [
+          10.7889,
+          14.5407,
+          11.9298
+        ],
+        "matches_o7full": true
+      },
+      "flips": {
+        "pass_to_fail": 3,
+        "fail_to_pass": 0,
+        "total": 3
+      },
+      "shift_pp": {
+        "max": 14.0696,
+        "median": 1.0157,
+        "argmax_index": 1
+      },
+      "wilcoxon_paired_p": 0.0826
+    }
+  }
+}

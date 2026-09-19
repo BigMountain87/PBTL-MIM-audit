@@ -1,0 +1,6 @@
+# Analysis-only reproduction (checker, evidence JSON, figures): CPU, no PyTorch needed
+numpy>=1.26
+scipy>=1.13
+matplotlib>=3.7
+# Re-running the audit (fine-tuning, inverse design, reference solver): the exact host pins are
+# in requirements_v8.txt (torch 2.5.1+cu121, torcwa 0.1.4.2, numpy 1.26.4, scipy 1.13.1, matplotlib 3.9.2)

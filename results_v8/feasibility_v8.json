@@ -1,0 +1,607 @@
+{
+ "results_dir": "results_v8",
+ "profile": "legacy",
+ "tau_pct": 5.0,
+ "eps": 0.05,
+ "constraints": {
+  "A": "Wx,Wy,W2 <= 0.9P",
+  "B": "R_out <= 0.45P, R_in <= R_out-10, R_disk <= R_in-10",
+  "C": "Wx,Wy <= 0.9P"
+ },
+ "dataset_check": {
+  "A_legacy": {
+   "file": "struct_A_vis_500.npz",
+   "n": 500,
+   "violations": 0
+  },
+  "A_pub": {
+   "file": "struct_A_500_redesign.npz",
+   "n": 500,
+   "violations": 0
+  },
+  "B_legacy": {
+   "file": "struct_B_500.npz",
+   "n": 500,
+   "violations": 0
+  },
+  "B_pub": {
+   "file": "struct_B_500_redesign.npz",
+   "n": 500,
+   "violations": 0
+  },
+  "C_legacy": {
+   "file": "struct_C_500.npz",
+   "n": 500,
+   "violations": 0
+  },
+  "C_pub": {
+   "file": "struct_C_500_redesign.npz",
+   "n": 500,
+   "violations": 0
+  }
+ },
+ "runs": {
+  "A": {
+   "seed": 42,
+   "n_valid": 20,
+   "n_pretender": 9,
+   "n_confirmed": 11,
+   "n_feasible": 7,
+   "n_infeasible": 13,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     8,
+     5
+    ],
+    [
+     1,
+     6
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 9.6,
+    "p": 0.07027863777089782
+   },
+   "pretender_rate_feasible_only": 0.14285714285714285,
+   "pretender_rate_infeasible_only": 0.6153846153846154,
+   "violations_all": {
+    "Wx>0.9P": 4,
+    "Wy>0.9P": 4,
+    "W2>0.9P": 10,
+    "wrap_any_W>P": 10
+   },
+   "violations_pretenders": {
+    "Wx>0.9P": 3,
+    "Wy>0.9P": 1,
+    "W2>0.9P": 6,
+    "wrap_any_W>P": 6
+   },
+   "violations_confirmed": {
+    "Wx>0.9P": 1,
+    "Wy>0.9P": 3,
+    "W2>0.9P": 4,
+    "wrap_any_W>P": 4
+   }
+  },
+  "A_s123": {
+   "seed": 123,
+   "n_valid": 20,
+   "n_pretender": 9,
+   "n_confirmed": 11,
+   "n_feasible": 8,
+   "n_infeasible": 12,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     4,
+     8
+    ],
+    [
+     5,
+     3
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 0.3,
+    "p": 0.3618480590616814
+   },
+   "pretender_rate_feasible_only": 0.625,
+   "pretender_rate_infeasible_only": 0.3333333333333333,
+   "violations_all": {
+    "Wx>0.9P": 7,
+    "Wy>0.9P": 6,
+    "W2>0.9P": 6,
+    "wrap_any_W>P": 7
+   },
+   "violations_pretenders": {
+    "Wx>0.9P": 2,
+    "Wy>0.9P": 1,
+    "W2>0.9P": 2,
+    "wrap_any_W>P": 3
+   },
+   "violations_confirmed": {
+    "Wx>0.9P": 5,
+    "Wy>0.9P": 5,
+    "W2>0.9P": 4,
+    "wrap_any_W>P": 4
+   }
+  },
+  "A_s777": {
+   "seed": 777,
+   "n_valid": 20,
+   "n_pretender": 9,
+   "n_confirmed": 11,
+   "n_feasible": 13,
+   "n_infeasible": 7,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     2,
+     5
+    ],
+    [
+     7,
+     6
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 0.34285714285714286,
+    "p": 0.37422600619195046
+   },
+   "pretender_rate_feasible_only": 0.5384615384615384,
+   "pretender_rate_infeasible_only": 0.2857142857142857,
+   "violations_all": {
+    "Wx>0.9P": 4,
+    "Wy>0.9P": 6,
+    "W2>0.9P": 3,
+    "wrap_any_W>P": 3
+   },
+   "violations_pretenders": {
+    "Wx>0.9P": 1,
+    "Wy>0.9P": 1,
+    "W2>0.9P": 1,
+    "wrap_any_W>P": 1
+   },
+   "violations_confirmed": {
+    "Wx>0.9P": 3,
+    "Wy>0.9P": 5,
+    "W2>0.9P": 2,
+    "wrap_any_W>P": 2
+   }
+  },
+  "B": {
+   "seed": 42,
+   "n_valid": 20,
+   "n_pretender": 9,
+   "n_confirmed": 11,
+   "n_feasible": 9,
+   "n_infeasible": 11,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     7,
+     4
+    ],
+    [
+     2,
+     7
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 6.125,
+    "p": 0.09228387711359848
+   },
+   "pretender_rate_feasible_only": 0.2222222222222222,
+   "pretender_rate_infeasible_only": 0.6363636363636364,
+   "violations_all": {
+    "R_out>0.45P": 8,
+    "R_in>R_out-10": 5,
+    "R_disk>R_in-10": 2,
+    "wrap_R_in>R_out": 1,
+    "wrap_2R_out>P": 3
+   },
+   "violations_pretenders": {
+    "R_out>0.45P": 6,
+    "R_in>R_out-10": 4,
+    "R_disk>R_in-10": 1,
+    "wrap_R_in>R_out": 1,
+    "wrap_2R_out>P": 3
+   },
+   "violations_confirmed": {
+    "R_out>0.45P": 2,
+    "R_in>R_out-10": 1,
+    "R_disk>R_in-10": 1,
+    "wrap_R_in>R_out": 0,
+    "wrap_2R_out>P": 0
+   }
+  },
+  "B_s123": {
+   "seed": 123,
+   "n_valid": 20,
+   "n_pretender": 11,
+   "n_confirmed": 9,
+   "n_feasible": 6,
+   "n_infeasible": 14,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     10,
+     4
+    ],
+    [
+     1,
+     5
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 12.5,
+    "p": 0.0498452012383901
+   },
+   "pretender_rate_feasible_only": 0.16666666666666666,
+   "pretender_rate_infeasible_only": 0.7142857142857143,
+   "violations_all": {
+    "R_out>0.45P": 10,
+    "R_in>R_out-10": 3,
+    "R_disk>R_in-10": 3,
+    "wrap_R_in>R_out": 1,
+    "wrap_2R_out>P": 6
+   },
+   "violations_pretenders": {
+    "R_out>0.45P": 8,
+    "R_in>R_out-10": 2,
+    "R_disk>R_in-10": 2,
+    "wrap_R_in>R_out": 1,
+    "wrap_2R_out>P": 6
+   },
+   "violations_confirmed": {
+    "R_out>0.45P": 2,
+    "R_in>R_out-10": 1,
+    "R_disk>R_in-10": 1,
+    "wrap_R_in>R_out": 0,
+    "wrap_2R_out>P": 0
+   }
+  },
+  "B_s777": {
+   "seed": 777,
+   "n_valid": 20,
+   "n_pretender": 10,
+   "n_confirmed": 10,
+   "n_feasible": 9,
+   "n_infeasible": 11,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     8,
+     3
+    ],
+    [
+     2,
+     7
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 9.333333333333334,
+    "p": 0.06977851869492735
+   },
+   "pretender_rate_feasible_only": 0.2222222222222222,
+   "pretender_rate_infeasible_only": 0.7272727272727273,
+   "violations_all": {
+    "R_out>0.45P": 8,
+    "R_in>R_out-10": 4,
+    "R_disk>R_in-10": 2,
+    "wrap_R_in>R_out": 3,
+    "wrap_2R_out>P": 6
+   },
+   "violations_pretenders": {
+    "R_out>0.45P": 7,
+    "R_in>R_out-10": 3,
+    "R_disk>R_in-10": 1,
+    "wrap_R_in>R_out": 3,
+    "wrap_2R_out>P": 6
+   },
+   "violations_confirmed": {
+    "R_out>0.45P": 1,
+    "R_in>R_out-10": 1,
+    "R_disk>R_in-10": 1,
+    "wrap_R_in>R_out": 0,
+    "wrap_2R_out>P": 0
+   }
+  },
+  "C": {
+   "seed": 42,
+   "n_valid": 20,
+   "n_pretender": 13,
+   "n_confirmed": 7,
+   "n_feasible": 9,
+   "n_infeasible": 11,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     9,
+     2
+    ],
+    [
+     4,
+     5
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 5.625,
+    "p": 0.1596749226006192
+   },
+   "pretender_rate_feasible_only": 0.4444444444444444,
+   "pretender_rate_infeasible_only": 0.8181818181818182,
+   "violations_all": {
+    "Wx>0.9P": 8,
+    "Wy>0.9P": 3,
+    "wrap_any_W>P": 4
+   },
+   "violations_pretenders": {
+    "Wx>0.9P": 7,
+    "Wy>0.9P": 2,
+    "wrap_any_W>P": 4
+   },
+   "violations_confirmed": {
+    "Wx>0.9P": 1,
+    "Wy>0.9P": 1,
+    "wrap_any_W>P": 0
+   },
+   "W_gt_400": {
+    "pretender": [
+     6,
+     13
+    ],
+    "confirmed": [
+     3,
+     7
+    ]
+   }
+  },
+  "C_s123": {
+   "seed": 123,
+   "n_valid": 20,
+   "n_pretender": 12,
+   "n_confirmed": 8,
+   "n_feasible": 9,
+   "n_infeasible": 11,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     7,
+     4
+    ],
+    [
+     5,
+     4
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 1.4,
+    "p": 1.0
+   },
+   "pretender_rate_feasible_only": 0.5555555555555556,
+   "pretender_rate_infeasible_only": 0.6363636363636364,
+   "violations_all": {
+    "Wx>0.9P": 4,
+    "Wy>0.9P": 8,
+    "wrap_any_W>P": 3
+   },
+   "violations_pretenders": {
+    "Wx>0.9P": 3,
+    "Wy>0.9P": 5,
+    "wrap_any_W>P": 3
+   },
+   "violations_confirmed": {
+    "Wx>0.9P": 1,
+    "Wy>0.9P": 3,
+    "wrap_any_W>P": 0
+   },
+   "W_gt_400": {
+    "pretender": [
+     7,
+     12
+    ],
+    "confirmed": [
+     4,
+     8
+    ]
+   }
+  },
+  "C_s777": {
+   "seed": 777,
+   "n_valid": 19,
+   "n_pretender": 13,
+   "n_confirmed": 6,
+   "n_feasible": 7,
+   "n_infeasible": 12,
+   "table_infeasible_feasible_x_pretender_not": [
+    [
+     8,
+     4
+    ],
+    [
+     5,
+     2
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 0.8,
+    "p": 1.0
+   },
+   "pretender_rate_feasible_only": 0.7142857142857143,
+   "pretender_rate_infeasible_only": 0.6666666666666666,
+   "violations_all": {
+    "Wx>0.9P": 7,
+    "Wy>0.9P": 5,
+    "wrap_any_W>P": 3
+   },
+   "violations_pretenders": {
+    "Wx>0.9P": 5,
+    "Wy>0.9P": 3,
+    "wrap_any_W>P": 3
+   },
+   "violations_confirmed": {
+    "Wx>0.9P": 2,
+    "Wy>0.9P": 2,
+    "wrap_any_W>P": 0
+   },
+   "W_gt_400": {
+    "pretender": [
+     8,
+     13
+    ],
+    "confirmed": [
+     3,
+     6
+    ]
+   }
+  }
+ },
+ "pooled": {
+  "A": {
+   "table": [
+    [
+     14,
+     18
+    ],
+    [
+     13,
+     15
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 0.8974358974358975,
+    "p": 1.0
+   },
+   "cmh_run_stratified": {
+    "z": -0.21019713497034637,
+    "p": 0.8335138155789305,
+    "mh_odds_ratio": 0.9,
+    "n_strata": 3
+   },
+   "n_pretender": 27,
+   "n_valid": 60,
+   "n_infeasible": 32,
+   "infeasible_fraction": 0.5333333333333333,
+   "pretender_rate_feasible_only": 0.4642857142857143,
+   "pretender_rate_infeasible_only": 0.4375
+  },
+  "B": {
+   "table": [
+    [
+     25,
+     11
+    ],
+    [
+     5,
+     19
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 8.636363636363637,
+    "p": 0.0004808999888460448
+   },
+   "cmh_run_stratified": {
+    "z": 3.5676854119083794,
+    "p": 0.00036014852675772465,
+    "mh_odds_ratio": 8.61111111111111,
+    "n_strata": 3
+   },
+   "n_pretender": 30,
+   "n_valid": 60,
+   "n_infeasible": 36,
+   "infeasible_fraction": 0.6,
+   "pretender_rate_feasible_only": 0.20833333333333334,
+   "pretender_rate_infeasible_only": 0.6944444444444444
+  },
+  "C": {
+   "table": [
+    [
+     24,
+     10
+    ],
+    [
+     14,
+     11
+    ]
+   ],
+   "fisher": {
+    "odds_ratio": 1.8857142857142857,
+    "p": 0.2816309988257151
+   },
+   "cmh_run_stratified": {
+    "z": 1.0989348627007094,
+    "p": 0.2717964787429352,
+    "mh_odds_ratio": 1.831545064377682,
+    "n_strata": 3
+   },
+   "n_pretender": 38,
+   "n_valid": 59,
+   "n_infeasible": 34,
+   "infeasible_fraction": 0.576271186440678,
+   "pretender_rate_feasible_only": 0.56,
+   "pretender_rate_infeasible_only": 0.7058823529411765
+  }
+ },
+ "random_baseline": {
+  "A": {
+   "n_valid": 20,
+   "n_feasible": 10,
+   "n_pretender": 10,
+   "n_pretender_feasible": 5,
+   "violations": {
+    "Wx>0.9P": 3,
+    "Wy>0.9P": 6,
+    "W2>0.9P": 7,
+    "wrap_any_W>P": 9
+   }
+  },
+  "B": {
+   "n_valid": 20,
+   "n_feasible": 6,
+   "n_pretender": 14,
+   "n_pretender_feasible": 2,
+   "violations": {
+    "R_out>0.45P": 11,
+    "R_in>R_out-10": 2,
+    "R_disk>R_in-10": 3,
+    "wrap_R_in>R_out": 2,
+    "wrap_2R_out>P": 9
+   }
+  },
+  "C": {
+   "n_valid": 20,
+   "n_feasible": 9,
+   "n_pretender": 16,
+   "n_pretender_feasible": 5,
+   "violations": {
+    "Wx>0.9P": 9,
+    "Wy>0.9P": 3,
+    "wrap_any_W>P": 8
+   }
+  }
+ },
+ "monte_carlo": {
+  "A": {
+   "draws": 200000,
+   "p_infeasible": 0.564085
+  },
+  "B": {
+   "draws": 200000,
+   "p_infeasible": 0.76889
+  },
+  "C": {
+   "draws": 200000,
+   "p_infeasible": 0.52083
+  }
+ },
+ "c_w_gt_400": {
+  "table_pretender_confirmed_x_flag_not": [
+   [
+    21,
+    17
+   ],
+   [
+    10,
+    11
+   ]
+  ],
+  "fisher": {
+   "odds_ratio": 1.3588235294117648,
+   "p": 0.5980908371958948
+  }
+ }
+}

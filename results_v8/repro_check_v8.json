@@ -1,0 +1,111 @@
+{
+ "results_dir": "results_v8",
+ "tag": "reprocheck",
+ "n_designs": 12,
+ "max_abs_d_mae_pp": 0.0,
+ "tolerance_pp": 0.05,
+ "host": "ubuntu-server",
+ "rcwa_settings": "{'grid': (64, 64), 'order': [5, 5]}",
+ "sim_dtype": "torch.complex128",
+ "torcwa_version": "0.1.4.2",
+ "upstream_commit": "920b1bd",
+ "designs": [
+  {
+   "structure": "A",
+   "design_index": 0,
+   "mae_archived_pct": 1.741991,
+   "mae_new_pct": 1.741991,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "A",
+   "design_index": 1,
+   "mae_archived_pct": 2.839219,
+   "mae_new_pct": 2.839219,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "A",
+   "design_index": 2,
+   "mae_archived_pct": 2.738393,
+   "mae_new_pct": 2.738393,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "A",
+   "design_index": 6,
+   "mae_archived_pct": 3.257673,
+   "mae_new_pct": 3.257673,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "B",
+   "design_index": 0,
+   "mae_archived_pct": 1.835085,
+   "mae_new_pct": 1.835085,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "B",
+   "design_index": 1,
+   "mae_archived_pct": 2.598827,
+   "mae_new_pct": 2.598827,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "B",
+   "design_index": 2,
+   "mae_archived_pct": 3.803372,
+   "mae_new_pct": 3.803372,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "B",
+   "design_index": 6,
+   "mae_archived_pct": 31.644485,
+   "mae_new_pct": 31.644485,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "C",
+   "design_index": 0,
+   "mae_archived_pct": 9.150234,
+   "mae_new_pct": 9.150234,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "C",
+   "design_index": 1,
+   "mae_archived_pct": 3.602927,
+   "mae_new_pct": 3.602927,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "C",
+   "design_index": 2,
+   "mae_archived_pct": 3.786349,
+   "mae_new_pct": 3.786349,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  },
+  {
+   "structure": "C",
+   "design_index": 6,
+   "mae_archived_pct": 5.588333,
+   "mae_new_pct": 5.588333,
+   "d_mae_pp": 0.0,
+   "max_abs_dA": 0.0
+  }
+ ],
+ "pass": true
+}

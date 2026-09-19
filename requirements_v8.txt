@@ -1,0 +1,8 @@
+# Exact pins of the compute-host environment that produced results_v8/ and results_pub/
+# (source: upstream provenance/requirements_lock_homeserver.txt + `pip show` on the host, 2026-09-06)
+torch==2.5.1+cu121
+torcwa==0.1.4.2
+numpy==1.26.4
+scipy==1.13.1
+matplotlib==3.9.2
+tqdm

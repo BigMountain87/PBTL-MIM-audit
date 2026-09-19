@@ -1,0 +1,188 @@
+cc0ff0a9dd3d67888b78aa2fd8d01fb940941155d4e5cbd54ab7f277460dcb92  archived_inputs/constrained_rcwa_validation.npz
+721c269ebc618c83ef573a61e9db903cc9338eb8e77722573ef3fcee17617683  archived_inputs/mphys_350.pt
+e20357fe2e51b5d298c0ad2bab454c7fd3bc08c5ae03111768b9553ce3e69557  archived_inputs/phys_stats.npz
+5e00f340e28f3f76534a5d9774f4fa3a1931c707220764e00c31dc687dad6ce0  archived_inputs/tandem_results.npz
+
+## v8 code pinning (T02, 2026-09-06)
+
+Upstream repository: <PBTL-MIM working copy>
+Pinned commit:       920b1bd4f6a82d1b8bc10adc1175e9dd1f48115a  (2026-04-26, "Initial commit")
+Vendored into:       src_v8/upstream_920b1bd/src/   (git archive 920b1bd src)
+Upstream HEAD at pinning time: cb486b5 (2026-07-05)
+
+Commits touching src/simulation or src/utils between 920b1bd and HEAD
+(`git log --oneline 920b1bd..HEAD -- src/simulation src/utils`):
+  a69deb1 Final style pass (33 fixes) + code-comment mismatch sweep (23 fixes)
+  398c7b7 Code-review fixes: correct results/README.md to redesign archives; mark legacy physics_features C
+  b15c862 Revision: apply four-correction audit + submission-readiness fixes
+  a02aa8f Provenance snapshot: redesign data-generation v1
+
+### Solver settings actually present in the vendored tree
+
+  src/simulation/rcwa_struct_a.py : RCWA_SETTINGS = {'grid': (64, 64), 'order': [5, 5]}   sim_dtype = torch.complex128
+  src/simulation/rcwa_struct_b.py : RCWA_SETTINGS = {'grid': (64, 64), 'order': [5, 5]}   sim_dtype = torch.complex128
+  src/simulation/rcwa_struct_c.py : RCWA_SETTINGS = {'grid': (64, 64), 'order': [5, 5]}   sim_dtype = torch.complex128
+
+At 920b1bd there is no 'dtype' and no 'adaptive_order' key; the complex dtype is a
+hard-coded local (`sim_dtype = torch.complex128`) inside each simulate function.
+Upstream HEAD later moved the dtype into RCWA_SETTINGS as complex64 and added
+adaptive_order=True. src_v8/rcwa_validate.py therefore does NOT inject those keys;
+it asserts `'adaptive_order' not in RCWA_SETTINGS` whenever the vendored tree is in
+use and records the dtype it finds by reading the module source. Every new npz now
+carries rcwa_settings, sim_dtype, torcwa_version, upstream_commit and materials.
+
+### Fingerprint: vendored code vs the archived v8 statistics
+
+`tmm_phys_stats(s)` (deterministic rng(99) TMM-set feature statistics) compared to
+results_v8/stats_{s}_v8.npz['phys_mean','phys_std'], max absolute difference:
+
+  code root = src_v8/upstream_920b1bd (920b1bd)        A 0.000e+00   B 0.000e+00   C 0.000e+00   PASS (< 1e-5)
+  code root = <PBTL-MIM working copy> (HEAD)  A 1.966e+00   B 1.531e+00   C 1.534e+00   FAIL — documents the drift
+
+The HEAD row is the quantitative statement of gap G07: re-running any v8 stage against
+current upstream changes the physics features by order 1 in feature units, so the audit
+is only reproducible against the vendored commit.
+
+### Inputs (data and checkpoints — gitignored upstream, cannot be vendored from git)
+
+Datasets, identical on the Mac and on compute-host:
+  bcfa11d29d9ac7d3db9834f5add77eba618e8e21e2aeaba38138221149913d12  data/raw/struct_A_vis_500.npz
+  df01c547ee314ab4fffa3603a0cb57d4dd8f0c6eec882f5c391eee2a636dafc3  data/raw/struct_B_500.npz
+  bec4d2e8cdf59fa825aa60decb52b3caefce05e23c546f7dc2829c128fcc20be  data/raw/struct_C_500.npz
+
+Pretrained checkpoints — the v8 inputs (Mac, <PBTL-MIM working copy>/results/):
+  5e499f915a25c2056a19d7de2bfb16a0387749301e47036799fce80920279a4c  pretrained_mphys_tmm.pt    (A)
+  10ca9af46b40744c2d635c46c3d2f55dc0f5d9337ecc16c95ec606dc55924018  pretrained_mphys_tmm_B.pt  (B)
+  ed0f19acf09047c1ec88418876f52e33ba1e2d3f448108ff4f8a5e76586d2e87  pretrained_mphys_tmm_C.pt  (C)
+
+**Checkpoint drift found on the GPU host (T02, not anticipated by PLAN_v10).**
+compute-host:~/mim_novel/results/ carried DIFFERENT A and B checkpoints:
+  6f9692b4c8634f351c5c5fd0dd575c1ea90babbbc3e80d82dd8a4ec95b6df27c  pretrained_mphys_tmm.pt    (A) — NOT the v8 input
+  13c317f05d187a05fa83b6e1ac8964815dcb6a828a46d4004691166ab143baad  pretrained_mphys_tmm_B.pt  (B) — NOT the v8 input
+  ed0f19acf09047c1ec88418876f52e33ba1e2d3f448108ff4f8a5e76586d2e87  pretrained_mphys_tmm_C.pt  (C) — matches
+Symptom: selfcheck step [4] pre-fine-tune val MAE read A 13.97 % / B 13.02 % / C 15.95 %
+against the archived v8 values A 14.007 / B 20.425 / C 15.953 % (results_v8/finetune_*_v8.json,
+logs_v8/finetune_*.log). Any fine-tune re-run from ~/mim_novel would have started from the
+wrong weights for A and B.
+
+Remedy (in place): the pinned input root on the GPU host is
+
+    compute-host:~/InverseTL/upstream_inputs_v8/
+        data    -> symlink to ~/mim_novel/data   (byte-identical to the Mac)
+        results/pretrained_mphys_tmm{,_B,_C}.pt  (copied from the Mac, hashes above)
+
+**Every server run must set `INVERSETL_UPSTREAM_ROOT=$HOME/InverseTL/upstream_inputs_v8`.**
+With it, selfcheck on compute-host reproduces 14.01 / 20.41 / 15.95 % and exits 0.
+
+### Environments
+
+  Mac          : torch 2.10.0, numpy 1.26.4, scipy 1.11.4, torcwa 0.1.4.2
+  compute-host: torch 2.5.1+cu121 (cuda 12.1), numpy 1.26.4, scipy 1.13.1, torcwa 0.1.4.2
+  GPU          : NVIDIA GeForce RTX 4070 Ti SUPER, 560.35.05
+  server python: ~/anaconda3/bin/python  (there is no torch in /usr/bin/python3)
+
+### Self-check status (2026-09-06)
+
+  Mac    : INVERSETL_DEVICE=cpu INVERSETL_UPSTREAM_ROOT=<PBTL-MIM working copy> \
+           python3 src_v8/selfcheck.py            -> ALL CHECKS PASSED, exit 0
+  Server : INVERSETL_DEVICE=cpu INVERSETL_UPSTREAM_ROOT=$HOME/InverseTL/upstream_inputs_v8 \
+           ~/anaconda3/bin/python src_v8/selfcheck.py -> ALL CHECKS PASSED, exit 0
+
+### The pinned datasets are the LEGACY (pre-correction) pools — deliberate, and it is the audited object
+
+Author question, 2026-09-06: "is struct_A_vis_500.npz not the wrong/old version?"
+Answer: it is the superseded version, and it is the correct one to pin for this audit.
+Measured side by side (data/raw of the upstream repo):
+
+  file                        wavelength grid    n good (A >= -0.01)   used by
+  struct_A_vis_500.npz        380- 780 nm x100         479             v8 / Paper 3 (pinned)
+  struct_A_500_redesign.npz   400-1800 nm x100         499             printed Paper 1
+  struct_B_500.npz            400-1800 nm x100         461             v8 / Paper 3 (pinned)
+  struct_B_500_redesign.npz   400-1800 nm x100         498             printed Paper 1
+  struct_C_500.npz            400-1800 nm x100         431 (TE only;   v8 / Paper 3 (pinned)
+                                                       400 with TE&TM)
+  struct_C_500_redesign.npz   400-1800 nm x100         492 (TE only)   printed Paper 1
+
+The printed Paper 1 states 499/500, 498/500 and 487/500 valid samples under its tightened
+filter A in [-0.005, 1.005] (paper.pdf pdftotext L282), i.e. the *_redesign archives;
+upstream results/README.md line 1 says outright "All reported numbers come from the
+corrected (*_redesign / *_jc) archives". The three files pinned here are dated
+2026-03-08..03-13, predate that regeneration, and are the pools that produced every v8
+artifact, the frozen pre-registration and all 179 committed designs.
+
+Consequences that the manuscript must state (T01 item 2 framing, T25, T49, W2, W4):
+  * Paper 3 audits the PRE-CORRECTION release, not the printed pipeline. Re-pinning to the
+    *_redesign pools would invalidate every archived artifact and require re-running the
+    whole protocol; it is not a drop-in substitution.
+  * Structure A changed band in the correction (380-780 nm visible -> 400-1800 nm broadband),
+    so the audited A surrogate is not the same physical object as the published A. This is
+    the concrete content of limitation W2.
+  * The legacy C pool also predates the corrected C bounds (W6).
+
+## Published-pipeline pinning — profile `pub` (T52, 2026-09-06)
+
+Selected with INVERSETL_PROFILE=pub (src_v8/common.py). Everything below is what the
+printed Paper 1 (PNFA 72(B) 101617) actually used; see docs/PLAN_v10_amendment_pub.md.
+
+Code: upstream commit cb486b5 (2026-07-05, HEAD at pinning time), vendored as
+  src_v8/upstream_cb486b5/src + data/ref  (git archive cb486b5 src data/ref)
+  MATERIAL_MODEL = "jc" (Johnson–Christy tables), RCWA_SETTINGS at HEAD =
+  {'grid': (64,64), 'order': [5,5], 'dtype': torch.complex64, 'adaptive_order': True}
+  Reference tables used by the materials module:
+  4d45664dec6cbb048766eb914b51dd87ea0e9714ab1203232d00230c9f8cad4c  src_v8/upstream_cb486b5/data/ref/Cr_JC.txt
+  8ce62f2d9100939799209584ced065e9b08ed4e21dd3104788cacae01e4bc7c9  src_v8/upstream_cb486b5/data/ref/TiO2_Siefke.txt
+
+Datasets (redesign_version = v1-jc-metals+tio2siefke+adaptive+grazingfix+c64, 400–1800 nm ×100,
+hygiene = `reliable` mask all-true → 499/498/487, identical to printed Sec. 2):
+  9dea0fa6d8a85a237cd216f978fd43071bcbeb6af4fa7e31851b3c314c521577  data/raw/struct_A_500_redesign.npz  (Mac copy, versioned)
+  a75c4de52129fd80e1a96070b50b54119973d60ed824e4360d881e76afba015d  data/raw/struct_B_500_redesign.npz
+  57bb2b991c941129fe52a62860fbf2aa4d655023d8e6595546ca9e63967a78ab  data/raw/struct_C_500_redesign.npz
+  Note: compute-host:~/mim_novel/data/raw/struct_A_500_redesign.npz (043b1216…) is an
+  earlier save of the SAME spectra (max|ΔA| = 0, no redesign_version key). The Mac copy
+  is canonical and is the one staged on the server.
+
+Server input root for every pub run:  compute-host:~/InverseTL/upstream_inputs_pub/
+  data/raw/struct_{A,B,C}_500_redesign.npz  (hashes above, verified 2026-09-06)
+  → INVERSETL_PROFILE=pub INVERSETL_UPSTREAM_ROOT=$HOME/InverseTL/upstream_inputs_pub
+
+Pretrained M_TL+phys checkpoints: upstream never committed them; pbtl_A/B_redesign.py
+overwrite the legacy filenames (server copies dated 2026-06-29 / 06-22) and
+pbtl_C_v2_redesign.py never writes one. They are therefore REGENERATED from the
+deterministic recipe (rng(99) 5000 TMM geometries, set_global_seed(42), MPhys
+ResNet-256-4, 500 epochs AdamW 1e-3 / wd 1e-4 / cosine / batch 2048, best-val restore)
+by src_v8/pretrain_pub.py into archived_inputs/pub/ — hashes and the Table 1–3
+reproduction gate are recorded below once the run completes.
+Reference for the gate: docs/pub_reference_table123.json (seed-42 and 10-seed values
+from upstream results/pbtl_{A,B,C_v2}_redesign_10seed.npz, the archives behind the
+printed Tables 1–3).
+
+Structure-C specifics of the printed pipeline: training box Wx,Wy ∈ [50,720] (full
+design box; the legacy [50,400] quirk W6 does not exist here) and the 18-feature set
+compute_physics_features_C_v2 (13 legacy + 5 polarization), ported as
+src_v8/phys_features_C18.py with C18[:, :13] == C13 asserted (max|diff| 0.0).
+
+### T52 result (2026-09-06, compute-host RTX 4070 Ti SUPER, torch 2.5.1+cu121)
+
+Regenerated checkpoints (src_v8/pretrain_pub.py, logs_pub/pretrain_{A,B,C}_pub.log):
+  66aa7db1ed2485b554c4deb6d6e14ffaac4b7e94ef8edefc4a9a4329043f6fa8  archived_inputs/pub/pretrained_mphys_tmm_A_pub.pt  (TMM val L1 0.076 %, 208 s)
+  892aabda0d382ad036300a08fec50e05db3bd73af734f9e750a870c2378d5f2c  archived_inputs/pub/pretrained_mphys_tmm_B_pub.pt  (TMM val L1 0.249 %, 423 s)
+  84fe0a594acd3b93dc7efa9a4857e2116b1bf653d09601c0f3c99ad1e4b340a1  archived_inputs/pub/pretrained_mphys_tmm_C_pub.pt  (TMM val L1 0.075 %, 429 s)
+Pre-fine-tune val MAE (A-channel) with these checkpoints: A 9.12 / B 12.17 / C 16.73 %.
+
+Gate — printed Tables 1–3 reproduction (n = 350, seed 42, M_TL+phys test MAE, %):
+  S   ours    upstream seed-42 archive   printed 10-seed   z      verdict
+  A   1.757   1.724 (+0.034)             1.79 ± 0.04      -0.94   PASS
+  B   1.722   1.703 (+0.019)             1.65 ± 0.04      +1.70   PASS
+  C   2.107   2.257 (-0.150)             2.05 ± 0.09      +0.65   PASS
+  (scripts/pub_gate_table123.py → results_pub/pub_gate_table123.json; criterion |z| ≤ 3)
+selfcheck under INVERSETL_PROFILE=pub on the server: ALL CHECKS PASSED (exit 0).
+Conclusion: the pub profile reproduces the printed Paper-1 forward pipeline to within
+seed/CUDA noise; every pub-arm artifact descends from the inputs pinned above.
+
+## v8 inputs (T36) — archived copies
+5e499f915a25c2056a19d7de2bfb16a0387749301e47036799fce80920279a4c  archived_inputs/v8/pretrained_mphys_tmm.pt
+10ca9af46b40744c2d635c46c3d2f55dc0f5d9337ecc16c95ec606dc55924018  archived_inputs/v8/pretrained_mphys_tmm_B.pt
+ed0f19acf09047c1ec88418876f52e33ba1e2d3f448108ff4f8a5e76586d2e87  archived_inputs/v8/pretrained_mphys_tmm_C.pt
+bcfa11d29d9ac7d3db9834f5add77eba618e8e21e2aeaba38138221149913d12  data/raw/struct_A_vis_500.npz
+df01c547ee314ab4fffa3603a0cb57d4dd8f0c6eec882f5c391eee2a636dafc3  data/raw/struct_B_500.npz
+bec4d2e8cdf59fa825aa60decb52b3caefce05e23c546f7dc2829c128fcc20be  data/raw/struct_C_500.npz

@@ -1,0 +1,500 @@
+{
+  "description": "Three-seed (42/123/777) pooled Tier-1A counts with Wilson 95% CIs.",
+  "tau_pct": 5.0,
+  "seeds": [
+    42,
+    123,
+    777
+  ],
+  "per_structure": {
+    "A": {
+      "n_valid": 60,
+      "surrogate_pass": 60,
+      "oracle_pass": 33,
+      "pretender": 27,
+      "pretender_rate_pct": 45.0,
+      "pretender_wilson95_pct": [
+        33.09,
+        57.51
+      ]
+    },
+    "B": {
+      "n_valid": 60,
+      "surrogate_pass": 60,
+      "oracle_pass": 30,
+      "pretender": 30,
+      "pretender_rate_pct": 50.0,
+      "pretender_wilson95_pct": [
+        37.74,
+        62.26
+      ]
+    },
+    "C": {
+      "n_valid": 59,
+      "surrogate_pass": 59,
+      "oracle_pass": 21,
+      "pretender": 38,
+      "pretender_rate_pct": 64.41,
+      "pretender_wilson95_pct": [
+        51.66,
+        75.4
+      ]
+    }
+  },
+  "totals": {
+    "surrogate_pass": 179,
+    "oracle_pass": 84,
+    "pretender": 95,
+    "n_valid": 179,
+    "pretender_rate_pct": 53.07,
+    "pretender_wilson95_pct": [
+      45.77,
+      60.24
+    ]
+  },
+  "tau_sweep": {
+    "taus": [
+      2.5,
+      3.75,
+      5.0,
+      7.5,
+      10.0,
+      15.0
+    ],
+    "definition": "claimed = Surr MAE <= tau; pretender = claimed & RCWA MAE > tau; valid = finite RCWA MAE",
+    "bootstrap": "cluster bootstrap over the 20 targets per structure (each target carries its three seeds), 2000 reps, default_rng(1), percentile 2.5/97.5",
+    "by_tau": {
+      "2.5": {
+        "pooled": {
+          "claimed": 159,
+          "pretender": 145,
+          "valid": 179,
+          "pretender_rate_given_claimed": 0.9119,
+          "bootstrap95_rate_given_claimed": [
+            0.8542,
+            0.9571
+          ]
+        },
+        "per_structure": {
+          "A": {
+            "claimed": 59,
+            "pretender": 55,
+            "valid": 60,
+            "pretender_rate_given_claimed": 0.9322,
+            "bootstrap95_rate_given_claimed": [
+              0.8136,
+              1.0
+            ]
+          },
+          "B": {
+            "claimed": 60,
+            "pretender": 52,
+            "valid": 60,
+            "pretender_rate_given_claimed": 0.8667,
+            "bootstrap95_rate_given_claimed": [
+              0.7833,
+              0.9337
+            ]
+          },
+          "C": {
+            "claimed": 40,
+            "pretender": 38,
+            "valid": 59,
+            "pretender_rate_given_claimed": 0.95,
+            "bootstrap95_rate_given_claimed": [
+              0.875,
+              1.0
+            ]
+          }
+        }
+      },
+      "3.75": {
+        "pooled": {
+          "claimed": 172,
+          "pretender": 124,
+          "valid": 179,
+          "pretender_rate_given_claimed": 0.7209,
+          "bootstrap95_rate_given_claimed": [
+            0.6453,
+            0.7941
+          ]
+        },
+        "per_structure": {
+          "A": {
+            "claimed": 60,
+            "pretender": 45,
+            "valid": 60,
+            "pretender_rate_given_claimed": 0.75,
+            "bootstrap95_rate_given_claimed": [
+              0.6329,
+              0.85
+            ]
+          },
+          "B": {
+            "claimed": 60,
+            "pretender": 41,
+            "valid": 60,
+            "pretender_rate_given_claimed": 0.6833,
+            "bootstrap95_rate_given_claimed": [
+              0.5333,
+              0.8167
+            ]
+          },
+          "C": {
+            "claimed": 52,
+            "pretender": 38,
+            "valid": 59,
+            "pretender_rate_given_claimed": 0.7308,
+            "bootstrap95_rate_given_claimed": [
+              0.6,
+              0.8596
+            ]
+          }
+        }
+      },
+      "5.0": {
+        "pooled": {
+          "claimed": 179,
+          "pretender": 95,
+          "valid": 179,
+          "pretender_rate_given_claimed": 0.5307,
+          "bootstrap95_rate_given_claimed": [
+            0.4389,
+            0.6201
+          ]
+        },
+        "per_structure": {
+          "A": {
+            "claimed": 60,
+            "pretender": 27,
+            "valid": 60,
+            "pretender_rate_given_claimed": 0.45,
+            "bootstrap95_rate_given_claimed": [
+              0.3167,
+              0.6
+            ]
+          },
+          "B": {
+            "claimed": 60,
+            "pretender": 30,
+            "valid": 60,
+            "pretender_rate_given_claimed": 0.5,
+            "bootstrap95_rate_given_claimed": [
+              0.3,
+              0.6833
+            ]
+          },
+          "C": {
+            "claimed": 59,
+            "pretender": 38,
+            "valid": 59,
+            "pretender_rate_given_claimed": 0.6441,
+            "bootstrap95_rate_given_claimed": [
+              0.4915,
+              0.7966
+            ]
+          }
+        }
+      },
+      "7.5": {
+        "pooled": {
+          "claimed": 179,
+          "pretender": 47,
+          "valid": 179,
+          "pretender_rate_given_claimed": 0.2626,
+          "bootstrap95_rate_given_claimed": [
+            0.1889,
+            0.3389
+          ]
+        },
+        "per_structure": {
+          "A": {
+            "claimed": 60,
+            "pretender": 9,
+            "valid": 60,
+            "pretender_rate_given_claimed": 0.15,
+            "bootstrap95_rate_given_claimed": [
+              0.0833,
+              0.2167
+            ]
+          },
+          "B": {
+            "claimed": 60,
+            "pretender": 19,
+            "valid": 60,
+            "pretender_rate_given_claimed": 0.3167,
+            "bootstrap95_rate_given_claimed": [
+              0.15,
+              0.4833
+            ]
+          },
+          "C": {
+            "claimed": 59,
+            "pretender": 19,
+            "valid": 59,
+            "pretender_rate_given_claimed": 0.322,
+            "bootstrap95_rate_given_claimed": [
+              0.1864,
+              0.4746
+            ]
+          }
+        }
+      },
+      "10.0": {
+        "pooled": {
+          "claimed": 179,
+          "pretender": 25,
+          "valid": 179,
+          "pretender_rate_given_claimed": 0.1397,
+          "bootstrap95_rate_given_claimed": [
+            0.0833,
+            0.2011
+          ]
+        },
+        "per_structure": {
+          "A": {
+            "claimed": 60,
+            "pretender": 2,
+            "valid": 60,
+            "pretender_rate_given_claimed": 0.0333,
+            "bootstrap95_rate_given_claimed": [
+              0.0,
+              0.0833
+            ]
+          },
+          "B": {
+            "claimed": 60,
+            "pretender": 15,
+            "valid": 60,
+            "pretender_rate_given_claimed": 0.25,
+            "bootstrap95_rate_given_claimed": [
+              0.1,
+              0.4
+            ]
+          },
+          "C": {
+            "claimed": 59,
+            "pretender": 8,
+            "valid": 59,
+            "pretender_rate_given_claimed": 0.1356,
+            "bootstrap95_rate_given_claimed": [
+              0.0517,
+              0.2321
+            ]
+          }
+        }
+      },
+      "15.0": {
+        "pooled": {
+          "claimed": 179,
+          "pretender": 7,
+          "valid": 179,
+          "pretender_rate_given_claimed": 0.0391,
+          "bootstrap95_rate_given_claimed": [
+            0.0111,
+            0.0726
+          ]
+        },
+        "per_structure": {
+          "A": {
+            "claimed": 60,
+            "pretender": 0,
+            "valid": 60,
+            "pretender_rate_given_claimed": 0.0,
+            "bootstrap95_rate_given_claimed": [
+              0.0,
+              0.0
+            ]
+          },
+          "B": {
+            "claimed": 60,
+            "pretender": 7,
+            "valid": 60,
+            "pretender_rate_given_claimed": 0.1167,
+            "bootstrap95_rate_given_claimed": [
+              0.0333,
+              0.2167
+            ]
+          },
+          "C": {
+            "claimed": 59,
+            "pretender": 0,
+            "valid": 59,
+            "pretender_rate_given_claimed": 0.0,
+            "bootstrap95_rate_given_claimed": [
+              0.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    "severity_bins": {
+      "edges_pct": [
+        5,
+        7.5,
+        10
+      ],
+      "mild": 48,
+      "moderate": 22,
+      "severe": 25,
+      "note": "post-hoc band edges"
+    }
+  },
+  "t4": {
+    "per_run": {
+      "A_s42": {
+        "mean": 0.993,
+        "max": 1.5506,
+        "flags": 0
+      },
+      "A_s123": {
+        "mean": 1.0442,
+        "max": 1.5545,
+        "flags": 0
+      },
+      "A_s777": {
+        "mean": 1.0664,
+        "max": 1.7346,
+        "flags": 0
+      },
+      "B_s42": {
+        "mean": 1.2741,
+        "max": 2.8742,
+        "flags": 0
+      },
+      "B_s123": {
+        "mean": 1.2107,
+        "max": 2.688,
+        "flags": 0
+      },
+      "B_s777": {
+        "mean": 1.3276,
+        "max": 3.1238,
+        "flags": 0
+      },
+      "C_s42": {
+        "mean": 1.3736,
+        "max": 1.8853,
+        "flags": 0
+      },
+      "C_s123": {
+        "mean": 1.2969,
+        "max": 1.9907,
+        "flags": 0
+      },
+      "C_s777": {
+        "mean": 1.232,
+        "max": 1.9255,
+        "flags": 0
+      }
+    },
+    "total_flags": 0,
+    "total_designs": 179,
+    "global_max": 3.1238
+  },
+  "timing": {
+    "unit": "s per committed geometry (100 wavelengths)",
+    "order5": {
+      "A": {
+        "min": 34.1,
+        "median": 36.0,
+        "max": 38.9,
+        "n": 60
+      },
+      "B": {
+        "min": 16.4,
+        "median": 17.8,
+        "max": 19.7,
+        "n": 60
+      },
+      "C": {
+        "min": 34.0,
+        "median": 36.2,
+        "max": 39.0,
+        "n": 59
+      },
+      "overall": {
+        "min": 16.4,
+        "median": 35.2,
+        "max": 39.0,
+        "n": 179
+      }
+    },
+    "order7": {
+      "A": {
+        "min": 144.4,
+        "median": 149.6,
+        "max": 159.0,
+        "n": 20
+      },
+      "B": {
+        "min": 68.8,
+        "median": 72.9,
+        "max": 76.4,
+        "n": 20
+      },
+      "C": {
+        "min": 139.8,
+        "median": 148.0,
+        "max": 151.9,
+        "n": 20
+      },
+      "overall": {
+        "min": 68.8,
+        "median": 146.4,
+        "max": 159.0,
+        "n": 60
+      }
+    }
+  },
+  "multiplicity": {
+    "method": "holm",
+    "alpha": 0.05,
+    "note": "post hoc, not pre-registered",
+    "spearman_p_nominal": {
+      "A_42": 0.4349861436228526,
+      "A_123": 0.08564648173103372,
+      "A_777": 0.04753173575066418,
+      "B_42": 0.889875964885619,
+      "B_123": 0.6541415450094847,
+      "B_777": 0.39066623935419653,
+      "C_42": 0.8799311955207728,
+      "C_123": 0.016394084731294372,
+      "C_777": 0.25372370328900945
+    },
+    "spearman_p_holm": {
+      "A_42": 1.0,
+      "A_123": 0.599525,
+      "A_777": 0.380254,
+      "B_42": 1.0,
+      "B_123": 1.0,
+      "B_777": 1.0,
+      "C_42": 1.0,
+      "C_123": 0.147547,
+      "C_777": 1.0
+    },
+    "fisher_p_nominal": {
+      "oracle_success:A_vs_C": 0.34064371475988253,
+      "oracle_success:C_vs_B": 0.34064371475988253,
+      "oracle_success:A_vs_B": 1.0,
+      "flagged:A_vs_C": 0.2307692307692308,
+      "flagged:C_vs_B": 0.45057645057645057,
+      "flagged:A_vs_B": 0.0201960201960202,
+      "pretender:A_vs_C": 0.3406437147598824,
+      "pretender:C_vs_B": 0.3406437147598824,
+      "pretender:A_vs_B": 1.0
+    },
+    "fisher_p_holm": {
+      "oracle_success:A_vs_C": 1.0,
+      "oracle_success:C_vs_B": 1.0,
+      "oracle_success:A_vs_B": 1.0,
+      "flagged:A_vs_C": 1.0,
+      "flagged:C_vs_B": 1.0,
+      "flagged:A_vs_B": 0.181764,
+      "pretender:A_vs_C": 1.0,
+      "pretender:C_vs_B": 1.0,
+      "pretender:A_vs_B": 1.0
+    }
+  }
+}

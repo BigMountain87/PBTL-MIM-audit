@@ -1,0 +1,73 @@
+{
+  "dataset": "struct_B_500_redesign.npz",
+  "sha256": "a75c4de52129fd80e1a96070b50b54119973d60ed824e4360d881e76afba015d",
+  "n_samples": 500,
+  "premise_nm": 50.0,
+  "grid": 64,
+  "design_space_min_nm": {
+    "R_disk": 10,
+    "R_in": 30,
+    "R_out": 80
+  },
+  "pixel_nm": {
+    "median": 8.59400665846651,
+    "min": 4.7010780055635735,
+    "max": 12.486895215218215
+  },
+  "features": {
+    "ring_width": {
+      "median_nm": 16.64072132720772,
+      "min_nm": 10.0,
+      "max_nm": 280.5320162270058,
+      "n_below_50nm": 303,
+      "pct_below_50nm": 60.6,
+      "n_below_20nm": 259,
+      "pct_below_20nm": 51.800000000000004
+    },
+    "ring_disk_gap": {
+      "median_nm": 71.44323313501182,
+      "min_nm": 10.0,
+      "max_nm": 272.88221619755615,
+      "n_below_50nm": 171,
+      "pct_below_50nm": 34.2,
+      "n_below_20nm": 96,
+      "pct_below_20nm": 19.2
+    },
+    "edge_gap": {
+      "median_nm": 57.16387664190184,
+      "min_nm": 15.043449617803418,
+      "max_nm": 306.23630291434364,
+      "n_below_50nm": 233,
+      "pct_below_50nm": 46.6,
+      "n_below_20nm": 75,
+      "pct_below_20nm": 15.0
+    },
+    "disk_diameter": {
+      "median_nm": 97.3923272935937,
+      "min_nm": 20.094178587627464,
+      "max_nm": 199.52538000837532,
+      "n_below_50nm": 93,
+      "pct_below_50nm": 18.6,
+      "n_below_20nm": 0,
+      "pct_below_20nm": 0.0
+    },
+    "min_feature": {
+      "median_nm": 10.0,
+      "min_nm": 10.0,
+      "max_nm": 85.2359755529555,
+      "n_below_50nm": 471,
+      "pct_below_50nm": 94.19999999999999,
+      "n_below_20nm": 352,
+      "pct_below_20nm": 70.39999999999999
+    }
+  },
+  "min_feature_below_1px": {
+    "n": 92,
+    "pct": 18.4
+  },
+  "min_feature_below_2px": {
+    "n": 309,
+    "pct": 61.8
+  },
+  "n_reliable": 49899
+}

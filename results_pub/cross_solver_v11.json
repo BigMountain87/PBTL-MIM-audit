@@ -1,0 +1,116 @@
+{
+  "tau_pct": 5.0,
+  "seed": 42,
+  "per_structure": {
+    "B": {
+      "n_valid": 20,
+      "pretender_adaptive": 3,
+      "pretender_order5": 6,
+      "confirmed_adaptive": 17,
+      "confirmed_order5": 14,
+      "flips_adaptive_confirmed_to_order5_pretender": 3,
+      "flips_order5_confirmed_to_adaptive_pretender": 0,
+      "flip_indices": [
+        2,
+        8,
+        10
+      ],
+      "flip_mae_adaptive_pct": [
+        2.77,
+        3.46,
+        1.21
+      ],
+      "flip_mae_order5_pct": [
+        6.96,
+        6.76,
+        5.43
+      ],
+      "median_abs_shift_pp": 0.9540128225144147,
+      "median_shift_pp": 0.21555293071014603,
+      "max_abs_shift_pp": 4.219479733888875,
+      "n_order5_higher": 13,
+      "n_order5_lower": 7,
+      "wilcoxon_p": 0.2305126190185547,
+      "mcnemar_p": 0.25,
+      "pearson_r_adaptive_vs_order5": 0.7394071028238565,
+      "median_elapsed_s_order5": 15.691629886627197,
+      "median_elapsed_s_adaptive": 156.37493813037872
+    },
+    "A": {
+      "n_valid": 20,
+      "pretender_adaptive": 1,
+      "pretender_order5": 4,
+      "confirmed_adaptive": 19,
+      "confirmed_order5": 16,
+      "flips_adaptive_confirmed_to_order5_pretender": 3,
+      "flips_order5_confirmed_to_adaptive_pretender": 0,
+      "flip_indices": [
+        1,
+        2,
+        3
+      ],
+      "flip_mae_adaptive_pct": [
+        4.38,
+        3.23,
+        2.96
+      ],
+      "flip_mae_order5_pct": [
+        5.02,
+        5.21,
+        7.41
+      ],
+      "median_abs_shift_pp": 0.8470371811748283,
+      "median_shift_pp": 0.6696748488311375,
+      "max_abs_shift_pp": 4.44349811917391,
+      "n_order5_higher": 15,
+      "n_order5_lower": 5,
+      "wilcoxon_p": 0.026641845703125,
+      "mcnemar_p": 0.25,
+      "pearson_r_adaptive_vs_order5": 0.733111628024523,
+      "median_elapsed_s_order5": 28.767748832702637,
+      "median_elapsed_s_adaptive": 3526.343457341194
+    },
+    "C": {
+      "n_valid": 20,
+      "pretender_adaptive": 2,
+      "pretender_order5": 3,
+      "confirmed_adaptive": 18,
+      "confirmed_order5": 17,
+      "flips_adaptive_confirmed_to_order5_pretender": 1,
+      "flips_order5_confirmed_to_adaptive_pretender": 0,
+      "flip_indices": [
+        15
+      ],
+      "flip_mae_adaptive_pct": [
+        0.42
+      ],
+      "flip_mae_order5_pct": [
+        6.48
+      ],
+      "median_abs_shift_pp": 1.0786780749640457,
+      "median_shift_pp": 0.8001019925195578,
+      "max_abs_shift_pp": 6.05497270793785,
+      "n_order5_higher": 18,
+      "n_order5_lower": 2,
+      "wilcoxon_p": 0.0005855560302734375,
+      "mcnemar_p": 1.0,
+      "pearson_r_adaptive_vs_order5": 0.5568579756850333,
+      "median_elapsed_s_order5": 16.796892881393433,
+      "median_elapsed_s_adaptive": 1592.2754863500595
+    }
+  },
+  "note": "paired on the identical committed geometries and the identical surrogate; only the Fourier truncation differs (adaptive 9/13/17 -> fixed 5). Single seed, 20 distinct targets per structure, so no repeated-target dependence; pooled tests are nominal across structures.",
+  "pooled": {
+    "n_valid": 60,
+    "pretender_adaptive": 6,
+    "pretender_order5": 13,
+    "flips_to_order5_pretender": 7,
+    "flips_to_adaptive_pretender": 0,
+    "mcnemar_p": 0.015625,
+    "median_abs_shift_pp": 0.8996270946623941,
+    "median_shift_pp": 0.6143186158486477,
+    "wilcoxon_p": 0.0001371177493391081,
+    "n_order5_higher": 46,
+    "n_order5_lower": 14
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "convention": {
+    "tag": "printed",
+    "label": "published Table 5 median r",
+    "r": {
+      "A": 0.83,
+      "B": 0.96,
+      "C": 0.65
+    },
+    "order": [
+      "B",
+      "A",
+      "C"
+    ],
+    "hypotheses": {
+      "H1a": "oracle-success rate is non-increasing as r falls (B >= A >= C)",
+      "H1b": "Delta-flag rate is non-decreasing as r falls (B <= A <= C)",
+      "H1c": "rho(RCWA MAE, Surr MAE) is non-increasing as r falls (B >= A >= C)",
+      "pooled_order": "structures ranked by published Table 5 median r: B (+0.96) > A (+0.83) > C (+0.65)"
+    }
+  },
+  "per_structure": {
+    "B": {
+      "r_convention": 0.96,
+      "n_train": 350,
+      "forward_test_mae": 1.7221231079101562,
+      "n_valid": 20,
+      "oracle_success": 17,
+      "surrogate_pass": 20,
+      "pretender": 3,
+      "flagged": 7,
+      "flag_thr": 3.4442462158203124,
+      "max_delta": 12.109157739912916,
+      "max_amp": 35.44683818432849,
+      "t1": 17,
+      "t2": 15,
+      "t3": 7,
+      "t4": 0,
+      "t2_null": 0.5695327899999999,
+      "t3_null": 0.1912,
+      "modes": 16,
+      "rho_rcwa_surr": 0.11729323308270674,
+      "rho_p": 0.6223789817630219,
+      "rho_ci": [
+        -0.3444795738724894,
+        0.533365962689083
+      ],
+      "rho_delta_rcwa": 0.9789473684210527,
+      "rho_delta_surr": -0.037593984962406006,
+      "endpoint_spread": 1.5952556133270264
+    },
+    "A": {
+      "r_convention": 0.83,
+      "n_train": 350,
+      "forward_test_mae": 1.7574021911621094,
+      "n_valid": 20,
+      "oracle_success": 19,
+      "surrogate_pass": 20,
+      "pretender": 1,
+      "flagged": 2,
+      "flag_thr": 3.5148043823242188,
+      "max_delta": 9.900670364227317,
+      "max_amp": 43.62052207850692,
+      "t1": 16,
+      "t2": 14,
+      "t3": 0,
+      "t4": 0,
+      "t2_null": 0.6513215599,
+      "t3_null": 0.08860000000000001,
+      "modes": 20,
+      "rho_rcwa_surr": 0.3398496240601503,
+      "rho_p": 0.14263670537136702,
+      "rho_ci": [
+        -0.13416687090275975,
+        0.6873028553464953
+      ],
+      "rho_delta_rcwa": 0.9293233082706768,
+      "rho_delta_surr": 0.06466165413533834,
+      "endpoint_spread": 1.8316190242767334
+    },
+    "C": {
+      "r_convention": 0.65,
+      "n_train": 350,
+      "forward_test_mae": 2.1071063232421876,
+      "n_valid": 20,
+      "oracle_success": 18,
+      "surrogate_pass": 20,
+      "pretender": 2,
+      "flagged": 1,
+      "flag_thr": 4.214212646484375,
+      "max_delta": 4.660704915509997,
+      "max_amp": 3.2490420127543533,
+      "t1": 1,
+      "t2": 9,
+      "t3": 5,
+      "t4": 0,
+      "t2_null": 0.5217030999999999,
+      "t3_null": 0.2671,
+      "modes": 17,
+      "rho_rcwa_surr": 0.7503759398496239,
+      "rho_p": 0.00013841163311276012,
+      "rho_ci": [
+        0.4100518869471789,
+        0.9072855937113732
+      ],
+      "rho_delta_rcwa": 0.6526315789473683,
+      "rho_delta_surr": 0.09624060150375939,
+      "endpoint_spread": 1.4093539714813232
+    }
+  },
+  "fisher_exact_p": {
+    "oracle_success": {
+      "B_vs_A": 0.6049896049896051,
+      "A_vs_C": 1.0,
+      "B_vs_C": 1.0
+    },
+    "flagged": {
+      "B_vs_A": 0.12738612738612737,
+      "A_vs_C": 1.0,
+      "B_vs_C": 0.04359604359604359
+    },
+    "pretender": {
+      "B_vs_A": 0.6049896049896051,
+      "A_vs_C": 1.0,
+      "B_vs_C": 1.0
+    }
+  },
+  "hypotheses": {
+    "H1a_oracle_success_nonincreasing": {
+      "order": [
+        "B",
+        "A",
+        "C"
+      ],
+      "values": [
+        17,
+        19,
+        18
+      ],
+      "monotone": false
+    },
+    "H1b_flag_rate_nondecreasing": {
+      "order": [
+        "B",
+        "A",
+        "C"
+      ],
+      "values": [
+        7,
+        2,
+        1
+      ],
+      "monotone": false
+    },
+    "H1c_rho_rcwa_surr_nonincreasing": {
+      "order": [
+        "B",
+        "A",
+        "C"
+      ],
+      "values": [
+        0.11729323308270674,
+        0.3398496240601503,
+        0.7503759398496239
+      ],
+      "monotone": false
+    }
+  }
+}

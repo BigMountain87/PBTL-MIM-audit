@@ -1,0 +1,225 @@
+{
+  "tau_pct": 5.0,
+  "results_dir": "results_pub",
+  "conditions": {
+    "m0": {
+      "per_structure": [
+        {
+          "structure": "B",
+          "n_paired": 20,
+          "median_delta_base_pp": 2.34398132979004,
+          "median_delta_control_pp": 2.319820589153096,
+          "median_paired_shift_pp": -0.35587985792335525,
+          "hodges_lehmann_shift_pp": -0.43943037923327216,
+          "hodges_lehmann_ci95_pp": [
+            -2.0457686138242934,
+            0.45793624684120005
+          ],
+          "mean_paired_shift_pp": -0.9251797922166588,
+          "n_negative": 13,
+          "n_positive": 7,
+          "wilcoxon_p": 0.21616744995117188,
+          "pretender_base": 3,
+          "pretender_control": 1,
+          "p_holm_over_all_control_tests": 1.0
+        },
+        {
+          "structure": "A",
+          "n_paired": 20,
+          "median_delta_base_pp": 1.4466991906005546,
+          "median_delta_control_pp": 2.9941136783331217,
+          "median_paired_shift_pp": 0.7481342448112398,
+          "hodges_lehmann_shift_pp": 0.9202543530316446,
+          "hodges_lehmann_ci95_pp": [
+            0.3154729521805564,
+            1.6746648040371301
+          ],
+          "mean_paired_shift_pp": 0.9557331059531489,
+          "n_negative": 3,
+          "n_positive": 17,
+          "wilcoxon_p": 0.001689910888671875,
+          "pretender_base": 1,
+          "pretender_control": 2,
+          "p_holm_over_all_control_tests": 0.01689910888671875
+        },
+        {
+          "structure": "C",
+          "n_paired": 20,
+          "median_delta_base_pp": 0.2135931618179825,
+          "median_delta_control_pp": 0.3546421904829913,
+          "median_paired_shift_pp": -0.032653582550665194,
+          "hodges_lehmann_shift_pp": 0.10315955880128078,
+          "hodges_lehmann_ci95_pp": [
+            -0.1527986761557259,
+            0.457178346716148
+          ],
+          "mean_paired_shift_pp": 0.1630085870976244,
+          "n_negative": 11,
+          "n_positive": 9,
+          "wilcoxon_p": 0.6215133666992188,
+          "pretender_base": 2,
+          "pretender_control": 1,
+          "p_holm_over_all_control_tests": 1.0
+        }
+      ],
+      "n_paired": 60,
+      "primary": {
+        "outcome": "paired shift in Delta (control - base), pp",
+        "median": 0.1352326705605882,
+        "ci95_bootstrap": [
+          -0.06867425656145086,
+          0.44319965636879033
+        ],
+        "ci_note": "median: 4000-draw percentile bootstrap over the paired designs (seed 42 only, so no repeated-target dependence); the Wilcoxon test's own estimand is the Hodges-Lehmann pseudo-median below, with its signed-rank interval",
+        "hodges_lehmann": 0.2165509119026865,
+        "hodges_lehmann_ci95": [
+          -0.09170694880333496,
+          0.5757420085455465
+        ],
+        "mean": 0.06452063361137148,
+        "n_negative": 27,
+        "n_positive": 33,
+        "range_pp": [
+          -8.424773839986301,
+          3.9597605634444335
+        ],
+        "sign_test_p": 0.5189580031896519,
+        "wilcoxon_p": 0.17556577014041042,
+        "wilcoxon_p_holm_over_2_primaries": 0.17556577014041042,
+        "p_holm_over_all_control_tests": 1.0
+      },
+      "secondary": {
+        "outcome": "pretender status, exact McNemar",
+        "pretender_base": 6,
+        "pretender_control": 4,
+        "discordant_base_only": 4,
+        "discordant_control_only": 2,
+        "mcnemar_p": 0.6875,
+        "p_holm_over_all_control_tests": 1.0
+      },
+      "power": {
+        "base_rate": 0.1,
+        "n": 60,
+        "mde_binary_at_80pct": {
+          "max_concordance": 0.22999999999999995,
+          "independence": 0.3199999999999999,
+          "min_concordance": 0.34999999999999987
+        },
+        "note": "control rate reaching 80 % power, by concordance assumption; 80 % power is a probability criterion, not a detection boundary, so a smaller difference is not 'undetectable', only unlikely to be flagged. The paired continuous outcome is primary for that reason."
+      }
+    },
+    "feas": {
+      "per_structure": [
+        {
+          "structure": "B",
+          "n_paired": 20,
+          "median_delta_base_pp": 2.34398132979004,
+          "median_delta_control_pp": 1.1882791488415023,
+          "median_paired_shift_pp": -0.5452316971986875,
+          "hodges_lehmann_shift_pp": -1.394312793622703,
+          "hodges_lehmann_ci95_pp": [
+            -2.9092396690512032,
+            -0.1560459395268481
+          ],
+          "mean_paired_shift_pp": -1.711129069299932,
+          "n_negative": 15,
+          "n_positive": 5,
+          "wilcoxon_p": 0.012079238891601562,
+          "pretender_base": 3,
+          "pretender_control": 1,
+          "p_holm_over_all_control_tests": 0.0966339111328125
+        },
+        {
+          "structure": "A",
+          "n_paired": 20,
+          "median_delta_base_pp": 1.4466991906005546,
+          "median_delta_control_pp": 1.0751129778614086,
+          "median_paired_shift_pp": -0.15496374792576267,
+          "hodges_lehmann_shift_pp": -0.22257063620841455,
+          "hodges_lehmann_ci95_pp": [
+            -0.8731811571687962,
+            0.10143278728753558
+          ],
+          "mean_paired_shift_pp": -0.7063197433818242,
+          "n_negative": 14,
+          "n_positive": 6,
+          "wilcoxon_p": 0.15364646911621094,
+          "pretender_base": 1,
+          "pretender_control": 0,
+          "p_holm_over_all_control_tests": 1.0
+        },
+        {
+          "structure": "C",
+          "n_paired": 20,
+          "median_delta_base_pp": 0.2135931618179825,
+          "median_delta_control_pp": 0.20709268810702494,
+          "median_paired_shift_pp": -2.787291941785952e-05,
+          "hodges_lehmann_shift_pp": 6.018027943316406e-05,
+          "hodges_lehmann_ci95_pp": [
+            -0.0005551664471572515,
+            0.0015522516678171394
+          ],
+          "mean_paired_shift_pp": 0.03821814004604672,
+          "n_negative": 11,
+          "n_positive": 9,
+          "wilcoxon_p": 0.8408222198486328,
+          "pretender_base": 2,
+          "pretender_control": 2,
+          "p_holm_over_all_control_tests": 1.0
+        }
+      ],
+      "n_paired": 60,
+      "primary": {
+        "outcome": "paired shift in Delta (control - base), pp",
+        "median": -0.0011217891351409381,
+        "ci95_bootstrap": [
+          -0.20987441701581933,
+          -5.306069942889735e-05
+        ],
+        "ci_note": "median: 4000-draw percentile bootstrap over the paired designs (seed 42 only, so no repeated-target dependence); the Wilcoxon test's own estimand is the Hodges-Lehmann pseudo-median below, with its signed-rank interval",
+        "hodges_lehmann": -0.18111760772906393,
+        "hodges_lehmann_ci95": [
+          -0.5849713110238781,
+          -0.0033666276189024402
+        ],
+        "mean": -0.7930768908785699,
+        "n_negative": 40,
+        "n_positive": 20,
+        "range_pp": [
+          -10.660761362771154,
+          4.605309477112313
+        ],
+        "sign_test_p": 0.01348929373119186,
+        "wilcoxon_p": 0.007052676173054015,
+        "wilcoxon_p_holm_over_2_primaries": 0.01410535234610803,
+        "p_holm_over_all_control_tests": 0.06347408555748613
+      },
+      "secondary": {
+        "outcome": "pretender status, exact McNemar",
+        "pretender_base": 6,
+        "pretender_control": 3,
+        "discordant_base_only": 4,
+        "discordant_control_only": 1,
+        "mcnemar_p": 0.375,
+        "p_holm_over_all_control_tests": 1.0
+      },
+      "power": {
+        "base_rate": 0.1,
+        "n": 60,
+        "mde_binary_at_80pct": {
+          "max_concordance": 0.22999999999999995,
+          "independence": 0.3299999999999999,
+          "min_concordance": 0.34999999999999987
+        },
+        "note": "control rate reaching 80 % power, by concordance assumption; 80 % power is a probability criterion, not a detection boundary, so a smaller difference is not 'undetectable', only unlikely to be flagged. The paired continuous outcome is primary for that reason."
+      }
+    }
+  },
+  "missing": [],
+  "pairing": "asserted from inverse_*.npz orig_indices",
+  "multiplicity": {
+    "confirmatory_family": "the two pooled primary Wilcoxon tests (m0, feas), Holm",
+    "sensitivity_family": "all 10 control tests (per-structure Wilcoxon, pooled Wilcoxon, McNemar), Holm",
+    "note": "the sensitivity family is reported so the reader can see how far the family definition moves the feasibility p-value; it is not the pre-specified family"
+  }
+}

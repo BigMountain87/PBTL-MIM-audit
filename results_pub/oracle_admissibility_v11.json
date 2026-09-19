@@ -1,0 +1,47 @@
+{
+  "band": [
+    -0.005,
+    1.005
+  ],
+  "tau_pct": 5.0,
+  "results_dir": "results_pub",
+  "n_designs_checked": 229,
+  "n_spectra_checked": 289,
+  "n_outside": 2,
+  "n_verdict_changes_clipped": 0,
+  "n_verdict_changes_dropped": 0,
+  "rows": [
+    {
+      "structure": "C",
+      "seed": 123,
+      "index": 19,
+      "channel": "A_TE",
+      "extreme": -0.020620203809812665,
+      "wavelength_nm": 682.8282828282829,
+      "n_points_outside": 1,
+      "surrogate_mae_pct": 1.9898568838834765,
+      "mae_archived_pct": 4.553578279985231,
+      "mae_clipped_pct": 4.543268178080325,
+      "mae_dropped_pct": 4.302409049021589,
+      "verdict_archived": "pass",
+      "verdict_clipped": "pass",
+      "verdict_dropped": "pass"
+    },
+    {
+      "structure": "D",
+      "seed": 42,
+      "index": 34,
+      "channel": "A",
+      "extreme": -0.2881081623927457,
+      "wavelength_nm": 498.98989898989896,
+      "n_points_outside": 1,
+      "surrogate_mae_pct": 1.8383141160011292,
+      "mae_archived_pct": 3.349777004070347,
+      "mae_clipped_pct": 3.0616688416776014,
+      "mae_dropped_pct": 2.218371959484883,
+      "verdict_archived": "pass",
+      "verdict_clipped": "pass",
+      "verdict_dropped": "pass"
+    }
+  ]
+}
