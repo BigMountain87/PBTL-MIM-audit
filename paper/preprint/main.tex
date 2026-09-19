@@ -120,7 +120,7 @@
 
 \vspace{0.6em}
 
-{\small\itshape Preprint v1, 2026-09-19. This version has not been peer reviewed.\par}
+{\small\itshape Preprint v1, 2026-09-20. This version has not been peer reviewed.\par}
 {\small Corresponding authors: Sang-Bae Choi (sbchoi129@gmail.com) and Chang-Mo Kang\par}
 
 \end{center}
@@ -129,24 +129,26 @@
 
 Physics-based transfer learning produces data-efficient neural-network surrogates for
 nanophotonic absorbers, and a companion study introduced a pilot-set transferability
-diagnostic --- the shape correlation \emph{r} between a cheap and an expensive solver, read with
-their amplitude error --- that anticipates the forward gain. We ask whether it also certifies such a surrogate as the
-forward block of a gradient-based inverse-design loop. We froze a reliability
-protocol, its thresholds and three hypotheses before the main runs, and ran it on
-the published pipeline of that study --- three metal--insulator--metal absorber structures at
-three training seeds each --- calling a rigorous coupled-wave reference solver once per
-committed geometry and counting pretenders: designs the surrogate certifies but the solver
-rejects. All 179 valid committed designs pass the surrogate\textquotesingle s 5 \% check and the
-solver rejects 16 (8.9 \%; 95 \% CI {[}5.6, 14.0{]} nominal, {[}4.0, 14.5{]} cluster-adjusted);
-the binary verdict cannot rank them. The rate depends on the tolerance
-demanded: at 2.5 \% 53 of the 171 designs still certified are pretenders (31 \%), at 7.5 \% 6 of 179. Three controls show that none of the three tested factors is individually necessary: a surrogate trained from scratch still produces pretenders (6 \ensuremath{\rightarrow} 4 at the
-pre-specified seed, 16 \ensuremath{\rightarrow} 17 over three seeds), confining the optimizer to the
-generator-feasible region reduces but does not remove them (6 \ensuremath{\rightarrow} 3; 16 \ensuremath{\rightarrow} 5), and
-budget-matched random search produces them too; what every control retains is committing
-to the argmin of a surrogate that is imperfect where it is most optimistic. A fourth structure audited out of
-sample gives 4 of 50, inside the band recorded for it. The identical protocol on the
-release this pipeline superseded gives 95 of 179 (53.1 \%), so such reliability claims
-belong to a release, not to a method.
+diagnostic, the shape correlation \emph{r} between a cheap and an expensive solver read together
+with their amplitude error, that anticipates the forward gain. We ask whether it also
+certifies such a surrogate as the forward block of a gradient-based inverse-design loop. We
+froze a reliability protocol, its thresholds and three hypotheses before the main runs, and
+ran it on the published pipeline of that study: three metal--insulator--metal absorber
+structures at three training seeds each, with a rigorous coupled-wave reference solver
+called once per committed geometry to count pretenders, the designs the surrogate certifies
+but the solver rejects. All 179 valid committed designs pass the surrogate\textquotesingle s 5 \% check and
+the solver rejects 16 (8.9 \%; 95 \% CI {[}5.6, 14.0{]} nominal, {[}4.0, 14.5{]} cluster-adjusted);
+the binary verdict cannot rank them. The rate depends on the tolerance demanded: at 2.5 \%
+53 of the 171 designs still certified are pretenders (31 \%), at 7.5 \% 6 of 179. Three
+controls show that none of the three tested factors is individually necessary. A surrogate
+trained from scratch still produces pretenders (6 \ensuremath{\rightarrow} 4 at the pre-specified seed, 16 \ensuremath{\rightarrow} 17
+over three seeds), confining the optimizer to the generator-feasible region reduces but
+does not remove them (6 \ensuremath{\rightarrow} 3; 16 \ensuremath{\rightarrow} 5), and budget-matched random search produces them too.
+What every control retains is committing to the argmin of a surrogate that is imperfect
+where it is most optimistic. A fourth structure audited out of sample gives 4 of 50, inside
+the band recorded for it.
+The identical protocol on the release this pipeline superseded gives 95 of 179 (53.1 \%).
+Such reliability claims therefore attach to a release rather than to a method.
 
 \end{abstract}
 
