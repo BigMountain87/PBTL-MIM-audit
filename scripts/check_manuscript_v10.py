@@ -218,7 +218,8 @@ def main(mpath, results, skip_end):
         c_ = gd["committed"]; b_ = gd["companion_B_dataset"]
         want("W8 re-solved designs", f"Re-solving {c_['n_designs']} committed designs", "grid_delta_summary_v11.committed.n_designs")
         want("W8 within 2 pp", f"every design within 2 pp of τ ({c_['within_2pp_of_tau']['n']})", "grid_delta_summary_v11.committed.within_2pp_of_tau.n")
-        want("W8 wavelength coverage", f"{c_['n_full_spectrum']} at all 100 wavelengths and {c_['n_subsampled']} on", "grid_delta_summary_v11.committed.n_full_spectrum/n_subsampled")
+        want("W8 wavelength coverage", "; all at 100 wavelengths" if c_["n_subsampled"] == 0 else f"{c_['n_full_spectrum']} at all 100 wavelengths and {c_['n_subsampled']} on",
+             "grid_delta_summary_v11.committed.n_full_spectrum/n_subsampled")
         want("W8 mean dA range", f"mean |ΔA| {c_['mean_abs_dA_pp']['min']:.2f}–{c_['mean_abs_dA_pp']['max']:.2f} pp per design", "grid_delta_summary_v11.committed.mean_abs_dA_pp")
         want("W8 worst wavelength", f"single wavelength {c_['worst_single_wavelength_pp']:.1f} pp, against", "grid_delta_summary_v11.committed.worst_single_wavelength_pp")
         assert c_["n_flips"] == 0, "W8 says no verdict changed; the summary disagrees"
