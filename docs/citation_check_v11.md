@@ -63,3 +63,8 @@ All 21 `[CHECK]` tags removed; the §4.6 mapping paragraph carries AUTHOR-SIGNOF
 
 - [59] Fannjiang, Bates, Angelopoulos, Listgarten, Jordan, "Conformal prediction under feedback covariate shift for biomolecular design," PNAS 119(43) e2204569119 (2022), doi:10.1073/pnas.2204569119. Verified via the arXiv API (2202.03613v5: title, five authors, journal_ref and DOI as above). Cited in §4.4 beside the conformal-wrapper remark: the paper corrects conformal intervals for the covariate shift that a design procedure itself induces, the shift this audit measures downstream.
 - [60] Kandasamy, Dasarathy, Schneider, Póczos, "Multi-fidelity Bayesian optimisation with continuous approximations," ICML 2017, PMLR 70. Verified via the arXiv API (1703.06240: title, four authors, 2017-03-18); venue from the PMLR volume for ICML 2017. Cited in §1.3 to separate sequential fidelity selection from static multi-fidelity prediction.
+
+## Addendum 2026-09-20 — [23] subtitle restored, [27] year corrected
+
+- [23] Meng & Karniadakis: full title includes the subtitle "Application to function approximation and inverse PDE problems" (Crossref, doi:10.1016/j.jcp.2019.109020).
+- [27] Kim et al., offline MBO review: the TMLR version is dated 01/2026; the earlier TMLR 2025 entry (and the 2025 verdict above) was the arXiv year. Cited now as TMLR (2026) with arXiv:2503.17286 (2025).

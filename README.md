@@ -1,6 +1,6 @@
 # Reliability of Physics-Transferred Neural Surrogates in Gradient-Based Inverse Metasurface Design
 
-**A pre-specified reference-solver audit.** Code, frozen protocol, per-run artifacts and the evidence
+**A reference-solver audit under a protocol fixed before the main runs.** Code, frozen protocol, per-run artifacts and the evidence
 files behind every number in the paper. Preprint: arXiv (v1, September 2026; identifier to follow) — [PDF in this repository](paper/preprint/main.pdf).
 Archive: Zenodo deposit in preparation. Companion (the audited pipeline): [PBTL-MIM](https://github.com/BigMountain87/PBTL-MIM),
 Choi, Kim & Kang, *Photonics Nanostruct. Fundam. Appl.* 72(B) 101617 (2026).
@@ -76,4 +76,4 @@ companion paper keep the licence of [PBTL-MIM](https://github.com/BigMountain87/
 ## Citation
 
 Choi S.-B., Choi J.-M., Kim J., Kang C.-M. *Reliability of physics-transferred neural surrogates in
-gradient-based inverse metasurface design: a pre-specified reference-solver audit.* arXiv preprint (2026).
+gradient-based inverse metasurface design: a reference-solver audit.* arXiv preprint (2026).

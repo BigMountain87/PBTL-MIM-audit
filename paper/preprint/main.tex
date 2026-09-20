@@ -102,7 +102,7 @@
 
 \begin{center}
 
-{\LARGE\bfseries Reliability of Physics-Transferred Neural Surrogates in Gradient-Based Inverse Metasurface Design: A Pre-Specified Reference-Solver Audit\par}
+{\LARGE\bfseries Reliability of Physics-Transferred Neural Surrogates in Gradient-Based Inverse Metasurface Design: A Reference-Solver Audit\par}
 
 \vspace{1.2em}
 
@@ -130,8 +130,9 @@
 Physics-based transfer learning produces data-efficient neural-network surrogates for
 nanophotonic absorbers, and a companion study introduced a pilot-set transferability
 diagnostic, the shape correlation \emph{r} between a cheap and an expensive solver read together
-with their amplitude error, that anticipates the forward gain. We ask whether it also
-certifies such a surrogate as the forward block of a gradient-based inverse-design loop. We
+with their amplitude error, that anticipates the forward gain. We ask how well it, and the
+held-out forward error, predict whether such a surrogate can serve as the forward block of a
+gradient-based inverse-design loop. We
 froze a reliability protocol, its thresholds and three hypotheses before the main runs, and
 ran it on the published pipeline of that study: three metal--insulator--metal absorber
 structures at three training seeds each, with a rigorous coupled-wave reference solver
@@ -145,10 +146,10 @@ trained from scratch still produces pretenders (6 \ensuremath{\rightarrow} 4 at 
 over three seeds), confining the optimizer to the generator-feasible region reduces but
 does not remove them (6 \ensuremath{\rightarrow} 3; 16 \ensuremath{\rightarrow} 5), and budget-matched random search produces them too.
 What every control retains is committing to the argmin of a surrogate that is imperfect
-where it is most optimistic. A fourth structure audited out of sample gives 4 of 50, inside
-the band recorded for it.
+where it is most optimistic. A fourth structure audited out of sample gives 4 of 50, inside its
+recorded band.
 The identical protocol on the release this pipeline superseded gives 95 of 179 (53.1 \%).
-Such reliability claims therefore attach to a release rather than to a method.
+Such reliability claims attach to a release rather than a method.
 
 \end{abstract}
 
@@ -179,28 +180,28 @@ Transfer between physical scenarios \cite{qu20198}, design tasks \cite{peng20249
 \cite{zhu202510,kim202511} has precedent in this field, as does negative transfer \cite{zhang202312}, which is
 why such a diagnostic exists at all.
 
-The question this paper asks is the general one: does a forward transferability
-diagnostic certify a surrogate for \emph{inverse} use? We treat it as falsifiable,
+The question this paper asks is the general one: how well does a forward transferability
+diagnostic predict a surrogate\textquotesingle s \emph{inverse} reliability? We treat it as falsifiable,
 fix the protocol, its thresholds and three ordered hypotheses (H1a--c, \S{}1.4)
 before the main runs, and run three structures spanning the diagnostic\textquotesingle s
 range through one codebase at three training seeds each.
 
 \subsection{Forward \ensuremath{\rightarrow} inverse risk asymmetry}\label{sec:1.2}
 
-Forward surrogate prediction is a local interpolation problem: a small
+Held-out forward evaluation estimates an average error on its test distribution: a small
 surrogate error contributes additively to the average MAE. Inverse
 optimization is categorically different. The optimizer
 \(x^{*} = \arg\min_x \mathcal{L}\!\left(f_{NN}(x),\, y_{\text{target}}\right)\)
 \emph{actively searches} for geometries that minimize the surrogate-reported loss,
-so wherever the surrogate\textquotesingle s error landscape contains a basin shallower than
-the true loss basin, the optimizer preferentially steps into it. A 3 \% forward
+so wherever the surrogate underestimates the true target-matching loss, the
+optimizer preferentially steps into that region. A 3 \% forward
 MAE thus becomes, in the inverse direction, an \emph{exploitation target} rather
 than an additive noise floor. This is the same pathology that the offline
 model-based-optimization literature calls oracle gaming or surrogate
 exploitation \cite{kumar202013,trabucco202114,trabucco202215,fannjiang202016}: optimizing against a fixed learned objective drives the
 solution into regions where the objective is over-optimistic. Forward metrics
-(MAE, R\textsuperscript{2}, spectrum match) are therefore necessary but not sufficient indicators
-of inverse usability, and an optimizer-aware, oracle-in-the-loop reliability
+(MAE, R\textsuperscript{2}, spectrum match) therefore do not by themselves establish inverse
+reliability, and an optimizer-aware, oracle-in-the-loop reliability
 framework is required.
 
 \subsection{Related work}\label{sec:1.3}
@@ -320,7 +321,7 @@ guarantee, leaving the protocol as the contribution.
   \textbf{Three controls that rule out the usual suspects as necessary causes} (Sections 3.6,
   3.8 and Table 9): pretenders persist without transferred weights, without the gradient
   loop and without geometric infeasibility. The step every control keeps is committing
-  to the argmin of a surrogate that is imperfect where it is most optimistic.
+  to the argmin of a surrogate that is underestimates its own error at the geometry it selects.
 \item
   \textbf{A release-dependence result} (Section 3.10): the identical protocol on the release
   this pipeline superseded gives 53.1 \% against 8.9 \%, so a reliability claim of this kind
@@ -1071,7 +1072,7 @@ Gradient, single start & 4/19 (15 confirmed) & 4/19 (15 confirmed) & 4/15 (11 co
 
 (pretenders over surrogate-claimed designs, so the denominator is the number of
 designs each rule certified; Figure 6; full table with both denominators, mean oracle MAEs, and
-Fisher tests in Supplementary Section S2). \textbf{Every rule manufactures pretenders}, so
+Fisher tests in Supplementary Section S2). \textbf{Every rule produces pretenders}, so
 the gradient loop is \textbf{not necessary} for the phenomenon, in the same sense Section 3.8
 uses for transferred weights and geometric infeasibility: removing it does not remove
 pretenders, but this comparison does not isolate the gradient loop\textquotesingle s own contribution,
@@ -1084,8 +1085,7 @@ restart selection pressure being what \emph{creates} pretenders, but --- as with
 controls --- it does not by itself identify what does. What the pub-arm
 counts no longer support is the stronger claim that a weaker optimizer is \emph{reliably}
 worse: on C random search both certified fewer designs (16 of 20) and had the single
-lowest pretender count. Selecting the argmin of an imperfect learned objective is
-enough, on its own, to produce pretenders under every one of the three rules tested ---
+lowest pretender count. Pretenders occurred under all three commitment rules tested, which is
 consistent with the surrogate-gaming pathology of offline
 model-based optimization \cite{kumar202013,trabucco202114,trabucco202215,fannjiang202016}, here on a physical inverse-design testbed --- but,
 as in Section 3.8, this does not establish it as the sole or necessary cause, and this
@@ -1132,7 +1132,7 @@ fixed after the main-arm rates were known and before any control output existed.
 \begin{figure}[htbp]
 \centering
 \includegraphics{figures/fig7_mechanism.pdf}
-\caption{Pretenders per surrogate-claimed design at training seed 42 under three rules for choosing which geometry to commit: random search over 6400 uniform draws from the design box --- \emph{budget-matched}, i.e. given the same number of surrogate evaluations as the gradient loop\textquotesingle s 8 restarts \ensuremath{\times} 800 iterations --- gradient descent with the best of 8 restarts, and gradient descent from the single mid-box start. Wilson 95 \% intervals; k/n labels give pretenders over surrogate-claimed designs, so the denominators differ between rules (C random search: 1/16). Committing to the surrogate argmin suffices to produce pretenders under every rule, without isolating which of the three commitment mechanisms, if any, is the larger contributor; no pairwise difference between the rules is significant at these counts.}
+\caption{Pretenders per surrogate-claimed design at training seed 42 under three rules for choosing which geometry to commit: random search over 6400 uniform draws from the design box --- \emph{budget-matched}, i.e. given the same number of surrogate evaluations as the gradient loop\textquotesingle s 8 restarts \ensuremath{\times} 800 iterations --- gradient descent with the best of 8 restarts, and gradient descent from the single mid-box start. Wilson 95 \% intervals; k/n labels give pretenders over surrogate-claimed designs, so the denominators differ between rules (C random search: 1/16). Pretenders occurred under all three commitment rules under every rule, without isolating which of the three commitment mechanisms, if any, is the larger contributor; no pairwise difference between the rules is significant at these counts.}
 \label{fig:6}
 \end{figure}
 
@@ -1274,7 +1274,7 @@ removed and pretenders remain. They do not show that any of the three contribute
 --- the feasible rerun takes B from 3 pretenders to 1 and the pooled count from 6 to 3 ---
 and they do not isolate a single cause. What the
 three controls share is the one step none of them removes, committing to the argmin of a
-surrogate that is imperfect where it is most optimistic.
+surrogate that is underestimates its own error at the geometry it selects.
 
 \subsection{Realizable targets and recoverability (post hoc)}\label{sec:3.9}
 
@@ -1412,7 +1412,7 @@ committed D geometries violate the generator\textquotesingle s rule (L \ensurema
 pretenders are among them, and none of the 30 feasible designs is a pretender} (Fisher
 \emph{p} = 0.021, post hoc). The \ensuremath{\Delta}-flag fires on 7 of 50 at a threshold of 2.61 \% (k = 2 \ensuremath{\times}
 1.30 \%), the surrogate\textquotesingle s continuous self-report is informative here (\ensuremath{\rho} = +0.51,
-\emph{p} = 0.0002, between A\textquotesingle s and C\textquotesingle s values), and T4 finds the landscape smooth at every
+\emph{p} = 0.0002, between A\textquotesingle s and C\textquotesingle s values), and T4\textquotesingle s finite-scale perturbation threshold is not exceeded at any
 design (0 flags; mean perturbation MAE 0.92 \%, maximum 2.27 \%). The solver ran at N = 17
 on 45 of the 50 designs, a median of 1505 s per design.
 
@@ -1437,8 +1437,8 @@ surrogate interpolate RCWA? The audit answers a
 different one: can the optimizer be trusted to commit to the surrogate\textquotesingle s argmin? The two
 come apart because the inverse loop consumes the surrogate\textquotesingle s \textbf{gradients}, not its average
 error. A surrogate can have excellent forward MAE --- 1.7 to 2.1 \% here --- and still possess
-shallow basins, rejected by the reference solver, that the optimizer is built to find; the forward metric
-never visits those basins, and \emph{r}, a correlation of \emph{spectra} rather than of error
+shallow basins, rejected by the reference solver, that the optimizer is built to find; an average test error
+need not reveal those basins, and \emph{r}, a correlation of \emph{spectra} rather than of error
 landscapes, cannot see them.
 
 What the data license is narrower than a blanket separation, and worth stating precisely.
@@ -1472,7 +1472,7 @@ only in the weak sense that Section 3.3 establishes at 16 events.
 
 \subsection{The pretender phenomenon and offline model-based optimization}\label{sec:4.3}
 
-That random search manufactures pretenders as readily as gradient descent
+That random search produces pretenders as readily as gradient descent
 (Section 3.6) places this work squarely beside the offline MBO / surrogate-
 gaming literature \cite{kumar202013,trabucco202114,trabucco202215,fannjiang202016}: optimizing against a fixed learned objective,
 however obtained, drifts into regions where the objective is over-optimistic.
@@ -1507,7 +1507,7 @@ does not certify external accuracy. On Structure C, however, the surrogate\textq
 own continuous error and the ensemble quantities do rank the pretenders (Section 3.7),
 and even there the pass/fail verdict admits every one of them. Two uses of a simulation budget must then be
 separated (Section 1.3): (i) \emph{surrogate-improving} calls, which retrain or adapt the model
-where the optimizer is searching \cite{pestourie202032,jiang201933}, and (ii) \emph{certification-only} calls, which leave the model
+where the search is heading, by active acquisition \cite{pestourie202032} or by solver gradients that train a generator \cite{jiang201933}, and (ii) \emph{certification-only} calls, which leave the model
 untouched and merely test the committed answer --- this paper\textquotesingle s protocol, which differs
 from the iterative model management of \cite{alexandrov199817,booker199918} in consulting the expensive model once,
 at the end. This audit
@@ -1610,11 +1610,11 @@ Failure-mode treatment
 Liu et al. 2018 {[}52{]} & NN inverse design, single-fidelity & tandem architecture \\
 Peurifoy et al. 2018 {[}53{]} & NN inverse design, single-fidelity & forward + back-prop inverse \\
 Unni et al. 2020 {[}40{]} & mixture-density inverse design & multi-modal handling \\
-Jiang \& Fan 2020 {[}54{]} & simulator/adjoint-in-the-loop generative & always-on simulator validator \\
+Jiang \& Fan 2020 {[}54{]} & simulator/adjoint-in-the-loop generative & simulator and adjoint evaluations inside training \\
 Cheng et al. 2024 {[}55{]} & TL \ensuremath{\times} MDN inverse, same fidelity & curriculum within one solver \\
 Ren et al. 2020 {[}56{]} & neural-adjoint inverse benchmark & boundary loss keeps the search inside the training domain; top-\emph{k} candidates re-simulated \\
 Jiang \& Fan 2019 {[}33{]} & simulator-in-the-loop generative design & solver inside the training objective \\
-Ovadia et al. 2019 {[}50{]}; Abdar et al. 2021 {[}51{]} & UQ under dataset shift & calibrated predictive uncertainty as the guard \\
+Ovadia et al. 2019 {[}50{]}; Abdar et al. 2021 {[}51{]} & UQ under dataset shift & predictive uncertainty and its limits under dataset shift \\
 Setinek et al. 2025 {[}58{]} & neural-surrogate benchmark under distribution shift, \textbf{forward} prediction (four industrial simulation tasks) & shift fixed by the benchmark\textquotesingle s train/test split; unsupervised domain adaptation as the remedy \\
 Kumar \& Levine 2020 {[}13{]} & offline model-based optimization & direct model inversion (objective value to design) \\
 Trabucco et al. 2021 {[}14{]} & offline model-based optimization & conservative objective models \\
@@ -1647,8 +1647,7 @@ Two mappings between that row set and our taxonomy are worth stating. The neural
 \emph{boundary loss} \cite{ren202056} penalises candidates that leave the training-domain box; our \textbf{T2}
 box-edge flag marks a committed geometry within 0.05 of a box face, which is a weaker,
 interior condition --- a design at u = 0.02 trips T2 and incurs no boundary penalty --- so T2
-is a diagnostic neighbour of that regulariser, not its equivalent, and the 9--18 T2-flagged
-designs per run are an upper bound on what the penalty would have acted on. And re-simulating the
+is a diagnostic neighbour of that regulariser, not its equivalent. And re-simulating the
 top-\emph{k} neural-adjoint candidates and our \textbf{\ensuremath{\Delta} audit} share one operation, a
 reference-solver evaluation of a surrogate-chosen design, in different roles: there the
 solver picks the winner among \emph{k}, here it audits the single winner the surrogate already
@@ -1759,8 +1758,8 @@ picked, which is what makes the cost exactly one solver call per design.
 
 \section{Conclusion}\label{sec:5}
 
-We pre-specified a reliability accounting protocol and used it to ask whether a forward
-transferability diagnostic certifies the inverse usability of a physics-transferred neural
+We pre-specified a reliability accounting protocol and used it to ask how well a forward
+transferability diagnostic predicts the inverse reliability of a physics-transferred neural
 surrogate. Run on the published pipeline of \cite{choi20261} --- three MIM structures spanning the
 diagnostic\textquotesingle s range, three training seeds each, the reference solver called at every valid
 committed geometry --- the answer is that the surrogate\textquotesingle s own \textbf{pass/fail check screened out none of the
@@ -1775,7 +1774,7 @@ the optimizer to the generator-feasible region reduces the count without removin
 budget-matched random search produces them as well, at counts the study cannot rank against
 gradient descent: none of the three isolates
 a single cause, and what every one of them keeps is committing to the argmin of a surrogate
-that is imperfect precisely where it is most optimistic. Running the identical protocol on
+that is underestimates its own error at the geometry it selects. Running the identical protocol on
 the release this pipeline superseded gives 95 of 179 (53.1 \%) --- the same structures,
 thresholds and target-selection rule, a sixfold difference --- so a reliability claim of this
 kind describes a release rather than a method, and the release worth auditing is the one
@@ -1921,7 +1920,7 @@ M. C. Kennedy, A. O\textquotesingle Hagan, "Predicting the output from a complex
 B. Peherstorfer, K. Willcox, M. Gunzburger, "Survey of multifidelity methods in uncertainty propagation, inference, and optimization," \emph{SIAM Rev.} \textbf{60}, 550--591 (2018). doi:10.1137/16M1082469
 
 \bibitem{meng202023}
-X. Meng, G. E. Karniadakis, "A composite neural network that learns from multi-fidelity data," \emph{J. Comput. Phys.} \textbf{401}, 109020 (2020). doi:10.1016/j.jcp.2019.109020
+X. Meng, G. E. Karniadakis, "A composite neural network that learns from multi-fidelity data: application to function approximation and inverse PDE problems," \emph{J. Comput. Phys.} \textbf{401}, 109020 (2020). doi:10.1016/j.jcp.2019.109020
 
 \bibitem{brookes201924}
 D. H. Brookes, H. Park, J. Listgarten, "Conditioning by adaptive sampling for robust design," \emph{ICML}, PMLR \textbf{97} (2019). arXiv:1901.10060
@@ -1933,7 +1932,7 @@ A. Tripp, E. Daxberger, J. M. Hern\'andez-Lobato, "Sample-efficient optimization
 S. Yu, S. Ahn, L. Song, J. Shin, "RoMA: robust model adaptation for offline model-based optimization," \emph{NeurIPS} \textbf{34} (2021). arXiv:2110.14188
 
 \bibitem{kim202527}
-M. Kim, J. Gu, Y. Yuan, T. Yun et al., "Offline model-based optimization: comprehensive review," \emph{Trans. Mach. Learn. Res.} (2025). arXiv:2503.17286
+M. Kim, J. Gu, Y. Yuan, T. Yun et al., "Offline model-based optimization: comprehensive review," \emph{Trans. Mach. Learn. Res.} (2026); arXiv:2503.17286 (2025).
 
 \bibitem{manheim201828}
 D. Manheim, S. Garrabrant, "Categorizing variants of Goodhart\textquotesingle s law" (2018). arXiv:1803.04585

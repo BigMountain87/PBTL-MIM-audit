@@ -119,6 +119,7 @@ pub arm 결과(16/179, 순서·진단자 역전)에 맞춰 본문을 v11로 재�
 | T95 | **done** | 2026-09-20 | (this commit) | (공개본에서 생략) | v11 · (내부 메모는 공개본에서 생략) |
 | T94 | **done** | 2026-09-19 | (this commit) | (공개본에서 생략) | v11 · (내부 메모는 공개본에서 생략) |
 | T98 | **done** | 2026-09-20 | (this commit) | (공개본에서 생략) | v11 · (내부 메모는 공개본에서 생략) |
+| T99 | **done** | 2026-09-20 | (this commit) | 체커 PASS(초록 299어), 프리프린트 48쪽·저널 빌드 PASS | v11 · **제목 변경(저자 지시)**: 「A Pre-Specified Reference-Solver Audit」→「A Reference-Solver Audit」(원고·커버레터·README 초안; arXiv 메타데이터는 원고에서 파생). **문체·논증·참고문헌 재점검 노트 반영**(`docs/followups/style_content_references_20260920.md`): 연구 질문을 「certify하는가」→「얼마나 예측하는가」로(초록·§1.1·§5); §1.2 「local interpolation」→「held-out 평균 오차」, 「shallower basin」→「손실 과소추정」, 「necessary but not sufficient」→「단독으로는 확립 못 함」; §4.1 「never visits」→「need not reveal」; §3.6·Fig 6 캡션의 argmin 충분원인 문장을 「세 규칙 모두에서 발생, exploitation과 일치」로; §3.12 T4 유한 스케일 표현; 의인화(manufactures→produces, 「imperfect where most optimistic」 3곳→「자기 오차 과소추정」); [56] 「9–18 T2 상한」 문장 삭제; Table 12의 [50,51]·[54] 행 정정; §4.4 [32]/[33] 분리 서술; [23] 부제 복원·[27] TMLR 2026(refs.bib·citation_check addendum). 미처리: 인용 첫 등장 순서 재번호, 서지 서식 통일, 반복·단위 정리 → 저널본 |
 
 ## 기록 규칙
 
