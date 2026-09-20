@@ -137,10 +137,10 @@ ran it on the published pipeline of that study: three metal--insulator--metal ab
 structures at three training seeds each, with a rigorous coupled-wave reference solver
 called once per committed geometry to count pretenders, the designs the surrogate certifies
 but the solver rejects. All 179 valid committed designs pass the surrogate\textquotesingle s 5 \% check and
-the solver rejects 16 (8.9 \%; 95 \% CI {[}5.6, 14.0{]} nominal, {[}4.0, 14.5{]} cluster-adjusted);
-the binary verdict cannot rank them. The rate depends on the tolerance demanded: at 2.5 \%
-53 of the 171 designs still certified are pretenders (31 \%), at 7.5 \% 6 of 179. Three
-controls show that none of the three tested factors is individually necessary. A surrogate
+the solver rejects 16 (8.9 \%; 95 \% CI {[}4.0, 14.5{]} target-clustered, {[}5.6, 14.0{]} nominal;
+one further solve failed), so the pass verdict screened none of them out. At 2.5 \% tolerance
+53 of the 171 designs still certified are pretenders (31 \%), at 7.5 \% 6 of 179. None of
+three tested factors is individually necessary. A surrogate
 trained from scratch still produces pretenders (6 \ensuremath{\rightarrow} 4 at the pre-specified seed, 16 \ensuremath{\rightarrow} 17
 over three seeds), confining the optimizer to the generator-feasible region reduces but
 does not remove them (6 \ensuremath{\rightarrow} 3; 16 \ensuremath{\rightarrow} 5), and budget-matched random search produces them too.
@@ -256,8 +256,8 @@ solver into the training objective of a design-generating network \cite{jiang201
 the model not at all; this is the protocol of this paper, and it differs from the
 iterative model management of \cite{alexandrov199817,booker199918} in consulting the expensive model once, at the
 end. In our judgement the first is the better long-run investment and the second is what
-a practitioner who has already trained a surrogate can do today; its cost is one call per
-design by construction of the protocol. This paper measures how much that single call
+a practitioner who has already trained a surrogate can do today; its cost is one full-spectrum solve per
+design by construction of the protocol (103--4595 s here, Section 3.5). This paper measures how much that single call
 buys.
 
 Finally, the reliability of the claim itself. Pre-registration separates confirmatory from
@@ -272,7 +272,7 @@ the artifact behind every number.
 
 \subsection{Hypotheses and pre-specification}\label{sec:1.4}
 
-The protocol (reproduced verbatim in Supplementary S4) was frozen on 2026-06-10, before the seed-42 runs. It states the
+The protocol (reproduced in Supplementary S4 as preserved, with the two items added after the freeze marked there) was frozen on 2026-06-10, before the seed-42 runs. It states the
 research question, the metric hierarchy, the taxonomy, every threshold, the
 target count, the seeds, and the statistical analysis plan. Three pre-specified
 orderings test whether downstream reliability degrades as \emph{r} falls, across the
@@ -312,7 +312,7 @@ guarantee, leaving the protocol as the contribution.
 \item
   \textbf{A non-certification result for the threshold check} (Sections 3.2--3.4): every valid
   committed geometry passes the surrogate\textquotesingle s own 5 \% check, and the solver rejects 16 of
-  179 --- so on these designs the pass/fail verdict carries no information, while the
+  179 --- so on these designs the pass/fail verdict screened out no solver failure, while the
   \emph{continuous} self-report can still discriminate on some structures (Section 3.7). How
   many designs the solver rejects depends on the tolerance demanded: 8.9 \% at \ensuremath{\tau} = 5 \%,
   31 \% at \ensuremath{\tau} = 2.5 \%.
@@ -500,7 +500,7 @@ surrogate-claimed but not oracle-confirmed. \ensuremath{\Delta} is the reference
 surrogate MAE at the committed geometry, and a design is \emph{\ensuremath{\Delta}-flagged} when \ensuremath{\Delta} exceeds
 k times the surrogate\textquotesingle s forward test error. \ensuremath{\rho}(RCWA MAE, Surr MAE) is the Spearman
 correlation of the two errors across the N targets of one run. The \emph{committed
-geometry} g(u\emph{) is the restart the pipeline commits. }Preliminary r* and \emph{published
+geometry} \(g(u^*)\) is the geometry selected by the commitment rule. \emph{Preliminary r} and \emph{published
 r} denote the two transferability conventions of Section 2.1.
 
 \subsection{Fake-optimum taxonomy}\label{sec:2.4}
@@ -546,7 +546,7 @@ The pre-specified analysis plan:
   \textbf{Primary discrimination statistic: \ensuremath{\rho}(RCWA MAE, Surr MAE)} (Spearman,
   asymptotic p from SciPy \cite{al202043}, Bonett--Wright Fisher-z 95 \% CI \cite{bonett200044}; no exact or
   permutation inference is claimed). This is the clean "does surrogate
-  confidence track oracle truth" quantity that H1c tests.
+  confidence track the reference solver" quantity that H1c tests.
 \item
   \ensuremath{\rho}(\ensuremath{\Delta}, Surr MAE) is reported \textbf{only as secondary with a coupling caveat}: \ensuremath{\Delta}
   contains \ensuremath{-}Surr by construction, so its negative bias is partly tautological.
@@ -641,7 +641,7 @@ the record cannot show that the extension was written down before those runs, an
 extension is classified as such in Table 5 rather than as pre-specified. What does \textbf{not}
 exist is a contemporaneous public timestamp: the
 protocol was not committed to version control or deposited anywhere before execution. The
-surviving protocol is reproduced verbatim in Supplementary S4; the repository commit
+surviving protocol is reproduced in Supplementary S4 as preserved, with its two post-freeze additions marked; the repository commit
 that contains it post-dates the runs. Readers should weigh the pre-specification accordingly: the
 freeze is documented internally and the analysis plan visibly constrains what we report, but
 it is not third-party verifiable for this paper.
@@ -771,7 +771,7 @@ solver selected in Section 3.5.
 \subsection{\texorpdfstring{Forward fine-tune fidelity against the published tables of \cite{choi20261}}{Forward fine-tune fidelity against the published tables of }}\label{sec:3.1}
 
 The fine-tuned surrogates reproduce the forward performance that \cite{choi20261} prints,
-confirming faithful loading: test MAE (all output channels; C = mean of TE/TM) is
+confirming faithful loading: test absorptance MAE (A for Structures A/B; the mean of A\_TE and A\_TM for C) is
 \textbf{B 1.72 \%, A 1.76 \%, C 2.11 \%} at seed 42, against the printed ten-seed values of
 1.65 \ensuremath{\pm} 0.04, 1.79 \ensuremath{\pm} 0.04 and 2.05 \ensuremath{\pm} 0.09 \% (\textbar z\textbar{} \ensuremath{\leq} 1.7 on every structure;
 \texttt{pub\_\allowbreak{}gate\_\allowbreak{}table123.\allowbreak{}json}). The pilot value of 5.17 \% arose from
@@ -815,7 +815,7 @@ Distinct modes (of 20) & 16 & 20 & 17 \\
 The two success rows carry the result: \textbf{every one of the 20 committed designs
 passes the surrogate\textquotesingle s own success check on all three structures, and the reference
 solver still rejects 1 to 3 of them per structure.} The threshold test is the part
-that carries no information: an optimizer that drives the surrogate\textquotesingle s own error to
+that screens nothing out here: an optimizer that drives the surrogate\textquotesingle s own error to
 0.06--4.6 \% leaves every design below \ensuremath{\tau}, so the verdict cannot separate the 54 the solver
 confirms from the 6 it rejects. That is an observed property of this optimizer on these
 targets, not a theorem --- a weaker surrogate or a harder target set could fail its own
@@ -907,7 +907,7 @@ inverse reliability; on the as-submitted release neither did (Supplementary Sect
 
 \subsection{Multi-seed robustness}\label{sec:3.4}
 
-Pooling the three seeds (42 / 123 / 777) removes the single-seed-luck objection:
+Pooling the three seeds (42 / 123 / 777) tests whether the seed-42 result is specific to that seed:
 
 \begin{table}[htbp]
 \centering
@@ -1145,15 +1145,16 @@ No cheap, oracle-free diagnostic flags the pretenders on every structure:
 \item
   \textbf{T4 surrogate-local smoothness} (measured, K = 100): \textbf{0/179 flags}; the mean
   perturbation MAE averages 0.79--1.12 \% per run and never exceeds 2.97 \%. The
-  surrogate\textquotesingle s loss landscape at the committed geometry is smooth --- the failure is
-  not local roughness.
+  pre-specified finite-scale perturbation threshold is therefore not exceeded at any
+  committed geometry; this does not rule out roughness at other scales or directions.
 \item
   \textbf{Multi-start dispersion} (Tier 1C): the spread of the eight restarts\textquotesingle{} final losses
   is small (standard deviation 5 \ensuremath{\times} 10\textsuperscript{\ensuremath{-}}\textsuperscript{4} to 2.4 \ensuremath{\times} 10\textsuperscript{\ensuremath{-}}\textsuperscript{3} in MSE units per run, against
   committed losses of order 10\textsuperscript{\ensuremath{-}}\textsuperscript{4}--10\textsuperscript{\ensuremath{-}}\textsuperscript{3}) while the \emph{endpoint geometric} spread is large
   (1.36--1.88 in u-space) --- distinct basins with comparably low claimed loss, itself
   uninformative about which basin is real. The loss-tail RSD of the committed run
-  (0.002--0.012) shows each run had also stopped moving.
+  (0.002--0.012) indicates stable terminal loss traces; it does not establish that the
+  geometry or gradient had stopped changing.
 \item
   \textbf{T2 box-edge} flags remain abundant (9--18/20 per run) but the association with
   pretender status that the as-submitted release showed \textbf{does not reproduce here}:
@@ -1174,7 +1175,7 @@ pretenders from oracle-confirmed designs (0.5 = chance):
 \begin{table}[htbp]
 \centering
 \setlength{\tabcolsep}{3pt}\scriptsize
-\caption{Discrimination of the oracle-free diagnostics (area under the ROC curve for separating pretenders from oracle-confirmed designs; the pooled value is the per-run AUROC averaged over the three seeds with weights n\_pretender \ensuremath{\times} n\_confirmed, so that seeds are never compared across runs, and the interval is a 2000-draw cluster bootstrap over targets in which a target\textquotesingle s three seeds are resampled together; 36 cells are screened, so an interval excluding 0.5 is a selection, not a pointwise confirmation; 0.5 = chance; \texttt{detector\_\allowbreak{}bench\_\allowbreak{}v8.\allowbreak{}json}).}
+\caption{Discrimination of the oracle-free diagnostics (area under the ROC curve for separating pretenders from oracle-confirmed designs; the pooled value is the per-run AUROC averaged over the three seeds with weights n\_pretender \ensuremath{\times} n\_confirmed, so that seeds are never compared across runs, and the interval is a 2000-draw cluster bootstrap over targets in which a target\textquotesingle s three seeds are resampled together; draws without a pretender are discarded, so the intervals are conditional on that: on A, with two pretenders, 1716--1779 of the 2000 draws were usable and its intervals are exploratory (C 1744--1780, B 1998--2000); 36 cells are screened, so an interval excluding 0.5 is a selection, not a pointwise confirmation; 0.5 = chance; \texttt{detector\_\allowbreak{}bench\_\allowbreak{}v8.\allowbreak{}json}).}
 \label{tab:10}
 \begin{tabular}{@{}llll@{}}
 \toprule\noalign{}
@@ -1381,8 +1382,9 @@ fidelity, and no truncation setting makes the surrogate\textquotesingle s self-c
 The three structures of the protocol were chosen because the pilot \emph{r} ordered them; a
 fourth structure that did not exist when the protocol was frozen is a cleaner test of
 whether the diagnostic says anything about inverse reliability, because nothing about the
-audit was tuned on it. Structure D is a cross-shaped Cr patch (four-fold symmetric, so
-polarization-independent; six parameters P, L, w, t\_Cr, d\_SiO\textsubscript{2}, \ensuremath{\theta}; 11 physics features),
+audit was tuned on it. Structure D is a cross-shaped Cr patch (four-fold symmetric and
+polarization-independent at normal incidence; six parameters P, L, w, t\_Cr, d\_SiO\textsubscript{2}, \ensuremath{\theta};
+11 physics features). The present audit uses its TE response at oblique incidence. It was
 generated on 2026-07-08 as a contingency structure for the companion\textquotesingle s re-review with the
 same published-pipeline settings as the main arm (400--1800 nm, adaptive order, complex64,
 Johnson--Christy; 494 of 500 samples reliable; dataset \texttt{beb3c107\ldots{}}, regenerated TMM
@@ -1440,7 +1442,7 @@ never visits those basins, and \emph{r}, a correlation of \emph{spectra} rather 
 landscapes, cannot see them.
 
 What the data license is narrower than a blanket separation, and worth stating precisely.
-The \textbf{threshold verdict} transfers nothing: all 179 committed designs pass the surrogate\textquotesingle s
+The \textbf{threshold verdict} screened nothing out: all 179 committed designs pass the surrogate\textquotesingle s
 own 5 \% check and 16 do not survive the solver, so a pass/fail self-report cannot rank
 anything, on any structure, at any \emph{r}. The \textbf{continuous} self-report is a different
 object: on Structure C it correlates with reference-solver error at \ensuremath{\rho} = +0.72 to +0.83 across seeds
@@ -1500,8 +1502,8 @@ practitioner would reach for first --- local smoothness, multi-start agreement,
 box-edge checks --- either fail outright or, like the box-edge flag, carry at most a
 weak and unusable association (CMH OR 2.18, p = 0.25, specificity 0.37), because
 a pretender is precisely a point where the surrogate is \emph{internally}
-self-consistent and confident yet \emph{externally} wrong. Internal consistency
-cannot detect external error; the exception is Structure C, where the surrogate\textquotesingle s
+self-consistent and confident yet \emph{externally} wrong. Internal consistency alone
+does not certify external accuracy. On Structure C, however, the surrogate\textquotesingle s
 own continuous error and the ensemble quantities do rank the pretenders (Section 3.7),
 and even there the pass/fail verdict admits every one of them. Two uses of a simulation budget must then be
 separated (Section 1.3): (i) \emph{surrogate-improving} calls, which retrain or adapt the model
@@ -1509,7 +1511,7 @@ where the optimizer is searching \cite{pestourie202032,jiang201933}, and (ii) \e
 untouched and merely test the committed answer --- this paper\textquotesingle s protocol, which differs
 from the iterative model management of \cite{alexandrov199817,booker199918} in consulting the expensive model once,
 at the end. This audit
-quantifies the second. The safeguard that works is
+quantifies the second. The safeguard this audit supports is
 the direct one: \textbf{put the oracle in the loop at the committed
 geometry.} One reference-solver call per design converts a
 silent-failure rate --- 8.9 \% on this pipeline, 53.1 \% on the as-submitted one --- into a
@@ -1545,7 +1547,9 @@ negative result (W9).
 \item
   \textbf{Freeze the accounting first}: the threshold \ensuremath{\tau}, the gap factor k, the restart
   count R, the target count N and the seeds, written down before the main runs. Here
-  \ensuremath{\tau} = 5 \%, k = 2, R = 8, N = 20, seeds 42/123/777.
+  \ensuremath{\tau} = 5 \%, k = 2, R = 8, N = 20 and the canonical seed is 42. Seeds 123 and 777
+  were extensions whose recording time relative to their runs is not established
+  (Section 2.7).
 \item
   \textbf{Draw the targets from held-out data by one mechanism for every structure.}
   \emph{(2b: enforce the generator\textquotesingle s geometric feasibility constraints where they are known;
@@ -1757,9 +1761,10 @@ We pre-specified a reliability accounting protocol and used it to ask whether a 
 transferability diagnostic certifies the inverse usability of a physics-transferred neural
 surrogate. Run on the published pipeline of \cite{choi20261} --- three MIM structures spanning the
 diagnostic\textquotesingle s range, three training seeds each, the reference solver called at every valid
-committed geometry --- the answer is that the surrogate\textquotesingle s own \textbf{pass/fail check does not
-certify its designs}: all 179 valid committed designs pass it and the solver rejects
-\textbf{16 (8.9 \%, {[}5.6, 14.0{]})}, a count that rises to 31 \% of those still certified if the
+committed geometry --- the answer is that the surrogate\textquotesingle s own \textbf{pass/fail check screened out none of the
+designs the solver rejects}: all 179 valid committed designs pass it and the solver rejects
+\textbf{16 (8.9 \%; {[}4.0, 14.5{]} target-clustered, {[}5.6, 14.0{]} nominal)} --- of 180 committed designs,
+163 confirmed, 16 rejected and 1 unresolved by the solver --- a count that rises to 31 \% of those still certified if the
 tolerance is tightened to 2.5 \%, and a fourth structure adds 4 of 50 to the same pattern.
 
 Three controls show what is not necessary. A surrogate trained from scratch produces
@@ -1809,7 +1814,7 @@ pipeline\textquotesingle s per-wavelength adaptive order (median 1655 s; B 158 s
 at the median), against 16--39 s for the as-submitted release\textquotesingle s fixed order 5. All
 simulation code is vendored at upstream commit \texttt{cb486b5} and the exact
 input hashes are listed in the repository\textquotesingle s manifests (Data availability). The raw data of \cite{choi20261}
-are at \texttt{github.\allowbreak{}com/\allowbreak{}BigMountain87/\allowbreak{}PBTL-\allowbreak{}MIM}; that release ships no checkpoints, so the
+are at \texttt{github.\allowbreak{}com/\allowbreak{}BigMountain87/\allowbreak{}PBTL-\allowbreak{}MIM}; that release, at the audited commit, shipped no checkpoints, so the
 regenerated ones are in this paper\textquotesingle s archive.
 
 \section*{Acknowledgements}
@@ -1831,7 +1836,7 @@ the same release is in preparation. The repository contains the code, the pre-sp
 the per-run artifacts for every structure and training seed, the aggregated evidence
 files behind every number reported here, and the figure scripts. It also contains the
 TMM-pretrained checkpoints the surrogates are fine-tuned from (regenerated for A, B, C
-and D with the recipe of \cite{choi20261}, whose public release ships no checkpoints), the as-submitted
+and D with the recipe of \cite{choi20261}, whose public release at the audited commit shipped no checkpoints), the as-submitted
 arm\textquotesingle s inputs and artifacts, and the Structure-D dataset. The raw datasets of \cite{choi20261} are
 additionally available at \texttt{github.\allowbreak{}com/\allowbreak{}BigMountain87/\allowbreak{}PBTL-\allowbreak{}MIM}.
 
@@ -2032,13 +2037,14 @@ K. Kandasamy, G. Dasarathy, J. Schneider, B. Póczos, "Multi-fidelity Bayesian o
 \clearpage
 \setcounter{table}{0}\setcounter{figure}{0}
 \renewcommand{\thetable}{S\arabic{table}}\renewcommand{\thefigure}{S\arabic{figure}}
+\begin{landscape}
 \section*{Supplementary Information}
 
 \begin{quote}
 Generated by \texttt{src\_\allowbreak{}v8/\allowbreak{}make\_\allowbreak{}table\_\allowbreak{}s1.\allowbreak{}py} from \texttt{results\_pub/} (Sections S3 and S8 from \texttt{results\_v8/}). \ensuremath{\tau} = 5 \%.
 \end{quote}
 
-\begin{landscape}
+
 \section*{S1. Per-run reliability accounting}
 
 \begingroup
@@ -2346,9 +2352,9 @@ in manuscript v4).
 \subsection*{3.5 Oracle revalidation}
 
 Every committed geometry is simulated with full-wave RCWA (torcwa) at the
-dataset-generation settings (64 \ensuremath{\times} 64 grid, Fourier order \cite{wiecha20215,wiecha20215}).
+dataset-generation settings (64 \ensuremath{\times} 64 grid, Fourier order {[}5,5{]}).
 \textbf{Convergence spot check} (pre-specified): the 3 highest-\ensuremath{\Delta} geometries per
-structure are re-simulated at order \cite{khairehwalieh20237,khairehwalieh20237}; the per-structure convergence floor
+structure are re-simulated at order {[}7,7{]}; the per-structure convergence floor
 is reported next to the \ensuremath{\Delta} values it must not be confused with.
 
 \section*{4. Metrics (pre-specified, unchanged thresholds)}

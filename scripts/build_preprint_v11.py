@@ -6,13 +6,13 @@ derives paper/preprint/ from them:
   * a "Preprint" line above the corresponding-author line,
   * the ORCID section removed (journal-only; iDs pending),
   * an assertion that no TODO-AUTHOR / AUTHOR-SIGNOFF text survives into the PDF,
-  * latexmk of both documents, the supplement shipped as an arXiv ancillary file,
-  * arxiv_v1.tar.gz (main.tex + figures/*.pdf + anc/supplementary.pdf), the metadata
+  * latexmk of the merged document, with the supplement appended after the references,
+  * arxiv_v1.tar.gz (main.tex + figures/*.pdf), the metadata
     abstract (arXiv caps it at 1920 characters) and a metadata sheet.
 
     python3 scripts/build_preprint_v11.py [--version 1] [--date 2026-09-19]
 """
-import argparse, datetime, re, shutil, subprocess, sys, tarfile
+import argparse, datetime, os, re, shutil, subprocess, sys, tarfile
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SRC, OUT = ROOT / "paper/mlst", ROOT / "paper/preprint"
@@ -21,6 +21,9 @@ ap.add_argument("--version", type=int, default=1)
 ap.add_argument("--date", default=datetime.date.today().isoformat())
 a = ap.parse_args()
 
+subprocess.run([sys.executable, "scripts/make_fig_schematic_v9.py"], cwd=ROOT,
+               env={**os.environ, "INVERSETL_PROFILE": "pub",
+                    "INVERSETL_FIGURES_DIR": "figures_v11"}, check=True)
 r = subprocess.run([sys.executable, "scripts/md_to_latex_v10.py"], cwd=ROOT, capture_output=True, text=True)
 print(r.stdout.strip()); assert r.returncode == 0, r.stderr
 OUT.mkdir(exist_ok=True); (OUT / "figures").mkdir(exist_ok=True)
@@ -50,9 +53,13 @@ print(f"supplement: {n_s8} S8 captions renamed")
 # section-derived captions ("S6. Per-design table") -> descriptive ("Per-design table")
 body, n_cap = re.subn(r"(\\caption(?:of\{table\})?\{)S\d+(?:\.\d+)?\. ", r"\1", body)
 print(f"supplement: {n_ls} headings moved into landscape, {n_cap} captions cleaned")
+# Keep the supplement title and provenance note with its first landscape table.
+intro, first_landscape = body.split("\\begin{landscape}", 1)
+body = ("\\begin{landscape}\n\\section*{Supplementary Information}\n"
+        + intro + first_landscape)
 app = ("\n\\clearpage\n\\setcounter{table}{0}\\setcounter{figure}{0}\n"
        "\\renewcommand{\\thetable}{S\\arabic{table}}\\renewcommand{\\thefigure}{S\\arabic{figure}}\n"
-       "\\section*{Supplementary Information}\n" + body)
+       + body)
 assert main.count("\\end{document}") == 1
 main = main.replace("\\end{document}", app + "\n\\end{document}")
 (OUT / "main.tex").write_text(main)

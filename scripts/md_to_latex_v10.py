@@ -377,6 +377,14 @@ def main():
     # would overflow every line, so it is typeset, set apart by \small.
     fences = [l for l in s_body.split("\n") if l.startswith("```")]
     assert fences == ["```markdown", "```"], f"unexpected fenced blocks: {fences}"
+    # Protect the frozen protocol from reference-number conversion. Its Fourier
+    # orders [5,5] and [7,7] are numeric arrays, not bibliography citations.
+    protocol_head, protocol_tail = s_body.split("```markdown", 1)
+    protocol, protocol_after = protocol_tail.split("```", 1)
+    # HTML entities decode in prose, but would print literally inside code spans.
+    protocol = "".join(part if i % 2 else re.sub(r"\[([^\]\n]+)\]", r"&#91;\1&#93;", part)
+                       for i, part in enumerate(re.split(r"(`[^`\n]*`)", protocol)))
+    s_body = protocol_head + "```markdown" + protocol + "```" + protocol_after
     s_body = re.sub(r"^```markdown$", lambda m: "\n\\begingroup\\small\n", s_body, flags=re.M)
     s_body = re.sub(r"^```$", lambda m: "\n\\endgroup\n", s_body, flags=re.M)
     s_body = re.sub(r"^# (.*)$", r"### \1", s_body, flags=re.M)      # protocol headings (S4)

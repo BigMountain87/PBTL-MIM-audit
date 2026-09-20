@@ -44,8 +44,8 @@ def label(ax, s):
     ax.text(-0.14, 1.04, s, transform=ax.transAxes, fontweight="bold", fontsize=9)
 
 
-def save(fig, stem):
-    fig.tight_layout()
+def save(fig, stem, rect=None):
+    fig.tight_layout(rect=rect)
     fig.savefig(OUT / f"{stem}.pdf", metadata=PDFMETA)
     fig.savefig(OUT / f"{stem}.png", dpi=DPI)
     plt.close(fig)
@@ -212,16 +212,19 @@ for k, (ax, s) in enumerate(zip(axes, STRUCTS)):
     in_band = int(((u < 0.05) | (u > 0.95)).any(axis=1).sum())
     assert in_band == d["taxonomy"]["t2"], (s, in_band, d["taxonomy"]["t2"])
     numbers["figS1_t2"][s] = dict(in_band=in_band, n=int(len(u)), pretenders=int(pret.sum()), infeasible=int(infeas[valid].sum()))
-    ax.set_xticks(range(len(names))); ax.set_xticklabels(names, rotation=60)
+    ax.set_xticks(range(len(names)))
+    ax.set_xticklabels(names, rotation=90, ha="center", fontsize=6)
     ax.set_ylim(-0.03, 1.03)
-    ax.text(0.02, 0.5, f"Structure {s}\nT2 {in_band}/{len(u)}", transform=ax.transAxes, va="center")
+    ax.set_title(f"Structure {s} · T2 {in_band}/{len(u)}", fontsize=7, pad=10)
     label(ax, f"({'abc'[k]})")
 axes[0].set_ylabel("u* (normalized design coordinate)")
 axes[-1].scatter([], [], marker="o", facecolors="k", edgecolors="k", label="pretender")
 axes[-1].scatter([], [], marker="o", facecolors="none", edgecolors="k", label="oracle-confirmed")
 axes[-1].scatter([], [], marker="^", facecolors="none", edgecolors="k", label="infeasible")
-axes[-1].legend(loc="center right", frameon=False)
-save(fig, "figS1_box_edge_geometry")
+handles, labels = axes[-1].get_legend_handles_labels()
+fig.legend(handles, labels, loc="lower center", ncol=3, frameon=False, fontsize=6,
+           bbox_to_anchor=(0.53, 0.0))
+save(fig, "figS1_box_edge_geometry", rect=(0, 0.1, 1, 1))
 
 # ---------- Fig S2: held-out ensemble MAE vs reference-solver MAE (T07) ----------
 if (R / "detector_bench_v8.json").exists():
@@ -265,7 +268,7 @@ if (R / "stats_supplement_v9.json").exists():
     ax = axes[1]; y = 0
     for s in STRUCTS:
         for seed, tag in SEEDS.items():
-            d = rel(s, tag)["discrimination"]["rcwa_vs_surr_PRIMARY"]; hollow = (s, seed) in (("C", "123"), ("A", "777"))
+            d = rel(s, tag)["discrimination"]["rcwa_vs_surr_PRIMARY"]; hollow = d["p"] < 0.05
             ax.errorbar(d["rho"], y, xerr=[[d["rho"] - d["ci95"][0]], [d["ci95"][1] - d["rho"]]], fmt="o", ms=3.5, color=COL[s],
                         mfc=("none" if hollow else COL[s]), elinewidth=0.8, capsize=2)
             ax.text(1.02, y, f"{s} s{seed}", va="center", fontsize=6); y += 1
@@ -274,8 +277,9 @@ if (R / "stats_supplement_v9.json").exists():
     ax = axes[2]
     for i, s in enumerate(STRUCTS):
         ax.bar(i, prho[s]["pooled_rho"], width=.55, color=COL[s], edgecolor="k", linewidth=0.5, hatch=HATCH[i])
-        ax.text(i, prho[s]["pooled_rho"] + 0.03, f"p = {prho[s]['block_perm_p']:.3f}", ha="center", fontsize=6)
-    ax.axhline(0, color="k", lw=0.8); ax.set_xticks(range(3)); ax.set_xticklabels(STRUCTS); ax.set_ylim(-0.2, 0.7)
+        p = prho[s]["block_perm_p"]
+        ax.text(i, prho[s]["pooled_rho"] + 0.03, "p < 0.001" if p < 0.001 else f"p = {p:.3f}", ha="center", fontsize=6)
+    ax.axhline(0, color="k", lw=0.8); ax.set_xticks(range(3)); ax.set_xticklabels(STRUCTS); ax.set_ylim(-0.2, 0.9)
     ax.set_ylabel("seed-pooled ρ (block permutation)"); label(ax, "(c)")
     save(fig, "fig3_r_vs_reliability")
     numbers["fig3_r_vs_reliability_check"] = check
@@ -308,7 +312,7 @@ if "tau_sweep" in pj:
     for e in (7.5, 10):
         ax.axvline(e, ls="--", color="k", lw=0.8)
     ax.text(0.98, 0.95, f"mild {sev['mild']} / moderate {sev['moderate']} / severe {sev['severe']}", transform=ax.transAxes, ha="right", va="top", fontsize=7)
-    ax.set_xlabel("reference-solver MAE of τ = 5 % pretenders (%)"); ax.set_ylabel("designs"); label(ax, "(b)")
+    ax.set_xlabel("reference-solver MAE (%)\namong τ = 5 % pretenders"); ax.set_ylabel("designs"); label(ax, "(b)")
     save(fig, "fig4_tau_sensitivity")
     numbers["fig4_denominators"] = {str(t): ts["by_tau"][str(t)]["pooled"]["claimed"] for t in taus}
 
