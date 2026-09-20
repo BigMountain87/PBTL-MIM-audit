@@ -4,8 +4,8 @@
   "grid_pinned": 64,
   "committed": {
     "n_designs": 54,
-    "n_full_spectrum": 53,
-    "n_subsampled": 1,
+    "n_full_spectrum": 54,
+    "n_subsampled": 0,
     "n_flips": 0,
     "mean_abs_dA_pp": {
       "min": 0.005937262186989756,
@@ -14,12 +14,12 @@
     "worst_single_wavelength_pp": 2.167814743006602,
     "within_1pp_of_tau": {
       "n": 18,
-      "n_full_spectrum": 17,
+      "n_full_spectrum": 18,
       "flips": 0
     },
     "within_2pp_of_tau": {
       "n": 42,
-      "n_full_spectrum": 41,
+      "n_full_spectrum": 42,
       "flips": 0
     },
     "per_structure": {
@@ -180,16 +180,16 @@
         "structure": "A",
         "seed": 123,
         "index": 3,
-        "n_wl": 10,
-        "mae_archived": 4.44,
-        "mae_grid256": 3.89,
-        "delta_mean_pp": 0.6,
-        "delta_max_pp": 0.85,
-        "source": "T78 pilot (log only)",
+        "n_wl": 100,
+        "mae_archived": 4.864804396147747,
+        "delta_mean_pp": 0.6349132275688589,
+        "delta_max_pp": 0.8905034716008231,
+        "mae_grid256": 4.318088142869783,
+        "source": "T98 (full-spectrum re-solve of a T78 subsampled design)",
         "verdict_grid64": "pass",
         "verdict_grid256": "pass",
         "flip": false,
-        "distance_to_tau_pp": 0.5599999999999996
+        "distance_to_tau_pp": 0.13519560385225304
       },
       {
         "structure": "A",

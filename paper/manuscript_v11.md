@@ -1477,7 +1477,7 @@ picked, which is what makes the cost exactly one solver call per design.
   operator (≈ 2 % of its entries) fold. Re-solving 54 committed designs on a 256 × 256 raster
   at the pinned order — every design within 2 pp of τ (42), the three with the largest
   predicted raster sensitivity, and ten drawn at random, across all four structures and
-  every training seed; 53 at all 100 wavelengths and 1 on 10–20-wavelength subsamples —
+  every training seed; all at 100 wavelengths —
   changed no pretender verdict (mean |ΔA| 0.01–1.20 pp per design, worst
   single wavelength 2.2 pp, against τ = 5 %); this bounds the sampled designs, which
   include every design within 2 pp of τ, not the population. The companion justified this raster
