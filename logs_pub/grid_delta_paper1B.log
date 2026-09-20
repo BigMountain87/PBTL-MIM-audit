@@ -1,0 +1,168 @@
+stratum lt1px  :  91 eligible, picked [6, 13, 29, 105, 139, 160, 244, 287, 376, 410]
+stratum 1to2px : 216 eligible, picked [0, 22, 122, 171, 227, 285, 344, 357, 400, 428]
+stratum 2px_50 : 162 eligible, picked [5, 16, 250, 258, 282]
+stratum ge50   :  29 eligible, picked [68, 115, 330, 397, 448]
+[B i6 lt1px] P=681.9, R_out=114.3, R_in=104.3, R_disk=37.5, t_Cr=49.4, d_SiO2=112.1, theta=33.0, phi=21.5
+  grid   64:   356.7 s | vs archived(64): mean 0.002 pp, max  0.01 pp
+  grid  256:   358.4 s | vs archived(64): mean 0.163 pp, max  0.49 pp
+  grid 64 -> 256: mean |dA| 0.163 pp, max  0.50 pp, signed -0.159 pp
+[B i13 lt1px] P=646.2, R_out=177.8, R_in=167.8, R_disk=13.8, t_Cr=72.6, d_SiO2=114.6, theta=2.5, phi=30.0
+  grid   64:   319.8 s | vs archived(64): mean 0.002 pp, max  0.01 pp
+  grid  256:   327.6 s | vs archived(64): mean 0.900 pp, max  1.25 pp
+  grid 64 -> 256: mean |dA| 0.900 pp, max  1.25 pp, signed +0.900 pp
+[B i29 lt1px] P=759.3, R_out=86.9, R_in=76.9, R_disk=60.1, t_Cr=67.3, d_SiO2=108.9, theta=36.3, phi=37.7
+  grid   64:   450.5 s | vs archived(64): mean 0.003 pp, max  0.03 pp
+  grid  256:   453.3 s | vs archived(64): mean 0.322 pp, max  0.62 pp
+  grid 64 -> 256: mean |dA| 0.321 pp, max  0.62 pp, signed +0.321 pp
+[B i105 lt1px] P=713.5, R_out=84.1, R_in=74.1, R_disk=64.1, t_Cr=23.9, d_SiO2=162.8, theta=14.4, phi=17.7
+  grid   64:   387.2 s | vs archived(64): mean 0.001 pp, max  0.00 pp
+  grid  256:   385.8 s | vs archived(64): mean 0.066 pp, max  0.22 pp
+  grid 64 -> 256: mean |dA| 0.066 pp, max  0.22 pp, signed -0.048 pp
+[B i139 lt1px] P=724.3, R_out=107.6, R_in=97.6, R_disk=31.2, t_Cr=25.6, d_SiO2=69.3, theta=38.8, phi=42.5
+  grid   64:   420.3 s | vs archived(64): mean 0.001 pp, max  0.00 pp
+  grid  256:   421.6 s | vs archived(64): mean 0.308 pp, max  0.61 pp
+  grid 64 -> 256: mean |dA| 0.308 pp, max  0.61 pp, signed +0.308 pp
+[B i160 lt1px] P=662.8, R_out=200.5, R_in=68.9, R_disk=58.9, t_Cr=48.6, d_SiO2=145.5, theta=32.7, phi=2.4
+  grid   64:   290.3 s | vs archived(64): mean 0.001 pp, max  0.06 pp
+  grid  256:   289.3 s | vs archived(64): mean 0.111 pp, max  0.30 pp
+  grid 64 -> 256: mean |dA| 0.110 pp, max  0.30 pp, signed -0.086 pp
+[B i244 lt1px] P=643.9, R_out=254.6, R_in=82.2, R_disk=72.2, t_Cr=67.6, d_SiO2=98.8, theta=23.2, phi=1.7
+  grid   64:   268.4 s | vs archived(64): mean 0.001 pp, max  0.00 pp
+  grid  256:   269.1 s | vs archived(64): mean 0.226 pp, max  0.46 pp
+  grid 64 -> 256: mean |dA| 0.226 pp, max  0.46 pp, signed -0.221 pp
+[B i287 lt1px] P=672.4, R_out=96.3, R_in=86.3, R_disk=76.3, t_Cr=57.6, d_SiO2=184.4, theta=3.4, phi=30.1
+  grid   64:   348.9 s | vs archived(64): mean 0.002 pp, max  0.01 pp
+  grid  256:   347.6 s | vs archived(64): mean 0.462 pp, max  0.70 pp
+  grid 64 -> 256: mean |dA| 0.462 pp, max  0.69 pp, signed +0.454 pp
+[B i376 lt1px] P=776.7, R_out=168.8, R_in=38.4, R_disk=28.4, t_Cr=25.2, d_SiO2=110.0, theta=29.4, phi=7.1
+  grid   64:   398.0 s | vs archived(64): mean 0.049 pp, max  4.78 pp
+  grid  256:   394.7 s | vs archived(64): mean 0.113 pp, max  7.35 pp
+  grid 64 -> 256: mean |dA| 0.066 pp, max  2.56 pp, signed +0.037 pp
+[B i410 lt1px] P=720.2, R_out=92.1, R_in=82.1, R_disk=34.3, t_Cr=36.1, d_SiO2=51.5, theta=1.7, phi=4.6
+  grid   64:   410.6 s | vs archived(64): mean 0.001 pp, max  0.01 pp
+  grid  256:   409.1 s | vs archived(64): mean 0.157 pp, max  0.29 pp
+  grid 64 -> 256: mean |dA| 0.157 pp, max  0.29 pp, signed -0.135 pp
+[B i0 1to2px] P=659.1, R_out=296.6, R_in=72.7, R_disk=59.8, t_Cr=29.7, d_SiO2=67.9, theta=42.4, phi=35.8
+  grid   64:   277.8 s | vs archived(64): mean 0.001 pp, max  0.02 pp
+  grid  256:   281.2 s | vs archived(64): mean 0.109 pp, max  0.20 pp
+  grid 64 -> 256: mean |dA| 0.109 pp, max  0.20 pp, signed +0.109 pp
+[B i22 1to2px] P=479.3, R_out=195.7, R_in=80.9, R_disk=67.3, t_Cr=75.2, d_SiO2=60.8, theta=36.2, phi=22.9
+  grid   64:   162.8 s | vs archived(64): mean 0.001 pp, max  0.01 pp
+  grid  256:   164.6 s | vs archived(64): mean 0.205 pp, max  0.45 pp
+  grid 64 -> 256: mean |dA| 0.204 pp, max  0.44 pp, signed -0.204 pp
+[B i122 1to2px] P=592.3, R_out=122.4, R_in=112.4, R_disk=60.9, t_Cr=59.8, d_SiO2=154.3, theta=17.6, phi=30.7
+  grid   64:   263.4 s | vs archived(64): mean 0.002 pp, max  0.01 pp
+  grid  256:   264.7 s | vs archived(64): mean 0.292 pp, max  0.57 pp
+  grid 64 -> 256: mean |dA| 0.292 pp, max  0.56 pp, signed +0.290 pp
+[B i171 1to2px] P=434.1, R_out=176.8, R_in=166.8, R_disk=20.3, t_Cr=57.6, d_SiO2=85.1, theta=18.2, phi=37.2
+  grid   64:   162.6 s | vs archived(64): mean 0.003 pp, max  0.02 pp
+  grid  256:   161.5 s | vs archived(64): mean 0.456 pp, max  0.83 pp
+  grid 64 -> 256: mean |dA| 0.456 pp, max  0.83 pp, signed +0.450 pp
+[B i227 1to2px] P=347.3, R_out=156.3, R_in=146.3, R_disk=57.8, t_Cr=55.1, d_SiO2=121.0, theta=31.7, phi=11.3
+  grid   64:   130.5 s | vs archived(64): mean 0.004 pp, max  0.02 pp
+  grid  256:   123.7 s | vs archived(64): mean 0.208 pp, max  0.39 pp
+  grid 64 -> 256: mean |dA| 0.208 pp, max  0.39 pp, signed +0.204 pp
+[B i285 1to2px] P=416.1, R_out=135.7, R_in=125.7, R_disk=20.1, t_Cr=52.4, d_SiO2=126.5, theta=45.8, phi=34.3
+  grid   64:   151.9 s | vs archived(64): mean 0.003 pp, max  0.01 pp
+  grid  256:   153.7 s | vs archived(64): mean 0.146 pp, max  0.26 pp
+  grid 64 -> 256: mean |dA| 0.146 pp, max  0.26 pp, signed +0.146 pp
+[B i344 1to2px] P=402.8, R_out=181.3, R_in=68.2, R_disk=58.2, t_Cr=47.8, d_SiO2=172.9, theta=46.7, phi=38.0
+  grid   64:   140.6 s | vs archived(64): mean 0.002 pp, max  0.01 pp
+  grid  256:   137.8 s | vs archived(64): mean 0.407 pp, max  0.54 pp
+  grid 64 -> 256: mean |dA| 0.407 pp, max  0.54 pp, signed -0.407 pp
+[B i357 1to2px] P=608.7, R_out=181.0, R_in=171.0, R_disk=58.2, t_Cr=44.0, d_SiO2=85.6, theta=28.7, phi=32.3
+  grid   64:   275.6 s | vs archived(64): mean 0.002 pp, max  0.06 pp
+  grid  256:   279.0 s | vs archived(64): mean 0.646 pp, max  1.35 pp
+  grid 64 -> 256: mean |dA| 0.645 pp, max  1.29 pp, signed +0.645 pp
+[B i400 1to2px] P=501.7, R_out=132.5, R_in=122.5, R_disk=38.9, t_Cr=73.5, d_SiO2=122.3, theta=39.8, phi=8.1
+  grid   64:   187.3 s | vs archived(64): mean 0.004 pp, max  0.02 pp
+  grid  256:   187.7 s | vs archived(64): mean 0.085 pp, max  0.59 pp
+  grid 64 -> 256: mean |dA| 0.086 pp, max  0.58 pp, signed +0.072 pp
+[B i428 1to2px] P=427.6, R_out=95.9, R_in=85.9, R_disk=44.6, t_Cr=74.8, d_SiO2=58.6, theta=14.6, phi=14.3
+  grid   64:   158.9 s | vs archived(64): mean 0.005 pp, max  0.02 pp
+  grid  256:   155.2 s | vs archived(64): mean 0.298 pp, max  0.51 pp
+  grid 64 -> 256: mean |dA| 0.298 pp, max  0.51 pp, signed +0.283 pp
+[B i5 2px_50] P=666.8, R_out=237.7, R_in=162.5, R_disk=18.1, t_Cr=31.4, d_SiO2=150.3, theta=24.8, phi=22.4
+  grid   64:   296.4 s | vs archived(64): mean 0.001 pp, max  0.00 pp
+  grid  256:   304.2 s | vs archived(64): mean 0.103 pp, max  0.44 pp
+  grid 64 -> 256: mean |dA| 0.103 pp, max  0.44 pp, signed -0.014 pp
+[B i16 2px_50] P=639.2, R_out=287.6, R_in=66.9, R_disk=41.7, t_Cr=33.0, d_SiO2=198.2, theta=16.0, phi=5.1
+  grid   64:   266.9 s | vs archived(64): mean 0.000 pp, max  0.00 pp
+  grid  256:   263.8 s | vs archived(64): mean 0.385 pp, max  0.76 pp
+  grid 64 -> 256: mean |dA| 0.385 pp, max  0.76 pp, signed -0.385 pp
+[B i250 2px_50] P=586.6, R_out=264.0, R_in=194.8, R_disk=65.6, t_Cr=50.2, d_SiO2=69.7, theta=32.1, phi=4.3
+  grid   64:   233.4 s | vs archived(64): mean 0.001 pp, max  0.01 pp
+  grid  256:   234.4 s | vs archived(64): mean 0.084 pp, max  0.29 pp
+  grid 64 -> 256: mean |dA| 0.084 pp, max  0.29 pp, signed -0.030 pp
+[B i258 2px_50] P=638.7, R_out=158.1, R_in=70.8, R_disk=24.7, t_Cr=61.6, d_SiO2=50.6, theta=8.0, phi=43.9
+  grid   64:   290.8 s | vs archived(64): mean 0.003 pp, max  0.02 pp
+  grid  256:   294.9 s | vs archived(64): mean 0.077 pp, max  0.19 pp
+  grid 64 -> 256: mean |dA| 0.078 pp, max  0.19 pp, signed +0.052 pp
+[B i282 2px_50] P=609.5, R_out=170.5, R_in=150.2, R_disk=28.2, t_Cr=70.5, d_SiO2=90.8, theta=37.1, phi=42.8
+  grid   64:   280.5 s | vs archived(64): mean 0.003 pp, max  0.01 pp
+  grid  256:   278.1 s | vs archived(64): mean 0.243 pp, max  0.40 pp
+  grid 64 -> 256: mean |dA| 0.243 pp, max  0.40 pp, signed -0.204 pp
+[B i68 ge50] P=670.0, R_out=264.6, R_in=121.8, R_disk=42.6, t_Cr=60.5, d_SiO2=107.4, theta=11.4, phi=3.7
+  grid   64:   293.1 s | vs archived(64): mean 0.001 pp, max  0.00 pp
+  grid  256:   287.7 s | vs archived(64): mean 0.191 pp, max  0.33 pp
+  grid 64 -> 256: mean |dA| 0.191 pp, max  0.33 pp, signed -0.187 pp
+[B i115 ge50] P=780.1, R_out=290.0, R_in=145.1, R_disk=41.1, t_Cr=75.3, d_SiO2=95.0, theta=35.9, phi=5.2
+  grid   64:   386.5 s | vs archived(64): mean 0.001 pp, max  0.01 pp
+  grid  256:   376.2 s | vs archived(64): mean 0.095 pp, max  0.48 pp
+  grid 64 -> 256: mean |dA| 0.095 pp, max  0.48 pp, signed +0.031 pp
+[B i330 ge50] P=788.1, R_out=270.4, R_in=185.6, R_disk=90.6, t_Cr=57.3, d_SiO2=163.3, theta=16.4, phi=30.2
+  grid   64:   390.0 s | vs archived(64): mean 0.001 pp, max  0.01 pp
+  grid  256:   385.0 s | vs archived(64): mean 0.113 pp, max  0.26 pp
+  grid 64 -> 256: mean |dA| 0.113 pp, max  0.26 pp, signed +0.000 pp
+[B i397 ge50] P=668.9, R_out=281.0, R_in=157.0, R_disk=42.2, t_Cr=30.6, d_SiO2=164.4, theta=1.7, phi=12.1
+  grid   64:   302.1 s | vs archived(64): mean 0.001 pp, max  0.03 pp
+  grid  256:   293.6 s | vs archived(64): mean 0.057 pp, max  0.53 pp
+  grid 64 -> 256: mean |dA| 0.058 pp, max  0.56 pp, signed -0.010 pp
+[B i448 ge50] P=707.4, R_out=203.6, R_in=149.6, R_disk=30.5, t_Cr=75.3, d_SiO2=111.7, theta=20.3, phi=29.1
+  grid   64:   355.4 s | vs archived(64): mean 0.002 pp, max  0.01 pp
+  grid  256:   351.9 s | vs archived(64): mean 0.185 pp, max  0.44 pp
+  grid 64 -> 256: mean |dA| 0.185 pp, max  0.44 pp, signed +0.168 pp
+{
+ "dataset": "struct_B_500_redesign.npz",
+ "grids": [
+  64,
+  256
+ ],
+ "n": 30,
+ "control_grid64_vs_archived_mean_pp": {
+  "median": 0.0016718823717383202,
+  "max": 0.04912658838293282
+ },
+ "delta_mean_pp": {
+  "min": 0.05768991809600266,
+  "median": 0.18808969403835363,
+  "max": 0.8998579284161679
+ },
+ "delta_max_pp": {
+  "min": 0.19315991885378025,
+  "median": 0.4707624830189161,
+  "max": 2.564072608947754
+ },
+ "per_stratum": {
+  "lt1px": {
+   "n": 10,
+   "delta_mean_pp_median": 0.19461640244844602,
+   "delta_mean_pp_max": 0.8998579284161679
+  },
+  "1to2px": {
+   "n": 10,
+   "delta_mean_pp_median": 0.250372303500626,
+   "delta_mean_pp_max": 0.6451197087299079
+  },
+  "2px_50": {
+   "n": 5,
+   "delta_mean_pp_median": 0.10321043489238946,
+   "delta_mean_pp_max": 0.38520271713423426
+  },
+  "ge50": {
+   "n": 5,
+   "delta_mean_pp_median": 0.1126759000326274,
+   "delta_mean_pp_max": 0.19095047876180615
+  }
+ }
+}

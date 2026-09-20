@@ -1,0 +1,6 @@
+S    ours %    seed-42 archive (gap)  10-seed printed      z  verdict   pre-FT val %  profile
+A     1.757           1.724 (+0.034)      1.79 ± 0.04  -0.94  PASS      9.148179931640625  pub cb486b5
+B     1.722           1.703 (+0.019)      1.65 ± 0.04  +1.70  PASS      12.07512451171875  pub cb486b5
+C     2.107           2.257 (-0.150)      2.05 ± 0.09  +0.65  PASS      16.725285644531247  pub cb486b5
+
+GATE: PASS

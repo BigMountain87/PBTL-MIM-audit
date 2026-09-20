@@ -218,14 +218,66 @@ def main(mpath, results, skip_end):
         c_ = gd["committed"]; b_ = gd["companion_B_dataset"]
         want("W8 re-solved designs", f"Re-solving {c_['n_designs']} committed designs", "grid_delta_summary_v11.committed.n_designs")
         want("W8 within 2 pp", f"every design within 2 pp of τ ({c_['within_2pp_of_tau']['n']})", "grid_delta_summary_v11.committed.within_2pp_of_tau.n")
-        want("W8 wavelength coverage", "; all at 100 wavelengths" if c_["n_subsampled"] == 0 else f"{c_['n_full_spectrum']} at all 100 wavelengths and {c_['n_subsampled']} on",
+        want("W8 wavelength coverage", "all were re-solved at 100 wavelengths" if c_["n_subsampled"] == 0 else f"{c_['n_full_spectrum']} at all 100 wavelengths and {c_['n_subsampled']} on",
              "grid_delta_summary_v11.committed.n_full_spectrum/n_subsampled")
         want("W8 mean dA range", f"mean |ΔA| {c_['mean_abs_dA_pp']['min']:.2f}–{c_['mean_abs_dA_pp']['max']:.2f} pp per design", "grid_delta_summary_v11.committed.mean_abs_dA_pp")
         want("W8 worst wavelength", f"single wavelength {c_['worst_single_wavelength_pp']:.1f} pp, against", "grid_delta_summary_v11.committed.worst_single_wavelength_pp")
         assert c_["n_flips"] == 0, "W8 says no verdict changed; the summary disagrees"
         want("W8 companion B n", f"Re-solving {b_['n']} of the companion's Structure-B dataset samples", "grid_delta_summary_v11.companion_B_dataset.n")
         want("W8 companion B shift", f"moves their labels by {b_['mean_abs_dA_pp']['min']:.2f}–{b_['mean_abs_dA_pp']['max']:.2f} pp", "grid_delta_summary_v11.companion_B_dataset.mean_abs_dA_pp")
-        want("W8 companion B worst", f"worst single wavelength {b_['max_abs_dA_pp']['max']:.1f} pp), with the grid-64 control", "grid_delta_summary_v11.companion_B_dataset.max_abs_dA_pp")
+        want("W8 companion B worst", f"worst single wavelength {b_['max_abs_dA_pp']['max']:.1f} pp). The grid-64 control", "grid_delta_summary_v11.companion_B_dataset.max_abs_dA_pp")
+        ctl = b_.get("control_grid64_vs_archived_mean_pp", {})
+        if ctl:
+            want("W8 grid-64 control median", f"to {ctl['median']:.3f} pp (median; maximum {ctl['max']:.2f} pp;", "grid_delta_summary_v11.companion_B_dataset.control_grid64_vs_archived_mean_pp")
+    # 2026-09-20 error hunt: numbers added to the text, each tied to its artifact
+    st_ = J.get("stats_supplement_v9")
+    if st_:
+        pw = st_.get("power", {})
+        if pw:
+            want("H1 Fisher MDE", f"rate difference of {pw['fisher_20v20_mde_at_0p80']:.2f}", "stats_supplement_v9.power.fisher_20v20_mde_at_0p80")
+            want("H1 Spearman MDE", f"|ρ| ≥ {pw['spearman_n20_mde_at_0p80']:.2f}", "stats_supplement_v9.power.spearman_n20_mde_at_0p80")
+        ct = st_.get("common_threshold_h1b", {})
+        if ct:
+            fa, fb, fc = ct["thr_from_A"], ct["thr_from_B"], ct["thr_from_C"]
+            want("common threshold A/B", f"A {fa['flagged']['A']}, B {fa['flagged']['B']}, C {fa['flagged']['C']} at either A's {fa['threshold_pct']:.2f} % or B's {fb['threshold_pct']:.2f} % threshold", "stats_supplement_v9.common_threshold_h1b.thr_from_A/B")
+            want("common threshold C", f"At C's {fc['threshold_pct']:.2f} % threshold the counts are A {fc['flagged']['A']}, B {fc['flagged']['B']}, C {fc['flagged']['C']}, with p = {fc['fisher']['B_vs_C']:.2f}", "stats_supplement_v9.common_threshold_h1b.thr_from_C")
+    # legacy-arm trend statistics (Section 3.3, as-submitted release)
+    lst = ROOT / "results_v8/stats_supplement_v9.json"
+    if lst.exists():
+        ls = json.load(open(lst)); lca = ls["ca_trend"]; lc = lca["pooled_counts"]
+        want("legacy pooled counts", f"A {lc['A']['pretender']}/{lc['A']['n_valid']}, B {lc['B']['pretender']}/{lc['B']['n_valid']}, C {lc['C']['pretender']}/{lc['C']['n_valid']}", "results_v8/stats_supplement_v9.ca_trend.pooled_counts")
+        want("legacy trend tmm_mae nominal", f"trend *p* = {lca['conventions']['tmm_mae']['pretender']['nominal']['p']:.3f} nominal", "results_v8/stats_supplement_v9.ca_trend.tmm_mae")
+        want("legacy trend tmm_mae DEFF", f"{lca['conventions']['tmm_mae']['pretender']['deff_corrected']['p']:.3f} design-effect-corrected", "results_v8/stats_supplement_v9.ca_trend.tmm_mae")
+        want("legacy trend preliminary", f"preliminary one (*p* = {lca['conventions']['preliminary']['pretender']['nominal']['p']:.2f})", "results_v8/stats_supplement_v9.ca_trend.preliminary")
+    # T2/T3 nulls quoted against the seed-42 counts (Section 3.7)
+    if all(s in rel for s in ("A", "B", "C", "B_s123")):
+        t3m = [round(rel[s]["taxonomy"]["t3_null"]["mean"] * 20) for s in "BCA"]
+        t3b = [round(rel[s]["taxonomy"]["t3_null"]["p97_5"] * 20) for s in "BCA"]
+        t2m = [round(rel[s]["taxonomy"]["t2_null"]["empirical"] * 20) for s in "ABC"]
+        want("T3 null means", f"expects {t3m[0]}, {t3m[1]} and {t3m[2]}, with 95 % bands reaching {t3b[0]}, {t3b[1]} and {t3b[2]}", "reliability_*.taxonomy.t3_null")
+        want("T2 null means", f"({t2m[0]}, {t2m[1]} and {t2m[2]} of 20 expected on A, B and C)", "reliability_*.taxonomy.t2_null.empirical")
+        want("T3 seed-42 counts", f"{rel['B']['taxonomy']['t3']} of 20 on B, {rel['C']['taxonomy']['t3']} on C and {rel['A']['taxonomy']['t3']} on A", "reliability_*.taxonomy.t3")
+        want("T3 B s123", f"B at seed 123 ({rel['B_s123']['taxonomy']['t3']} of 20)", "reliability_B_s123_v8.taxonomy.t3")
+    # B forward MAE, published vs as-submitted arm (Section 3.2 flag-threshold explanation)
+    lb = ROOT / "results_v8/reliability_B_v8.json"
+    if "B" in rel and lb.exists():
+        lbj = json.load(open(lb))
+        want("B forward MAE pub vs legacy", f"({rel['B']['meta']['forward_test_mae_pct']:.2f} % here against {lbj['meta']['forward_test_mae_pct']:.2f} %, so the threshold fell from {lbj['tier1b']['flag_threshold_pct']:.2f} % to {rel['B']['tier1b']['flag_threshold_pct']:.2f} %)", "reliability_B_v8.meta.forward_test_mae_pct / tier1b.flag_threshold_pct (both arms)")
+    # forward MAE of the transfer-learned A surrogates quoted in Sections 3.6 and 4.7
+    fa123 = json.load(open(R / "finetune_A_s123_v8.json")) if (R / "finetune_A_s123_v8.json").exists() else None
+    fa777 = json.load(open(R / "finetune_A_s777_v8.json")) if (R / "finetune_A_s777_v8.json").exists() else None
+    if fa123 and fa777:
+        want("A forward MAE s123/s777", f"{fa123['final_test_mae_pct']:.2f} and {fa777['final_test_mae_pct']:.2f} %", "finetune_A_s{123,777}_v8.final_test_mae_pct")
+        want("A forward MAE range (W7)", f"{fa777['final_test_mae_pct']:.2f}–{fa123['final_test_mae_pct']:.2f} % at every seed", "finetune_A_s{123,777}_v8.final_test_mae_pct")
+    # optimization wall clock per design from the main-arm inverse logs (Section 5)
+    import glob as _glob, statistics as _st
+    meds = []
+    for f in sorted(_glob.glob(str(ROOT / "logs_pub/inverse_[ABC]*_pub.log"))):
+        if any(x in f for x in ("_m0_", "_feas_", "_n50_")): continue
+        secs = [int(x) for x in re.findall(r"\((\d+)s\)", open(f).read())]
+        if secs: meds.append(_st.median(secs) / 60)
+    if len(meds) == 9:
+        want("optimization wall clock", f"per-run median of {min(meds):.1f}–{max(meds):.1f} min", "logs_pub/inverse_*_pub.log")
         want("W8 companion B control", f"archived labels to {b_['control_grid64_vs_archived_mean_pp']['median']:.3f} pp", "grid_delta_summary_v11.companion_B_dataset.control")
     # Structure D (§3.12): the recorded-prediction outcome and the reliability accounting
     sd = J.get("structure_d_v10", {})
@@ -242,7 +294,7 @@ def main(mpath, results, skip_end):
         want("D forward MAE", f"{rD['meta']['forward_test_mae_pct']:.2f} %", "reliability_D.meta.forward_test_mae_pct")
         fe_ = sd.get("feasibility_D", {})
         if "fisher_p" in fe_:
-            want("D infeasible", f"{fe_['n_infeasible']} of the {fe_['n_valid']} committed D geometries", "structure_d_v10.feasibility_D")
+            want("D infeasible", f"In D, {fe_['n_infeasible']} of the {fe_['n_valid']} committed geometries violate", "structure_d_v10.feasibility_D")
             want("D feasibility Fisher", f"*p* = {fe_['fisher_p']:.3f}", "structure_d_v10.feasibility_D.fisher_p")
         for name, o in sd.get("orderings", {}).items():
             want(f"D ordering {name}", ", ".join(f"{x:.1f}" for x in o["rates_pct"][:-1]) + f" and {o['rates_pct'][-1]:.1f} %", f"structure_d_v10.orderings.{name}")

@@ -71,15 +71,21 @@ for k, (ax, s) in enumerate(zip(axes, STRUCTS)):
         n_pre += int(((x <= TAU) & (y > TAU) & ok).sum()); n_val += int(ok.sum())
     ax.fill_between([0, TAU], TAU, 40, color="0.85", zorder=0)
     ax.axvline(TAU, ls="--", lw=.8, color="k"); ax.axhline(TAU, ls="--", lw=.8, color="k")
-    ax.text(0.97, 0.97, f"Structure {s}\npretenders {n_pre}/{n_val}", transform=ax.transAxes, ha="right", va="top")
+    ax.set_title(f"Structure {s} · pretenders {n_pre}/{n_val}", fontsize=7, loc="center", pad=4)
     ax.set_xlabel("surrogate self-reported MAE (%)")
     ax.set_xlim(0, 6); ax.set_ylim(0, 36)
     label(ax, f"({'abc'[k]})")
     numbers["fig2_pretenders_per_panel"][s] = [n_pre, n_val]
 axes[0].set_ylabel("reference-solver MAE (%)")
-axes[0].legend(frameon=False, loc="lower right")
-axes[1].text(2.6, 24, "pretender region\n(Surr ≤ τ, RCWA > τ)", ha="center", va="top", color="k")
-save(fig, "fig2_selfreport_vs_oracle")
+# one legend under the three panels: the shaded pretender region and the seed markers
+from matplotlib.patches import Patch
+from matplotlib.lines import Line2D
+handles = [Patch(facecolor="0.85", edgecolor="none", label="shaded: pretender region (Surr MAE ≤ τ, RCWA MAE > τ; τ = 5 %)")]
+handles += [Line2D([], [], marker=m, linestyle="none", color="0.35", markersize=5, label=f"seed {seed}")
+            for seed, m in (("42", "o"), ("123", "s"), ("777", "^"))]
+fig.legend(handles=handles, loc="lower center", ncol=4, frameon=False, fontsize=7, bbox_to_anchor=(0.5, 0.0),
+           handletextpad=0.5, columnspacing=1.4)
+save(fig, "fig2_selfreport_vs_oracle", rect=[0, 0.08, 1, 1])
 
 pool = json.load(open(R / "pooled_v8.json"))["per_structure"]   # pooled counts (used by fig3_r_vs_reliability)
 
@@ -177,13 +183,15 @@ for k, (ax, idx, ttl) in enumerate(((axes[0], i, "worst-case pretender"), (axes[
     ax.plot(wl, inv[f"A_surr_{ch}"][idx], "-", color="#0072B2", lw=1.2, label="surrogate $f_{NN}$ at g(u*)")
     ax.plot(wl, rc[f"A_rcwa_{ch}"][idx], "--", color="#D55E00", lw=1.2, label="RCWA at g(u*)")
     ax.set_xlabel("wavelength (nm)")
-    ax.text(0.02, 0.97, f"{ttl}\ntarget {idx+1}: Surr MAE {ms[idx]:.2f} % / RCWA MAE {mr[idx]:.1f} %",
-            transform=ax.transAxes, va="top", fontsize=7)
+    rc_txt = f"{mr[idx]:.2f}" if mr[idx] < 10 else f"{mr[idx]:.1f}"
+    # panel title above the plot area, clear of the spectra
+    ax.set_title(f"{ttl}\ntarget {idx+1}: Surr MAE {ms[idx]:.2f} % / RCWA MAE {rc_txt} %", fontsize=7, loc="center", pad=4)
     label(ax, f"({'ab'[k]})")
 axes[0].set_ylabel("absorptance"); axes[0].set_ylim(0, 1); axes[1].legend(frameon=False, loc="lower right", fontsize=6.5)
 if s == "B":
-    unit_cell(axes[0].inset_axes([0.63, 0.26, 0.34, 0.34]), inv["best_params"][i], "committed g(u*)")
-    unit_cell(axes[0].inset_axes([0.35, 0.26, 0.26, 0.26]), inv["true_params"][i], "true geometry")
+    # insets in the empty lower band of the panel, below the spectra
+    unit_cell(axes[0].inset_axes([0.46, 0.02, 0.30, 0.30]), inv["best_params"][i], "committed g(u*)")
+    unit_cell(axes[0].inset_axes([0.16, 0.02, 0.24, 0.24]), inv["true_params"][i], "true geometry")
 save(fig, "fig6_worst_pretender_spectrum")
 numbers["fig6_worst_pretender"] = dict(structure=s, seed=int(seed), index=i, mae_surr_pct=round(float(ms[i]), 3), mae_rcwa_pct=round(float(mr[i]), 2),
                                        best_confirmed_index=i_ok, best_confirmed_surr_pct=round(float(ms[i_ok]), 3), best_confirmed_rcwa_pct=round(float(mr[i_ok]), 3))
@@ -239,7 +247,7 @@ if (R / "detector_bench_v8.json").exists():
         ax.set_xscale("log"); ax.set_yscale("log")
         ax.axhline(TAU, ls="--", color="0.5", lw=0.8); ax.axvline(TAU, ls="--", color="0.5", lw=0.8)
         au = _db["pooled"][s]["heldout_mae"]
-        ax.text(0.02, 0.97, f"Structure {s}\nAUROC {au['auroc']:.2f} [{au['ci_lo']:.2f}, {au['ci_hi']:.2f}]", transform=ax.transAxes, va="top")
+        ax.set_title(f"Structure {s}\nAUROC {au['auroc']:.2f} [{au['ci_lo']:.2f}, {au['ci_hi']:.2f}]", fontsize=7, loc="center", pad=4)
         ax.set_xlabel("held-out ensemble MAE (%)")
         label(ax, f"({'abc'[k]})")
     axes[0].set_ylabel("reference-solver MAE (%)")
@@ -264,7 +272,7 @@ if (R / "stats_supplement_v9.json").exists():
     ax.axhline(50, ls=":", lw=.8, color="gray"); ax.set_xticks(range(3))
     ax.set_xticklabels([f"{s}\nr {R_PUB[s]:+.2f}\n({R_PRE[s]:+.2f})" for s in STRUCTS], fontsize=6.5)
     ax.set_ylabel("pretenders / claimed (%)"); ax.set_ylim(0, 100); label(ax, "(a)")
-    ax.text(0.02, 0.98, "bar: 3-seed pooled,\nDEFF-adjusted Wilson 95 % CI\nmarkers: seeds 42/123/777", transform=ax.transAxes, va="top", fontsize=6)
+    _fig3_note = True
     ax = axes[1]; y = 0
     for s in STRUCTS:
         for seed, tag in SEEDS.items():
@@ -278,10 +286,17 @@ if (R / "stats_supplement_v9.json").exists():
     for i, s in enumerate(STRUCTS):
         ax.bar(i, prho[s]["pooled_rho"], width=.55, color=COL[s], edgecolor="k", linewidth=0.5, hatch=HATCH[i])
         p = prho[s]["block_perm_p"]
-        ax.text(i, prho[s]["pooled_rho"] + 0.03, "p < 0.001" if p < 0.001 else f"p = {p:.3f}", ha="center", fontsize=6)
+        ax.text(i, max(prho[s]["pooled_rho"], 0) + 0.04, "p < 0.001" if p < 0.001 else f"p = {p:.3f}", ha="center", fontsize=6)
     ax.axhline(0, color="k", lw=0.8); ax.set_xticks(range(3)); ax.set_xticklabels(STRUCTS); ax.set_ylim(-0.2, 0.9)
     ax.set_ylabel("seed-pooled ρ (block permutation)"); label(ax, "(c)")
-    save(fig, "fig3_r_vs_reliability")
+    from matplotlib.patches import Patch as _Patch
+    from matplotlib.lines import Line2D as _Line2D
+    _h = [_Patch(facecolor="0.85", edgecolor="k", label="bar: 3-seed pooled rate, design-effect-adjusted Wilson 95 % CI"),
+          _Line2D([], [], marker="o", linestyle="none", color="0.35", markersize=4, label="seed 42 (per-run rate, Wilson 95 % CI)"),
+          _Line2D([], [], marker="s", linestyle="none", color="0.35", markersize=4, label="seed 123"),
+          _Line2D([], [], marker="^", linestyle="none", color="0.35", markersize=4, label="seed 777")]
+    fig.legend(handles=_h, loc="lower center", ncol=2, frameon=False, fontsize=6.5, bbox_to_anchor=(0.5, 0.0), handletextpad=0.5, columnspacing=1.5)
+    save(fig, "fig3_r_vs_reliability", rect=[0, 0.12, 1, 1])
     numbers["fig3_r_vs_reliability_check"] = check
     for c in check:
         print("fig2 check:", c)
@@ -300,7 +315,10 @@ if "tau_sweep" in pj:
     rp = [100 * ts["by_tau"][str(t)]["pooled"]["pretender_rate_given_claimed"] for t in taus]
     ax.plot(taus, rp, "k--", lw=1.2, label="pooled")
     for t in taus:
-        e = ts["by_tau"][str(t)]["pooled"]; ax.text(t, 2, f"{e['pretender']}/{e['claimed']}", ha="center", fontsize=6, rotation=90, va="bottom")
+        e = ts["by_tau"][str(t)]["pooled"]
+        top = max(100 * ts["by_tau"][str(t)]["per_structure"][s]["bootstrap95_rate_given_claimed"][1] for s in STRUCTS)
+        ax.text(t, top + 5, f"{e['pretender']}/{e['claimed']}", ha="center", va="bottom", fontsize=6,
+                bbox=dict(facecolor="white", edgecolor="none", alpha=0.85, pad=0.8))
     ax.axvline(TAU, ls=":", color="gray", lw=0.8); ax.set_xlabel("τ (%)"); ax.set_ylabel("pretenders / claimed (%)"); ax.set_ylim(0, 100); ax.legend(frameon=False); label(ax, "(a)")
     ax = axes[1]; sev = ts["severity_bins"]
     allr = []

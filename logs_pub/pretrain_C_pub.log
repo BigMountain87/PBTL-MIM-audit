@@ -1,0 +1,9 @@
+[pretrain C pub] device=cuda code=cb486b5 grid 400-1800 x100
+  TMM: 5000 samples in 23.3s
+[Seed] Global seed set to 42
+  ep 100/500 val L1=0.253% (110s)
+  ep 200/500 val L1=0.083% (220s)
+  ep 300/500 val L1=0.077% (299s)
+  ep 400/500 val L1=0.077% (358s)
+  ep 500/500 val L1=0.075% (405s)
+[pretrain C pub] best val L1 0.075%  -> pretrained_mphys_tmm_C_pub.pt sha256 84fe0a594acd  (429s)

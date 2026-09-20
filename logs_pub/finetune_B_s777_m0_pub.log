@@ -1,0 +1,18 @@
+[finetune B v8] device=cuda seed=777 init=scratch lr=0.001
+  good=498  split: train=350 val=50 test=50  wl 400-1800 nm × 100
+  TMM-set phys stats reconstructed (dim=13)
+[Seed] Global seed set to 777
+  init=scratch: no checkpoint loaded (from-scratch control)
+  pre-fine-tune val MAE: 29.10% (upstream metric) / 28.83% (A-channel)
+  ep  100/1000  val= 1.89%  (33s)
+  ep  200/1000  val= 1.99%  (41s)
+  ep  300/1000  val= 2.01%  (67s)
+  ep  400/1000  val= 1.99%  (75s)
+  ep  500/1000  val= 2.05%  (84s)
+  ep  600/1000  val= 2.10%  (92s)
+  ep  700/1000  val= 2.09%  (119s)
+  ep  800/1000  val= 2.10%  (131s)
+  ep  900/1000  val= 2.11%  (148s)
+  ep 1000/1000  val= 2.11%  (185s)
+[finetune B v8] FINAL test MAE: 1.74% (per-spectrum 1.74 ± 0.76%)
+[finetune B v8] saved surrogate_B_s777_m0_v8.pt (+stats, +log)  total 185s

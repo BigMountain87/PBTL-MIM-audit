@@ -1,0 +1,4 @@
+[A s123 i3] P=476.4, Wx=70.2, Wy=495.4, W2=306.9, t1=70.2, t2=80.0, t_mid=23.8, d1=112.2, d2=102.6, theta=27.4
+  archived: surrogate MAE 0.76 %, RCWA MAE 4.86 % (N 17-17); 100/100 wavelengths
+  grid  256:  3217.3 s | MAE vs target  4.32 % | vs archived GPU(64): mean  0.63 pp, max  0.89 pp
+  grid 64(archived) -> 256: mean |dA|  0.63 pp, max  0.89 pp | MAE 4.86 -> 4.32 % | verdict pass -> pass

@@ -1,0 +1,46 @@
+[rcwa A v8] upstream=cb486b5 profile=pub settings={'grid': (64, 64), 'order': [5, 5], 'dtype': torch.complex64, 'adaptive_order': True} dtype=torch.complex64 materials=jc torcwa=0.1.4.2
+[rcwa A v8] 20/20 geometries (shard 0/1), device=cuda, wl 400-1800 nm, order=adaptive
+  [ 1/20] RCWA MAE=  3.48%  N=17-17  (3611.3s)
+  [ 2/20] RCWA MAE=  2.68%  N=17-17  (3346.2s)
+  [ 3/20] RCWA MAE=  1.89%  N=17-17  (3583.0s)
+  [ 4/20] RCWA MAE=  2.28%  N=17-17  (3523.5s)
+  [ 5/20] RCWA MAE=  2.01%  N=17-17  (3467.9s)
+  [ 6/20] RCWA MAE=  2.14%  N=17-17  (3529.1s)
+  [ 7/20] RCWA MAE=  1.90%  N=17-17  (3591.9s)
+  [ 8/20] RCWA MAE=  1.60%  N=17-17  (3187.0s)
+  [ 9/20] RCWA MAE=  3.17%  N=17-17  (3353.6s)
+  [10/20] RCWA MAE=  1.53%  N=17-17  (3414.0s)
+  [11/20] RCWA MAE=  2.78%  N=17-17  (3633.5s)
+  [12/20] RCWA MAE=  1.15%  N=17-17  (3538.9s)
+  [13/20] RCWA MAE=  1.80%  N=17-17  (3610.1s)
+  [14/20] RCWA MAE=  0.59%  N=17-17  (3369.1s)
+  [15/20] RCWA MAE=  1.66%  N=17-17  (3287.2s)
+  [16/20] RCWA MAE=  0.99%  N=17-17  (3402.6s)
+  [17/20] RCWA MAE=  2.33%  N=17-17  (3113.1s)
+  [18/20] RCWA MAE=  1.82%  N=17-17  (3227.0s)
+  [19/20] RCWA MAE=  1.48%  N=17-17  (3120.6s)
+  [20/20] RCWA MAE=  1.71%  N=9-13  (385.6s)
+[rcwa A v8] shard done in 65297s
+
+=== Per-sample (A v8) ===
+  [ 1] surr=  0.63%  rcwa=  3.48%  Δ= +2.85%
+  [ 2] surr=  0.53%  rcwa=  2.68%  Δ= +2.15%
+  [ 3] surr=  0.58%  rcwa=  1.89%  Δ= +1.31%
+  [ 4] surr=  0.95%  rcwa=  2.28%  Δ= +1.33%
+  [ 5] surr=  0.44%  rcwa=  2.01%  Δ= +1.57%
+  [ 6] surr=  0.30%  rcwa=  2.14%  Δ= +1.84%
+  [ 7] surr=  0.80%  rcwa=  1.90%  Δ= +1.10%
+  [ 8] surr=  0.26%  rcwa=  1.60%  Δ= +1.34%
+  [ 9] surr=  0.82%  rcwa=  3.17%  Δ= +2.34%
+  [10] surr=  0.77%  rcwa=  1.53%  Δ= +0.75%
+  [11] surr=  0.44%  rcwa=  2.78%  Δ= +2.34%
+  [12] surr=  0.08%  rcwa=  1.15%  Δ= +1.07%
+  [13] surr=  0.18%  rcwa=  1.80%  Δ= +1.62%
+  [14] surr=  0.14%  rcwa=  0.59%  Δ= +0.45%
+  [15] surr=  1.04%  rcwa=  1.66%  Δ= +0.62%
+  [16] surr=  0.48%  rcwa=  0.99%  Δ= +0.51%
+  [17] surr=  0.06%  rcwa=  2.33%  Δ= +2.27%
+  [18] surr=  0.89%  rcwa=  1.82%  Δ= +0.93%
+  [19] surr=  0.17%  rcwa=  1.48%  Δ= +1.31%
+  [20] surr=  0.17%  rcwa=  1.71%  Δ= +1.54%
+[rcwa A v8] wrote rcwa_A_s777_feas_v8.npz; 20/20 success, 65295s solver time

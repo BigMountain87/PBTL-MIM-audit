@@ -1,0 +1,20 @@
+[B s123 i17] P=463.7, R_out=93.4, R_in=59.0, R_disk=64.4, t_Cr=35.0, d_SiO2=87.8, theta=11.5, phi=45.0
+  archived: surrogate MAE 0.33 %, RCWA MAE 5.22 % (N 9-13); 100/100 wavelengths
+  grid  256:   164.8 s | MAE vs target  5.26 % | vs archived GPU(64): mean  0.08 pp, max  0.13 pp
+  grid 64(archived) -> 256: mean |dA|  0.08 pp, max  0.13 pp | MAE 5.22 -> 5.26 % | verdict PRETENDER -> PRETENDER
+[B s42 i0] P=614.9, R_out=208.7, R_in=214.0, R_disk=50.8, t_Cr=31.5, d_SiO2=159.9, theta=48.0, phi=0.0
+  archived: surrogate MAE 0.29 %, RCWA MAE 4.79 % (N 9-17); 100/100 wavelengths
+  grid  256:   296.5 s | MAE vs target  4.75 % | vs archived GPU(64): mean  0.03 pp, max  0.09 pp
+  grid 64(archived) -> 256: mean |dA|  0.03 pp, max  0.09 pp | MAE 4.79 -> 4.75 % | verdict pass -> pass
+[B s42 i4] P=375.8, R_out=194.5, R_in=117.8, R_disk=10.0, t_Cr=53.5, d_SiO2=170.7, theta=29.0, phi=36.3
+  archived: surrogate MAE 1.05 %, RCWA MAE 4.82 % (N 9-13); 100/100 wavelengths
+  grid  256:   136.9 s | MAE vs target  4.82 % | vs archived GPU(64): mean  0.17 pp, max  0.43 pp
+  grid 64(archived) -> 256: mean |dA|  0.17 pp, max  0.43 pp | MAE 4.82 -> 4.82 % | verdict pass -> pass
+[B s777 i4] P=388.5, R_out=189.4, R_in=115.0, R_disk=22.9, t_Cr=65.9, d_SiO2=154.8, theta=16.9, phi=2.6
+  archived: surrogate MAE 1.01 %, RCWA MAE 4.71 % (N 9-13); 100/100 wavelengths
+  grid  256:   148.2 s | MAE vs target  4.66 % | vs archived GPU(64): mean  0.12 pp, max  0.18 pp
+  grid 64(archived) -> 256: mean |dA|  0.12 pp, max  0.18 pp | MAE 4.71 -> 4.66 % | verdict pass -> pass
+[C s123 i19] P=535.8, Wx=283.1, Wy=153.6, t_Cr=63.0, d_SiO2=52.4, theta=57.1, phi=38.9
+  archived: surrogate MAE 1.99 %, RCWA MAE 4.55 % (N 9-13); 100/100 wavelengths
+  grid  256:   212.3 s | MAE vs target  4.73 % | vs archived GPU(64): mean  0.31 pp, max  0.82 pp
+  grid 64(archived) -> 256: mean |dA|  0.31 pp, max  0.82 pp | MAE 4.55 -> 4.73 % | verdict pass -> pass

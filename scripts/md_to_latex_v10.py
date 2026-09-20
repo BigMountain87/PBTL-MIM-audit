@@ -52,6 +52,7 @@ UNI = {
     "→": r"\ensuremath{\rightarrow}", "⇒": r"\ensuremath{\Rightarrow}",
     "‖": r"\ensuremath{\|}", "§": r"\S{}", "†": r"\dag{}",
     "τ": r"\ensuremath{\tau}", "Δ": r"\ensuremath{\Delta}", "ρ": r"\ensuremath{\rho}", "θ": r"\ensuremath{\theta}",
+    "α": r"\ensuremath{\alpha}",
     "λ": r"\ensuremath{\lambda}", "σ": r"\ensuremath{\sigma}", "ε": r"\ensuremath{\varepsilon}",
     "¹": r"\textsuperscript{1}", "²": r"\textsuperscript{2}", "³": r"\textsuperscript{3}",
     "⁴": r"\textsuperscript{4}", "⁻": r"\textsuperscript{\ensuremath{-}}",
@@ -241,18 +242,23 @@ def uncaptioned_tables(md):
     """SI tables carry no caption line: number them in order and caption each with the
     supplementary section it sits in (the main text cites Tables S1-S3, which are the
     first three)."""
-    lines, out, floats, n, sec = md.split("\n"), [], {}, 0, ""
+    lines, out, floats, n, sec, sub = md.split("\n"), [], {}, 0, "", ""
     i = 0
     while i < len(lines):
         h = re.match(r"^## (S\d+\. .*)$", lines[i])
         if h:
-            sec = h.group(1)
+            sec, sub = h.group(1), ""
+        # a numbered heading inside a section (the verbatim protocol of S4) names the
+        # table that follows it, so two tables in one section get distinct captions
+        h2 = re.match(r"^#{2,4} (\d+(?:\.\d+)?\.? .*)$", lines[i])
+        if h2 and not h:
+            sub = h2.group(1)
         if lines[i].startswith("|"):
             tbl = []
             while i < len(lines) and lines[i].startswith("|"):
                 tbl.append(lines[i]); i += 1
             n += 1
-            floats["T%d" % n] = table_tex("\n".join(tbl), sec, str(n), long=True)
+            floats["T%d" % n] = table_tex("\n".join(tbl), sec + (" — protocol §" + sub if sub else ""), str(n), long=True)
             out.append("@@T%d@@" % n)
             continue
         out.append(lines[i]); i += 1
@@ -394,6 +400,7 @@ def main():
     s_floats.update(s_tabs)
     s_body2 = citations(s_body2, keys, report)
     s_tex = clean(pandoc(s_body2, shift=-1), s_floats)
+    s_tex = s_tex.replace("\\^{}", "\\textasciicircum{}")   # a literal caret ([0,1]^d), not an accent
     s_tex = re.sub(r"\\(sub)*section\{", lambda m: "\\%ssection*{" % (m.group(1) or ""), s_tex)
     stex = [PREAMBLE]
     for ch, rep in UNI.items():

@@ -1,0 +1,7 @@
+
+=== RELIABILITY B v8 (n_valid=20/20) ===
+Tier1A τ=5%: surr 20, oracle 20, pretender 0 []
+Tier1B Δ>3.15%: flagged 1, max Δ=3.54%, max amp=18.03x
+Taxonomy: T1=14 T2=14 (null 57%) T3=4 (null 19%) T4=0 [measured]  modes=18
+PRIMARY rho(RCWA,Surr)=+0.075 (p=0.753, CI -0.38..+0.50)
+Wrote reliability_B_s123_feas_v8.json + table_B_s123_feas_v8.csv

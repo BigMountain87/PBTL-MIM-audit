@@ -1,0 +1,8 @@
+[2026-09-16_13:22:49] stage 1a: M0 from-scratch fine-tunes (seeds 123 777, tag _m0, lr 1e-3)
+[2026-09-16_13:44:46] M0 fine-tunes verified as from-scratch
+[2026-09-16_13:44:46] stage 1b: M0 inverse (seeds 123 777)
+[2026-09-16_19:30:08] stage 2a: feasibility-constrained inverse (seeds 123 777, tag _feas)
+[2026-09-17_01:30:31] feasible reruns verified as constrained
+[2026-09-17_01:30:31] stage 3: oracle on all 12 runs (RPAR=2)
+[2026-09-19_08:51:53] stage 4: reliability
+[2026-09-19_08:52:31] ALL GATE-SEED STAGES DONE

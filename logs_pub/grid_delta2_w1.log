@@ -1,0 +1,44 @@
+[A s777 i3] P=460.1, Wx=184.1, Wy=432.2, W2=403.6, t1=54.2, t2=80.0, t_mid=26.0, d1=104.4, d2=151.3, theta=5.3
+  archived: surrogate MAE 0.66 %, RCWA MAE 3.80 % (N 17-17); 100/100 wavelengths
+  grid  256:  3603.2 s | MAE vs target  3.77 % | vs archived GPU(64): mean  0.09 pp, max  0.29 pp
+  grid 64(archived) -> 256: mean |dA|  0.09 pp, max  0.29 pp | MAE 3.80 -> 3.77 % | verdict pass -> pass
+[A s777 i12] P=462.3, Wx=380.6, Wy=465.9, W2=422.2, t1=63.5, t2=10.0, t_mid=5.0, d1=177.7, d2=30.0, theta=0.0
+  archived: surrogate MAE 0.23 %, RCWA MAE 3.98 % (N 17-17); 100/100 wavelengths
+  grid  256:  3599.2 s | MAE vs target  3.97 % | vs archived GPU(64): mean  0.01 pp, max  0.02 pp
+  grid 64(archived) -> 256: mean |dA|  0.01 pp, max  0.02 pp | MAE 3.98 -> 3.97 % | verdict pass -> pass
+[A s42 i2] P=418.8, Wx=273.6, Wy=137.9, W2=540.0, t1=65.2, t2=10.1, t_mid=19.8, d1=75.5, d2=58.6, theta=40.4
+  archived: surrogate MAE 0.47 %, RCWA MAE 3.23 % (N 17-17); 100/100 wavelengths
+  grid  256:  4058.9 s | MAE vs target  2.97 % | vs archived GPU(64): mean  0.31 pp, max  0.57 pp
+  grid 64(archived) -> 256: mean |dA|  0.31 pp, max  0.57 pp | MAE 3.23 -> 2.97 % | verdict pass -> pass
+[A s42 i8] P=433.6, Wx=470.8, Wy=105.3, W2=206.2, t1=68.8, t2=66.2, t_mid=10.4, d1=134.0, d2=142.9, theta=11.2
+  archived: surrogate MAE 0.48 %, RCWA MAE 3.28 % (N 17-17); 100/100 wavelengths
+  grid  256:  3034.8 s | MAE vs target  3.46 % | vs archived GPU(64): mean  0.35 pp, max  1.08 pp
+  grid 64(archived) -> 256: mean |dA|  0.35 pp, max  1.08 pp | MAE 3.28 -> 3.46 % | verdict pass -> pass
+[B s123 i9] P=579.7, R_out=225.6, R_in=104.1, R_disk=10.0, t_Cr=80.0, d_SiO2=106.1, theta=60.0, phi=13.9
+  archived: surrogate MAE 0.69 %, RCWA MAE 3.80 % (N 9-17); 100/100 wavelengths
+  grid  256:   249.2 s | MAE vs target  3.70 % | vs archived GPU(64): mean  0.12 pp, max  0.27 pp
+  grid 64(archived) -> 256: mean |dA|  0.12 pp, max  0.27 pp | MAE 3.80 -> 3.70 % | verdict pass -> pass
+[B s777 i8] P=498.9, R_out=129.8, R_in=106.4, R_disk=78.6, t_Cr=38.3, d_SiO2=82.6, theta=53.4, phi=31.5
+  archived: surrogate MAE 1.39 %, RCWA MAE 3.46 % (N 9-13); 100/100 wavelengths
+  grid  256:   160.5 s | MAE vs target  3.40 % | vs archived GPU(64): mean  0.09 pp, max  0.19 pp
+  grid 64(archived) -> 256: mean |dA|  0.09 pp, max  0.19 pp | MAE 3.46 -> 3.40 % | verdict pass -> pass
+[B s42 i8] P=493.7, R_out=130.3, R_in=105.4, R_disk=76.6, t_Cr=39.2, d_SiO2=79.7, theta=53.9, phi=37.5
+  archived: surrogate MAE 1.19 %, RCWA MAE 3.46 % (N 9-13); 100/100 wavelengths
+  grid  256:   163.9 s | MAE vs target  3.29 % | vs archived GPU(64): mean  0.44 pp, max  0.72 pp
+  grid 64(archived) -> 256: mean |dA|  0.44 pp, max  0.72 pp | MAE 3.46 -> 3.29 % | verdict pass -> pass
+[C s777 i17] P=724.3, Wx=161.6, Wy=242.3, t_Cr=55.4, d_SiO2=162.5, theta=49.1, phi=38.6
+  archived: surrogate MAE 3.72 %, RCWA MAE 6.13 % (N 9-13); 100/100 wavelengths
+  grid  256:   185.0 s | MAE vs target  5.89 % | vs archived GPU(64): mean  0.32 pp, max  1.06 pp
+  grid 64(archived) -> 256: mean |dA|  0.32 pp, max  1.06 pp | MAE 6.13 -> 5.89 % | verdict PRETENDER -> PRETENDER
+[C s42 i19] P=602.6, Wx=372.5, Wy=98.0, t_Cr=51.1, d_SiO2=89.9, theta=51.9, phi=44.8
+  archived: surrogate MAE 2.07 %, RCWA MAE 6.73 % (N 17-17); 100/100 wavelengths
+  grid  256:  1794.9 s | MAE vs target  6.62 % | vs archived GPU(64): mean  0.52 pp, max  2.11 pp
+  grid 64(archived) -> 256: mean |dA|  0.52 pp, max  2.11 pp | MAE 6.73 -> 6.62 % | verdict PRETENDER -> PRETENDER
+[D s42 i26] P=324.6, L=346.6, w=47.4, t_Cr=25.2, d_SiO2=175.0, theta=36.4
+  archived: surrogate MAE 0.56 %, RCWA MAE 3.34 % (N 17-17); 100/100 wavelengths
+  grid  256:  1736.6 s | MAE vs target  3.44 % | vs archived GPU(64): mean  0.31 pp, max  0.97 pp
+  grid 64(archived) -> 256: mean |dA|  0.31 pp, max  0.97 pp | MAE 3.34 -> 3.44 % | verdict pass -> pass
+[D s42 i41] P=420.3, L=636.4, w=89.2, t_Cr=80.0, d_SiO2=200.0, theta=40.7
+  archived: surrogate MAE 3.76 %, RCWA MAE 6.41 % (N 17-17); 100/100 wavelengths
+  grid  256:  1741.1 s | MAE vs target  6.86 % | vs archived GPU(64): mean  0.55 pp, max  0.89 pp
+  grid 64(archived) -> 256: mean |dA|  0.55 pp, max  0.89 pp | MAE 6.41 -> 6.86 % | verdict PRETENDER -> PRETENDER

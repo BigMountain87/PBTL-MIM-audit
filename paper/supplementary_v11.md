@@ -4,6 +4,8 @@
 
 ## S1. Per-run reliability accounting
 
+Taxonomy columns (T1–T4, modes) count all 20 committed geometries of a run, including the solver-unresolved design of A at seed 777; n_valid and the pretender, oracle-confirmed and Δ-flagged counts exclude it.
+
 | S | seed | n_valid | surrogate-claimed [Wilson 95 %] | oracle-confirmed [Wilson] | pretenders [Wilson] | Δ-flagged [Wilson] | flag thr (%) | modes | T1 | T2 | T3 | T4 | tail RSD | endpoint spread (u) | ρ(RCWA, Surr) [CI95] | p |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | A | 42 | 20 | 20 [83.9, 100.0] | 19 [76.4, 99.1] | 1 [0.9, 23.6] | 2 [2.8, 30.1] | 3.51 | 20 | 16 | 14 | 0 | 0 | 0.0102 | 1.832 | +0.34 [-0.13, 0.69] | 0.143 |
@@ -258,7 +260,7 @@ is reported next to the Δ values it must not be confused with.
 1. **Primary discrimination statistic: ρ(RCWA MAE, Surr MAE)** (Spearman,
    asymptotic p from scipy, approximate Bonett–Wright Fisher-z 95 % CI —
    no exact/permutation inference is claimed). This is the clean "does
-   surrogate confidence track oracle truth" quantity.
+   surrogate confidence track the reference-solver error" quantity.
 2. ρ(Δ, Surr MAE) is reported **only as secondary with the coupling caveat**:
    Δ contains −Surr by construction, so its negative bias is partly
    tautological (in v4a data the coupling formula reproduced the observed
@@ -330,7 +332,7 @@ them.
 ## S6. Per-design table
 
 
-Source: `results_pub/` (reliability, recoverability JSONs; rcwa npz). τ = 5 %. status: pretender = Surr ≤ τ & RCWA > τ; confirmed = both ≤ τ; honest-failure = Surr > τ; degenerate = solver failure.
+Source: `results_pub/` (reliability, recoverability JSONs; rcwa npz). τ = 5 %. status: pretender = Surr ≤ τ & RCWA > τ; confirmed = both ≤ τ; honest-failure = Surr > τ; degenerate = solver failure. support viol.: the committed geometry lies outside the physical support of the parametrization (a patch width W ≥ P for A and C, R_in ≥ R_out for B), which is a narrower test than the generator-feasibility rule of Section 3.8.
 
 | S | seed | # | idx | Surr MAE % | RCWA MAE % | Δ pp | status | T1 | T2 | T3 | T4 | Surr@truth % | ‖u*−u_true‖ | support viol. | peak shift nm | peak ΔA |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -384,7 +386,7 @@ Source: `results_pub/` (reliability, recoverability JSONs; rcwa npz). τ = 5 %. 
 | A | 777 | 8 | 420 | 0.15 | 0.98 | +0.82 | confirmed | 1 | 0 | 0 | 0 | 1.21 | 0.58 | 0 | +0 | -0.01 |
 | A | 777 | 9 | 459 | 0.83 | 3.16 | +2.34 | confirmed | 1 | 1 | 0 | 0 | 2.43 | 0.41 | 0 | -1400 | +0.02 |
 | A | 777 | 10 | 97 | 0.50 | 1.67 | +1.18 | confirmed | 1 | 1 | 0 | 0 | 1.58 | 0.68 | 1 | +0 | +0.02 |
-| A | 777 | 11 | 110 | 0.43 | — | — | degenerate | 0 | 1 | 0 | 0 | 1.22 | 0.43 | 1 | +nan | +nan |
+| A | 777 | 11 | 110 | 0.43 | — | — | degenerate | 0 | 1 | 0 | 0 | 1.22 | 0.43 | 1 | — | — |
 | A | 777 | 12 | 272 | 0.09 | 0.55 | +0.45 | confirmed | 1 | 0 | 0 | 0 | 1.17 | 0.72 | 0 | -14 | +0.00 |
 | A | 777 | 13 | 35 | 0.23 | 3.98 | +3.74 | confirmed | 1 | 1 | 0 | 0 | 0.89 | 1.27 | 1 | -85 | -0.09 |
 | A | 777 | 14 | 481 | 0.15 | 1.27 | +1.12 | confirmed | 1 | 0 | 0 | 0 | 0.87 | 0.50 | 0 | +0 | +0.01 |
@@ -532,7 +534,7 @@ peak-wavelength shift, is `table_S6_pretenders_v8.csv`, available from the corre
 > **Figure S2.** Held-out ensemble error against reference-solver error for every valid
 > committed geometry, per structure and training seed (log-log). The held-out ensemble error
 > is the mean absolute error of the two surrogates that did *not* commit the design, so it is
-> available without any solver call. Dashed lines mark tau = 5 %; filled markers are
+> available without any solver call. Dashed lines mark τ = 5 %; filled markers are
 > pretenders. Panel titles give the pooled AUROC for separating pretenders from
 > oracle-confirmed designs, with its bootstrap 95 % interval.
 
@@ -572,7 +574,7 @@ The identical protocol run end to end on the release of [1] that the published p
 ### S8.3. Per-design table (as-submitted arm)
 
 
-Source: `results_v8/` (reliability, recoverability JSONs; rcwa npz). τ = 5 %. status: pretender = Surr ≤ τ & RCWA > τ; confirmed = both ≤ τ; honest-failure = Surr > τ; degenerate = solver failure.
+Source: `results_v8/` (reliability, recoverability JSONs; rcwa npz). τ = 5 %. status: pretender = Surr ≤ τ & RCWA > τ; confirmed = both ≤ τ; honest-failure = Surr > τ; degenerate = solver failure. support viol. as in Section S6.
 
 | S | seed | # | idx | Surr MAE % | RCWA MAE % | Δ pp | status | T1 | T2 | T3 | T4 | Surr@truth % | ‖u*−u_true‖ | support viol. | peak shift nm | peak ΔA |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -751,7 +753,7 @@ Source: `results_v8/` (reliability, recoverability JSONs; rcwa npz). τ = 5 %. s
 | C | 777 | 13 | 245 | 0.48 | 8.85 | +8.37 | pretender | 1 | 1 | 0 | 0 | 1.73 | 0.76 | 1 | -71/-438 | +0.35/+0.05 |
 | C | 777 | 14 | 6 | 2.35 | 3.84 | +1.49 | confirmed | 0 | 1 | 0 | 0 | 3.96 | 0.15 | 0 | +212/-28 | +0.01/+0.01 |
 | C | 777 | 15 | 208 | 1.57 | 5.68 | +4.11 | pretender | 1 | 0 | 1 | 0 | 2.44 | 1.36 | 0 | +71/-297 | +0.17/+0.03 |
-| C | 777 | 16 | 129 | 2.91 | — | — | degenerate | 0 | 1 | 0 | 0 | 8.84 | 1.16 | 0 | +nan/+nan | +nan/+nan |
+| C | 777 | 16 | 129 | 2.91 | — | — | degenerate | 0 | 1 | 0 | 0 | 8.84 | 1.16 | 0 | — | — |
 | C | 777 | 17 | 463 | 3.47 | 5.08 | +1.61 | pretender | 0 | 1 | 1 | 0 | 2.10 | 1.42 | 0 | +42/+127 | -0.00/-0.03 |
 | C | 777 | 18 | 137 | 3.13 | 10.87 | +7.75 | pretender | 1 | 1 | 0 | 0 | 5.61 | 1.36 | 1 | -71/-212 | +0.11/-0.04 |
 | C | 777 | 19 | 45 | 1.90 | 11.37 | +9.46 | pretender | 1 | 1 | 0 | 0 | 4.63 | 0.76 | 0 | +57/-42 | +0.02/-0.01 |

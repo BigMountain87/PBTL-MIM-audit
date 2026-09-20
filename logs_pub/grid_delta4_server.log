@@ -1,0 +1,4 @@
+[2026-09-20_09:53:48] stage: pilot design A s123 i3, grid 256, all 100 wavelengths, 2 workers
+[2026-09-20_09:53:48] w0 start A s123 i3
+[2026-09-20_10:47:27] w0 done  A s123 i3 (exit 0)
+[2026-09-20_10:47:27] ALL DONE
