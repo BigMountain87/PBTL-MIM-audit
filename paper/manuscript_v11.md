@@ -1475,18 +1475,20 @@ picked, which is what makes the cost exactly one solver call per design.
   therefore superseded rather than repeated here. The 64 × 64 real-space raster used to
   sample every geometry is a second fidelity setting: its Fourier couplings are free of index
   wrap-around only up to N = 15, so at N = 17 the outermost couplings of the truncated
-  operator (≈ 2 % of its entries) fold. Re-solving 31 committed designs on a 256 × 256 raster
-  at the pinned order — every design within 1 pp of τ, the three with the largest predicted
-  raster sensitivity, and ten drawn at random, across all four structures and every training
-  seed; 20 at all 100 wavelengths and 11 on 10–20-wavelength subsamples — changed no
-  pretender verdict on the wavelengths solved (mean |ΔA| 0.01–0.82 pp per design, worst
-  single wavelength 2.2 pp, against τ = 5 %); designs 1–2 pp from τ were not re-solved, so
-  this bounds the sampled designs, not the population. The companion justified this raster
+  operator (≈ 2 % of its entries) fold. Re-solving 54 committed designs on a 256 × 256 raster
+  at the pinned order — every design within 2 pp of τ (42), the three with the largest
+  predicted raster sensitivity, and ten drawn at random, across all four structures and
+  every training seed; 43 at all 100 wavelengths and 11 on 10–20-wavelength subsamples —
+  changed no pretender verdict (mean |ΔA| 0.01–1.20 pp per design, worst
+  single wavelength 2.2 pp, against τ = 5 %); this bounds the sampled designs, which
+  include every design within 2 pp of τ, not the population. The companion justified this raster
   for feature sizes ≥ 50 nm; Structure B's design space extends to 10 nm, and 471 of the 500
   samples behind its printed tables (94.2 %) contain a feature below 50 nm, 309 (61.8 %)
   below two pixels (`paper1_b_feature_census_v11.json`), so for that structure the premise
-  does not hold and the re-solve above, which took its B designs from the narrowest rings,
-  is the evidence that stands in its place. The oracle also applies no
+  does not hold. Re-solving 30 of the companion's Structure-B dataset samples, stratified by
+  feature size, on the same 256 raster moves their labels by 0.06–0.90 pp (mean |ΔA| per
+  sample; worst single wavelength 2.6 pp), with the grid-64 control reproducing the
+  archived labels to 0.002 pp (`grid_delta_summary_v11.json`). The oracle also applies no
   admissibility filter: 2 of 289 archived committed-design spectra carry one point below
   the companion's −0.005 floor (the grazing-order artefact of [1], Supplementary S16), and
   neither verdict changes if the point is clipped or dropped (`oracle_admissibility_v11.json`).

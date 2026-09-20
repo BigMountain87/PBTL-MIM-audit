@@ -37,7 +37,7 @@ def main(mpath, results, skip_end):
          ("pooled_v8", "synthesis_v8", "mechanism_v8", "order7_revalidation_v8", "stats_supplement_v9",
           "feasibility_v8", "lookup_null_v8", "recoverability_v8", "detector_bench_v8",
           "control_analysis_v10", "structure_d_v10", "cross_solver_v11", "pub_vs_legacy_v10",
-          "oracle_admissibility_v11", "control_analysis_v10_3seed", "paper1_b_feature_census_v11")
+          "oracle_admissibility_v11", "control_analysis_v10_3seed", "paper1_b_feature_census_v11", "grid_delta_summary_v11")
          if (R / f"{n}.json").exists()}
     rel = {f"{s}{sx}": json.load(open(R / f"reliability_{s}{sx}_v8.json"))
            for s in "ABC" for sx in ("", "_s123", "_s777") if (R / f"reliability_{s}{sx}_v8.json").exists()}
@@ -212,6 +212,20 @@ def main(mpath, results, skip_end):
         want("W8 B census below two pixels", f"{bc['min_feature_below_2px']['n']} ({bc['min_feature_below_2px']['pct']:.1f} %) below two pixels",
              "paper1_b_feature_census_v11.min_feature_below_2px")
         want("W8 B design-space floor", f"extends to {bc['design_space_min_nm']['R_disk']} nm", "paper1_b_feature_census_v11.design_space_min_nm.R_disk")
+    # W8: raster re-solves of committed designs and of the companion's B dataset (T78/T82/T98)
+    gd = J.get("grid_delta_summary_v11")
+    if gd:
+        c_ = gd["committed"]; b_ = gd["companion_B_dataset"]
+        want("W8 re-solved designs", f"Re-solving {c_['n_designs']} committed designs", "grid_delta_summary_v11.committed.n_designs")
+        want("W8 within 2 pp", f"every design within 2 pp of τ ({c_['within_2pp_of_tau']['n']})", "grid_delta_summary_v11.committed.within_2pp_of_tau.n")
+        want("W8 wavelength coverage", f"{c_['n_full_spectrum']} at all 100 wavelengths and {c_['n_subsampled']} on", "grid_delta_summary_v11.committed.n_full_spectrum/n_subsampled")
+        want("W8 mean dA range", f"mean |ΔA| {c_['mean_abs_dA_pp']['min']:.2f}–{c_['mean_abs_dA_pp']['max']:.2f} pp per design", "grid_delta_summary_v11.committed.mean_abs_dA_pp")
+        want("W8 worst wavelength", f"single wavelength {c_['worst_single_wavelength_pp']:.1f} pp, against", "grid_delta_summary_v11.committed.worst_single_wavelength_pp")
+        assert c_["n_flips"] == 0, "W8 says no verdict changed; the summary disagrees"
+        want("W8 companion B n", f"Re-solving {b_['n']} of the companion's Structure-B dataset samples", "grid_delta_summary_v11.companion_B_dataset.n")
+        want("W8 companion B shift", f"moves their labels by {b_['mean_abs_dA_pp']['min']:.2f}–{b_['mean_abs_dA_pp']['max']:.2f} pp", "grid_delta_summary_v11.companion_B_dataset.mean_abs_dA_pp")
+        want("W8 companion B worst", f"worst single wavelength {b_['max_abs_dA_pp']['max']:.1f} pp), with the grid-64 control", "grid_delta_summary_v11.companion_B_dataset.max_abs_dA_pp")
+        want("W8 companion B control", f"archived labels to {b_['control_grid64_vs_archived_mean_pp']['median']:.3f} pp", "grid_delta_summary_v11.companion_B_dataset.control")
     # Structure D (§3.12): the recorded-prediction outcome and the reliability accounting
     sd = J.get("structure_d_v10", {})
     fD = R / "reliability_D_v8.json"
