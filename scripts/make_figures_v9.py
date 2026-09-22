@@ -339,6 +339,46 @@ if (R / "oracle_select_v8.json").exists():
     print("oracle_select_v8.json present — fig8 not yet implemented (T56 deferred)")
 
 # ---------- numbers ----------
+
+# ---------- Fig 8 (paper Figure 7): pretender rate under every condition of the audit ----------
+def _wilson(k, n, z=1.96):
+    p = k / n; d = 1 + z * z / n; c0 = (p + z * z / (2 * n)) / d; h = z * np.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / d
+    return 100 * (c0 - h), 100 * (c0 + h)
+_pub = json.load(open(R / "pooled_v8.json")); _c3 = json.load(open(R / "control_analysis_v10_3seed.json")); _st = json.load(open(R / "stats_supplement_v9.json"))
+_mech = json.load(open(R / "mechanism_v8.json"))["per_structure"]; _leg = json.load(open(ROOT / "results_v8/pooled_v8.json"))
+_t = _pub["totals"]; _t25 = _pub["tau_sweep"]["by_tau"]["2.5"]["pooled"]
+rows8 = [  # (label, k, n, group)
+    ("main audit, gradient best-of-8", _t["pretender"], _t["n_valid"], "published pipeline, three seeds"),
+    ("from-scratch surrogate (no transfer)", _c3["conditions"]["m0"]["pooled"]["pretender_control"], _t["n_valid"], "published pipeline, three seeds"),
+    ("feasibility-constrained search", _c3["conditions"]["feas"]["pooled"]["pretender_control"], _t["n_valid"], "published pipeline, three seeds"),
+    ("tolerance tightened to τ = 2.5 %", _t25["pretender"], _t25["claimed"], "published pipeline, three seeds"),
+    ("gradient best-of-8", sum(_mech[s]["gradient_best_of_8"]["pretender"] for s in "ABC"), sum(_mech[s]["gradient_best_of_8"]["surrogate_pass"] for s in "ABC"), "seed 42, commitment rules"),
+    ("budget-matched random search", sum(_mech[s]["random_search"]["pretender"] for s in "ABC"), sum(_mech[s]["random_search"]["surrogate_pass"] for s in "ABC"), "seed 42, commitment rules"),
+    ("single mid-box start", sum(_mech[s]["single_start"]["pretender"] for s in "ABC"), sum(_mech[s]["single_start"]["surrogate_pass"] for s in "ABC"), "seed 42, commitment rules"),
+    ("as-submitted release, same protocol", _leg["totals"]["pretender"], _leg["totals"]["n_valid"], "superseded release, three seeds"),
+]
+fig, ax = plt.subplots(figsize=(DOUBLE, 3.2))
+ys = []; y = 0; last_group = None; group_pos = {}
+for label_, k, n, grp in rows8:
+    if grp != last_group and last_group is not None: y += 0.8
+    last_group = grp; group_pos.setdefault(grp, []).append(y)
+    rate = 100 * k / n; lo, hi = _wilson(k, n)
+    color = "0.55" if "release" in grp else ("#0072B2" if "three seeds" in grp else "#009E73")
+    ax.barh(y, rate, color=color, edgecolor="k", linewidth=0.5, height=0.7)
+    ax.errorbar(rate, y, xerr=[[rate - lo], [hi - rate]], color="k", capsize=3, lw=1)
+    ax.text(hi + 1.2, y, f"{k}/{n}", va="center", fontsize=7)
+    ys.append((y, label_)); y += 1
+cb = 100 * np.array(_st["clustering"]["pooled"]["cluster_bootstrap_95"])
+ax.errorbar(100 * _t["pretender"] / _t["n_valid"], ys[0][0] + 0.28, xerr=[[100 * _t["pretender"] / _t["n_valid"] - cb[0]], [cb[1] - 100 * _t["pretender"] / _t["n_valid"]]], color="#D55E00", capsize=2, lw=1, ls="none")
+ax.text(cb[1] + 1.2, ys[0][0] + 0.28, "target-clustered", va="center", fontsize=6, color="#D55E00")
+ax.set_yticks([p for p, _ in ys]); ax.set_yticklabels([l for _, l in ys], fontsize=7); ax.invert_yaxis()
+for grp, pos in group_pos.items():
+    ax.text(-1.5, min(pos) - 0.55, grp, fontsize=7, fontstyle="italic", ha="left", va="center", color="0.3")
+ax.set_xlabel("pretenders / surrogate-claimed designs (%)"); ax.set_xlim(0, 75)
+for s in ("top", "right"): ax.spines[s].set_visible(False)
+save(fig, "fig8_pretender_summary", rect=[0, 0, 1, 1])
+numbers["fig8_rows"] = {l: [int(k), int(n)] for l, k, n, _ in rows8}
+
 (OUT / "figure_numbers.json").write_text(json.dumps(numbers, indent=1))
 print("wrote", sorted(os.listdir(OUT)))
 # Final numbering (T20): 1 schematic (make_fig_schematic_v9.py), 2 selfreport, 3 r-vs-reliability, 4 tau, 5 order-7, 6 spectrum, 7 mechanism; S1, S2.

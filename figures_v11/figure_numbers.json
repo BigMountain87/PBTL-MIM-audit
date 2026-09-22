@@ -232,5 +232,39 @@
   "7.5": 179,
   "10.0": 179,
   "15.0": 179
+ },
+ "fig8_rows": {
+  "main audit, gradient best-of-8": [
+   16,
+   179
+  ],
+  "from-scratch surrogate (no transfer)": [
+   17,
+   179
+  ],
+  "feasibility-constrained search": [
+   5,
+   179
+  ],
+  "tolerance tightened to \u03c4 = 2.5 %": [
+   53,
+   171
+  ],
+  "gradient best-of-8": [
+   6,
+   60
+  ],
+  "budget-matched random search": [
+   11,
+   56
+  ],
+  "single mid-box start": [
+   12,
+   53
+  ],
+  "as-submitted release, same protocol": [
+   95,
+   179
+  ]
  }
 }

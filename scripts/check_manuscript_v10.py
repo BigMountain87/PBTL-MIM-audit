@@ -263,6 +263,14 @@ def main(mpath, results, skip_end):
     if "B" in rel and lb.exists():
         lbj = json.load(open(lb))
         want("B forward MAE pub vs legacy", f"({rel['B']['meta']['forward_test_mae_pct']:.2f} % here against {lbj['meta']['forward_test_mae_pct']:.2f} %, so the threshold fell from {lbj['tier1b']['flag_threshold_pct']:.2f} % to {rel['B']['tier1b']['flag_threshold_pct']:.2f} %)", "reliability_B_v8.meta.forward_test_mae_pct / tier1b.flag_threshold_pct (both arms)")
+    # Figure 7 caption: pooled seed-42 commitment-rule counts
+    mech_ = J.get("mechanism_v8", {}).get("per_structure", {})
+    if mech_:
+        for rule, lab in (("random_search", "budget-matched random search"), ("single_start", "single mid-box start")):
+            k_ = sum(mech_[s][rule]["pretender"] for s in "ABC"); n_ = sum(mech_[s][rule]["surrogate_pass"] for s in "ABC")
+            want(f"Fig 7 {rule}", f"{lab} ({k_}/{n_})", "mechanism_v8.per_structure.*." + rule)
+        k_ = sum(mech_[s]["gradient_best_of_8"]["pretender"] for s in "ABC"); n_ = sum(mech_[s]["gradient_best_of_8"]["surrogate_pass"] for s in "ABC")
+        want("Fig 7 best-of-8", f"best of 8 restarts ({k_}/{n_})", "mechanism_v8.per_structure.*.gradient_best_of_8")
     # forward MAE of the transfer-learned A surrogates quoted in Sections 3.6 and 4.7
     fa123 = json.load(open(R / "finetune_A_s123_v8.json")) if (R / "finetune_A_s123_v8.json").exists() else None
     fa777 = json.load(open(R / "finetune_A_s777_v8.json")) if (R / "finetune_A_s777_v8.json").exists() else None

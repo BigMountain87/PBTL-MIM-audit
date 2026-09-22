@@ -156,7 +156,7 @@ of [1]. If the hypotheses are not supported, the result would show that the forw
    How many designs the solver rejects depends on the tolerance demanded: 8.9 % at
    τ = 5 %, 31 % at τ = 2.5 %.
 3. **Three controls that rule out the obvious candidate causes as necessary** (Sections 3.6, 3.8 and Table 9). Pretenders persist without transferred weights, without the gradient
-   loop and without geometric infeasibility. Each control still commits to the argmin of a surrogate that underestimates its own error at the geometry it selects.
+   loop and without geometric infeasibility. Each control still commits to the surrogate's argmin, the very point at which the surrogate underestimates its own error.
 4. **A release-dependence result** (Section 3.10). The identical protocol on the release this pipeline superseded, at that release's own solver settings, gives 53.1 % against 8.9 %.
    A reliability claim of this kind therefore characterizes a specific release rather than a structure or a method, which is an argument for auditing the pipeline that is actually shipped.
 5. **An out-of-sample structure** (Section 3.12). A fourth absorber, generated after the
@@ -186,7 +186,7 @@ The operational form is the checklist of Box 1 (Section 4.4).
 All three surrogates share the M_TL+phys architecture of [1]. That architecture is a
 ResNet-256-4 backbone with a Sigmoid head. Its input is a normalized wavelength
 concatenated with normalized geometry parameters and structure-specific physics
-features. Its output is absorptance. The three structures span the *r* range and differ in dimensionality and output channels. Throughout the paper, tables and figures list them in the order of the published *r* of [1], B (+0.96), A (+0.83), C (+0.65), because the pre-specified hypotheses concern monotonicity in *r* (Section 1.4); the preliminary *r* in force when the protocol was frozen orders them A, C, B, and Table 7 tests both orderings:
+features. Its output is absorptance. The three structures span the *r* range and differ in dimensionality and output channels. Throughout the paper, tables and figures list them in the order of the published *r* of [1]: B (+0.96), A (+0.83), C (+0.65). This order is used because the pre-specified hypotheses concern monotonicity in *r* (Section 1.4). The preliminary *r* in force when the protocol was frozen orders them A, C, B; Table 7 tests both orderings:
 
 **Table 1. The three absorber structures** (design dimensionality, physics-feature
 count, wavelength grid, filtered dataset and surrogate head; columns ordered
@@ -542,8 +542,7 @@ exactly on both arms. The maximum absolute deviation is 0 in every spectrum and 
 percentage points in the resulting MAE (`repro_check_v8.json` in each arm's archive). The
 published-pipeline recheck at adaptive order took 6.2 GPU-hours. Every archived spectrum
 also carries a fingerprint of the solver code and settings that produced it. On every
-read, the spectrum is re-validated against the live solver identity. The multi-seed runs
-are reported in Section 3.4 and the orders the solver selected in Section 3.5.
+read, the spectrum is re-validated against the live solver identity. The multi-seed runs are reported in Section 3.4 and the orders the solver selected in Section 3.5. The main result is the pretender count of Sections 3.2 and 3.4; Sections 3.6 and 3.8 report the controls, Section 3.10 the as-submitted release, and Sections 3.5, 3.9 and 3.11 are checks on the reference solver and the targets.
 
 ### 3.1. Forward fine-tune fidelity against the published tables of [1]
 
@@ -608,13 +607,12 @@ not.
 > solver measures it at the same geometry. Dashed lines mark the success
 > threshold τ = 5 %; the shaded upper-left quadrant is the *pretender* region,
 > where the surrogate MAE is at or below τ and the reference-solver MAE is above
-> it. Every point lies left of the vertical line — the surrogate certifies every
-> design — while 16 of the 179 lie above the horizontal one. The counts printed in
+> it. Every point lies left of the vertical line (the surrogate certifies every design), while 16 of the 179 lie above the horizontal one. The counts printed in
 > each panel pool the three seeds.
 
 ### 3.3. Pre-specified hypothesis tests
 
-The three pre-specified orderings are evaluated under both *r* conventions in Table 7.
+The three pre-specified orderings are evaluated under both *r* conventions in Table 7 and Figure 3(a).
 **Of the two conventions, the pre-specified one is the only one under which H1a holds in
 direction (Fisher *p* = 0.605, so not confirmed). H1b and H1c hold under neither.** H1a is
 the hypothesis that oracle success is non-increasing as *r* falls. It is monotone along
@@ -728,11 +726,10 @@ magnitude of the primary estimate.
 
 
 Whether the continuous self-report carries rank information depends on the structure.
-ρ(RCWA, Surr) spans −0.119 to +0.829 over the nine runs. Four runs are nominally
-significant: all three C runs (+0.750, +0.829, +0.719; p ≤ 0.0004) and A `s123`
+ρ(RCWA, Surr) spans −0.119 to +0.829 over the nine runs (Figure 3b). Four runs are nominally significant: all three C runs (+0.750, +0.829, +0.719; p ≤ 0.0004) and A `s123`
 (+0.454, p = 0.044, though its Fisher-z interval [−0.01, 0.76] touches zero). **The three
 C runs survive the nine-test Holm correction** (adjusted p = 0.0011, 0.00006, 0.0025),
-while A `s123` does not (0.27). (Exploratory) seed-pooled block permutation gives
+while A `s123` does not (0.27). (Exploratory) seed-pooled block permutation (Figure 3c) gives
 ρ = −0.01 (B, p = 0.94), +0.33 (A, p = 0.080) and +0.76 (C, p < 0.001: no exceedance in
 5000 permutations). As a detector of pretenders, the surrogate's own claimed MAE has a
 pooled AUROC (Table 10's seed-stratified estimator) of 0.40 on B, 0.27 on A and **0.98 on
@@ -800,8 +797,7 @@ a fixed order 5. It measures what the order alone contributes.
 > **Figure 5.** Structure B, seed 123, absorptance channel. (a) Worst-case pretender
 > (target 19 of 20): target spectrum, surrogate prediction at the committed geometry
 > g(u*) with self-reported MAE 0.25 %, and the reference solver at the same geometry with
-> MAE 15.9 %. The committed ring has **R_in = 253 nm against R_out = 208 nm** — an inner
-> radius larger than the outer one, which the generator's sampling rule
+> MAE 15.9 %. The committed ring has **R_in = 253 nm against R_out = 208 nm**, an inner radius larger than the outer one, which the generator's sampling rule
 > (R_in ≤ R_out − 10 nm) can never produce, so the optimizer has placed its optimum
 > outside the generator-feasible region entirely rather than merely at its edge. Its true
 > counterpart is an ordinary ring (R_out = 114 nm, R_in = 104 nm, 2R_out/P = 0.34).
@@ -890,10 +886,7 @@ existed.
 
 
 > **Figure 6.** Pretenders per surrogate-claimed design at training seed 42 under
-> three rules for choosing which geometry to commit: random search over 6400
-> uniform draws from the design box — *budget-matched*, i.e. given the same number
-> of surrogate evaluations as the gradient loop's 8 restarts × 800 iterations —
-> gradient descent with the best of 8 restarts, and gradient descent from the
+> three rules for choosing which geometry to commit: random search over 6400 uniform draws from the design box (*budget-matched*, i.e. given the same number of surrogate evaluations as the gradient loop's 8 restarts × 800 iterations), gradient descent with the best of 8 restarts, and gradient descent from the
 > single mid-box start. Wilson 95 % intervals; k/n labels give pretenders over
 > surrogate-claimed designs, so the denominators differ between rules (C random
 > search: 1/16). Pretenders occurred under all three commitment rules, without isolating which of the three commitment mechanisms, if any,
@@ -1193,6 +1186,10 @@ left it: consistent with, not established.
 
 ## 4. Discussion
 
+Figure 7 collects the pretender counts that Section 3 reports under every condition of the audit, on one axis. The three-seed rows are the main audit and its two controls; the seed-42 rows compare the commitment rules; the last row is the as-submitted release under the same protocol.
+
+> **Figure 7.** Pretender rate under every condition of the audit (pretenders per surrogate-claimed design; Wilson 95 % intervals; k/n labels). Published pipeline, three seeds: the main audit (16/179; the orange bar is the target-clustered interval of Section 3.4), the from-scratch surrogate (17/179), the feasibility-constrained search (5/179) and the main audit re-scored at τ = 2.5 % (53/171). Seed 42, commitment rules of Section 3.6: gradient descent with the best of 8 restarts (6/60), budget-matched random search (11/56) and the single mid-box start (12/53), each over the designs that rule certified. The as-submitted release under the same protocol at its own solver settings (95/179, Section 3.10). Sources: `pooled_v8.json`, `control_analysis_v10_3seed.json`, `mechanism_v8.json`, `stats_supplement_v9.json` and the as-submitted arm's `pooled_v8.json`.
+
 ### 4.1. Forward scores and downstream use
 
 The transferability diagnostic of [1] is the shape correlation *r* read jointly with the
@@ -1225,7 +1222,7 @@ These results indicate that **neither the forward score nor the thresholded self
 The only quantity that orders with the preliminary *r* is incidence. This is seen in the
 oracle success of 19 / 18 / 17 along A, C, B at seed 42 and in the pooled trend of
 Section 3.3. Worst-case severity does not order with the preliminary *r*. The largest gap
-is on B (12.1 pp), then A (9.9 pp), then C (4.7 pp), which is monotone under neither
+is on B (12.1 pp; the worst case is shown in Figure 5), then A (9.9 pp), then C (4.7 pp), which is monotone under neither
 convention. Nor does the Δ-flag count (2 / 1 / 7). B carries the most flags because its
 threshold is the lowest. The contrast survives a common threshold: A 2, B 7, C 1 at either
 A's 3.51 % or B's 3.44 % threshold, with B-vs-C Fisher p = 0.044 nominal and 0.39 after

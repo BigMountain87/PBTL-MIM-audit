@@ -38,7 +38,7 @@ BIB = OUT / "refs.bib"
 # numbering, and this map is where the two conventions meet.
 FIGFILE = {"1": "fig1_protocol_schematic", "2": "fig2_selfreport_vs_oracle",
            "3": "fig3_r_vs_reliability", "4": "fig4_tau_sensitivity",
-           "5": "fig6_worst_pretender_spectrum", "6": "fig7_mechanism",
+           "5": "fig6_worst_pretender_spectrum", "6": "fig7_mechanism", "7": "fig8_pretender_summary",
            "S1": "figS1_box_edge_geometry", "S2": "figS2_heldout_vs_rcwa"}
 # end matter is unnumbered, and 'References' is built from the Markdown reference list
 UNNUMBERED = ["Code, Data, and Compute", "Acknowledgements", "Data availability",
